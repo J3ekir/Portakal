@@ -1,0 +1,45 @@
+{
+    "action": {
+        "icons": {
+            "16": "img/logo16.png",
+            "32": "img/logo32.png",
+            "48": "img/logo48.png",
+            "64": "img/logo64.png",
+            "128": "img/logo128.png"
+        }
+    },
+    "author": "Vavien.",
+    "background": {
+        "service_worker": "js/background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://normalsozluk.com/*"
+            ],
+            "js": [
+                "js/contentScript.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "description": "normal sözlük'ü sıkar atar.",
+    "homepage_url": "https://github.com/Dekamir",
+    "host_permissions": ["https://normalsozluk.com/*"],
+    "icons": {
+        "16": "img/logo16.png",
+        "32": "img/logo32.png",
+        "48": "img/logo48.png",
+        "64": "img/logo64.png",
+        "128": "img/logo128.png"
+    },
+    "manifest_version": 3,
+    "name": "sıkılmış portakal",
+    "permissions": [
+        "offscreen",
+        "scripting",
+        "storage",
+        "unlimitedStorage"
+    ],
+    "version": "0.0.2"
+}
