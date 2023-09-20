@@ -1,16 +1,17 @@
 chrome.runtime.sendMessage({
   type: "injectCSS",
+  cssOrigin: "USER",
   CSS: `  .clearfix.my-2:has(.dropdown-pagination) {
                 display: none !important;
             }
 			.dropdown-item > .fa {
-				display: inline-flex; !important;
-				min-width: 20px; !important;
+				display: inline-flex !important;
+				min-width: 20px !important;
 				justify-content: center !important;
 			}
 			.right-drop-menu {
 				box-shadow: 0 0 8px 0 #00000022 !important;
-				transition: box-shadow: 2s ease-out;
+				transition: box-shadow 2s ease-out;
 			}
 			.inpagechatframe, .inpagechatheader, .inpagechattoggle {
 				border-radius: 8px 8px 0 0 !important;
@@ -72,7 +73,7 @@ chrome.runtime.sendMessage({
                 border-bottom:none !important;
             }
             #footer > .clearfix {
-                display:none;
+                display: none;
             }
             #footer {
                 background-color:#00000000!important;
@@ -112,6 +113,11 @@ chrome.runtime.sendMessage({
 			#titleAdvancedSearch {
 				width: 32px !important;
 			}
+      #leftframe > div:nth-child(4) > div.list-group > div.list-group-item.list-group-item-action.p-0.active {
+        border-radius: 4px !important;
+        background-color: #c14114aa !important;
+        box-shadow: inset 0 0 0 1px #f95318 !important;
+      }
 			`,
 });
 
