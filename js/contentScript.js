@@ -1,15 +1,75 @@
 chrome.runtime.sendMessage({
   type: "injectCSS",
   cssOrigin: "USER",
-  CSS: `.clearfix.my-2:has(.dropdown-pagination) {
-            display: none !important;
-        }
+  CSS: `
+      /* Tanim */
+      .entrytext > .img > img {
+        border-radius: 8px !important;
+      }
+
+      
+      /* Baslik */
+      #entriesheadingcontainer {
+        padding-bottom: 8px !important;
+        position: sticky !important;
+        top: 64px !important;
+        z-index: 1 !important;
+        background-color: ${window.getComputedStyle(document.body).backgroundColor};
+        box-shadow: 0 -10px 0 ${window.getComputedStyle(document.body).backgroundColor}, 0 2px 2px ${window.getComputedStyle(document.body).backgroundColor};
+      }
+			#entriesheadingcontainer > header {
+				margin-bottom: 0!important;
+				margin-top: 0!important;
+			}
+			#entriesheadingcontainer > input::placeholder {
+				content: "başlıkta ara"!important;
+			}
+			#button_searchinentries {
+				padding: 8px 10px 10px 10px !important;
+			}
+			#container-list-header-buttons {
+				justify-content: space-between !important;
+			}
+			#container-list-header-buttons > * {
+				margin: 0 !important;
+			}
+			#container-list-header-buttons > * {
+        margin-bottom: 0px !important;
+      }
+      #entry-heading-category > * {
+        padding:0px !important;
+      }
+      #container-list-header-buttons {
+        border-bottom:none !important;
+      }
+
+      /* Baslik - Sayfa Değiştirici */
+      .clearfix.my-2:has(.dropdown-pagination) {
+        display: none !important;
+      }
 			.dropdown-item > .fa {
 				display: inline-flex !important;
 				min-width: 20px !important;
 				justify-content: center !important;
         align-items: center !important;
 			}
+      .dropdown-menu-pagination {
+				max-height: 80vh!important;
+			}
+
+
+      // Genel Header
+      #topbarmenu {
+        box-shadow:none !important;
+      }
+      #button_searchtitle {
+				width: 42px !important;
+			}
+			#titleAdvancedSearch {
+				width: 32px !important;
+			}
+
+      /* Genel Header - Duser Menuler */
 			.right-drop-menu {
 				box-shadow: 0 0 8px 0 #00000022 !important;
 				transition: box-shadow 2s ease-out;
@@ -21,6 +81,17 @@ chrome.runtime.sendMessage({
         width: 24px;
         margin-right: 4px !important;
       }
+      .dropdown-pagination > .btn-group > .btn-sm {
+				display: flex;
+				align-items: center !important;
+				justify-content: center !important;
+			}
+			.dropdown-pagination > .btn-group > .btn-sm > .fa {
+				width: 8px !important;
+			}
+
+
+      /* Sayfa Ici Sohbet */
 			.inpagechatframe, .inpagechatheader, .inpagechattoggle {
 				border-radius: 8px 8px 0 0 !important;
 			}
@@ -53,78 +124,29 @@ chrome.runtime.sendMessage({
 			.messageseendate {
 				top: 6px !important;
 			}
-			.dropdown-pagination > .btn-group > .btn-sm {
-				display: flex;
-				align-items: center !important;
-				justify-content: center !important;
-			}
-			.dropdown-pagination > .btn-group > .btn-sm > .fa {
-				width: 8px !important;
-			}
-            #container-list-header-buttons > * {
-                margin-bottom: 0px !important;
-            }
-            #entry-heading-category > * {
-                padding:0px !important;
-            }
-			.dropdown-menu-pagination {
-				max-height: 80vh!important;
-			}
-            #topbarmenu {
-                box-shadow:none !important;
-            }
-            #container-list-header-buttons {
-                border-bottom:none !important;
-            }
-            #footer > .clearfix {
-                display: none;
-            }
-            #footer {
-                background-color:#00000000!important;
-            }
-            #entriesheadingcontainer {
-                padding-bottom: 8px !important;
-                position: sticky !important;
-                top: 64px !important;
-                z-index: 1 !important;
-                background-color: ${window.getComputedStyle(document.body).backgroundColor};
-                box-shadow: 0 -10px 0 ${window.getComputedStyle(document.body).backgroundColor}, 0 2px 2px ${window.getComputedStyle(document.body).backgroundColor};
-            }
       #chatpreviewcontainer {
         padding: 4px 4px 0 4px !important;
       }
-			#entriesheadingcontainer > header {
-				margin-bottom: 0!important;
-				margin-top: 0!important;
-			}
-			/* #entriesheadingcontainer > header > h1 {
-				margin-bottom: 0!important;
-				margin-top: 0!important;
-				padding-bottom: 8px;
-			} */
-			#entriesheadingcontainer > input::placeholder {
-				content: "başlıkta ara"!important;
-			}
-			#button_searchinentries {
-				padding: 8px 10px 10px 10px !important;
-			}
-			#container-list-header-buttons {
-				justify-content: space-between !important;
-			}
-			#container-list-header-buttons > * {
-				margin: 0 !important;
-			}
-			#button_searchtitle {
-				width: 42px !important;
-			}
-			#titleAdvancedSearch {
-				width: 32px !important;
-			}
+    
+
+      /* Footer */
+      #footer > .clearfix {
+        display: none;
+      }
+      #footer {
+        background-color:#00000000!important;
+      }
+
+
+      /* Sol Cerceve */
       #leftframe > div:nth-child(4) > div.list-group > div.list-group-item.list-group-item-action.p-0.active {
         border-radius: 4px !important;
         background-color: #c14114aa !important;
         box-shadow: inset 0 0 0 1px #f95318 !important;
       }
+
+
+      /* Profil */
       .profile-picture > img {
 				object-fit: cover;
 				width: 100px !important;
@@ -164,10 +186,13 @@ chrome.runtime.sendMessage({
         max-width: 768px;
         margin: auto;
       }
+
+
+      /* Icerikli Baslik */
       .title-meta-container > .main-image > a > img {
-        max-height: 256px;
-        max-width: 162px;
-        object-fit: cover;
+        max-height: 256px !important;
+        max-width: 162px !important;
+        object-fit: cover !important;
         border-radius: 16px !important;
       }
       .title-meta-container > .main-image {
@@ -175,6 +200,35 @@ chrome.runtime.sendMessage({
       }
       .title-meta-container > .info {
         margin-left: 16px !important;
+      }
+      .info > .title-name {
+        max-width: 40% !important;
+      }
+      .info > .tags {
+        max-width: 40% !important;
+      }
+
+      /* Icerikli Baslik: Icerik Alani */
+      header > .clear {
+        padding-top: 8px !important;
+      }
+      #entriesheadingcontainer > .title-tabs {
+        display: flex !important;
+        flex-direction: column !important;
+        position: absolute !important;
+        width: 50% !important;
+        max-height: 250px !important;
+        height: 250px !important; 
+        right: 0 !important;
+        top: 16px !important;
+        overflow: visible !important;
+      }
+      .tab-content > .tab-pane > .entry {
+        max-height: 180px !important;
+        overflow: none !important;
+        display: inline-block !important;
+        flex-direction: column !important;
+        overflow-y: scroll !important;
       }
 			`,
 });
