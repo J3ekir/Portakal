@@ -8,7 +8,7 @@
             "128": "img/logo128.png"
         }
     },
-    "author": "Vavien.",
+    "author": "Vavien. & Dekamir",
     "background": {
         "service_worker": "js/background.js"
     },
@@ -41,5 +41,5 @@
         "storage",
         "unlimitedStorage"
     ],
-    "version": "0.0.2"
+    "version": "0.0.4"
 }

@@ -1,18 +1,26 @@
 chrome.runtime.sendMessage({
   type: "injectCSS",
   cssOrigin: "USER",
-  CSS: `  .clearfix.my-2:has(.dropdown-pagination) {
-                display: none !important;
-            }
+  CSS: `.clearfix.my-2:has(.dropdown-pagination) {
+            display: none !important;
+        }
 			.dropdown-item > .fa {
 				display: inline-flex !important;
 				min-width: 20px !important;
 				justify-content: center !important;
+        align-items: center !important;
 			}
 			.right-drop-menu {
 				box-shadow: 0 0 8px 0 #00000022 !important;
 				transition: box-shadow 2s ease-out;
 			}
+      #frame_cockpit > .dropdown-item > .fa {
+        background-color: #77777744;
+        border-radius: 50%;
+        height: 24px;
+        width: 24px;
+        margin-right: 4px !important;
+      }
 			.inpagechatframe, .inpagechatheader, .inpagechattoggle {
 				border-radius: 8px 8px 0 0 !important;
 			}
@@ -38,10 +46,6 @@ chrome.runtime.sendMessage({
 				width: 32px !important;
 				height: 32px !important;
 				object-fit: cover;
-			}
-			.profile-picture > img {
-				object-fit: cover;
-				width: 100px !important;
 			}
 			.chatmessages {
 				padding: 0 8px;
@@ -86,6 +90,9 @@ chrome.runtime.sendMessage({
                 background-color: ${window.getComputedStyle(document.body).backgroundColor};
                 box-shadow: 0 -10px 0 ${window.getComputedStyle(document.body).backgroundColor}, 0 2px 2px ${window.getComputedStyle(document.body).backgroundColor};
             }
+      #chatpreviewcontainer {
+        padding: 4px 4px 0 4px !important;
+      }
 			#entriesheadingcontainer > header {
 				margin-bottom: 0!important;
 				margin-top: 0!important;
@@ -118,11 +125,61 @@ chrome.runtime.sendMessage({
         background-color: #c14114aa !important;
         box-shadow: inset 0 0 0 1px #f95318 !important;
       }
+      .profile-picture > img {
+				object-fit: cover;
+				width: 100px !important;
+        box-shadow: 0 0 0 4px ${window.getComputedStyle(document.body).backgroundColor} !important;
+			}
+      .profile-badge > img {
+				object-fit: cover;
+				width: 100px !important;
+        box-shadow: 0 0 0 4px ${window.getComputedStyle(document.body).backgroundColor} !important;
+			}
+      .cover-photo {
+        border-radius: 16px;
+      }
+      .profile-badge-actions > .actionbutton {
+        height: 32px !important;
+        width: 32px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 0 4px ${window.getComputedStyle(document.body).backgroundColor} !important;
+        background-color: #c8c8c8 !important;
+      }
+      .profile-photo-actions > .actionbutton {
+        height: 32px !important;
+        width: 32px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 0 4px ${window.getComputedStyle(document.body).backgroundColor} !important;
+        background-color: #c8c8c8 !important;
+      }
+      .status-note {
+        padding: 4px !important;
+        background: 
+      }
+      .profile-actions {
+        max-width: 768px;
+        margin: auto;
+      }
+      .title-meta-container > .main-image > a > img {
+        max-height: 256px;
+        max-width: 162px;
+        object-fit: cover;
+        border-radius: 16px !important;
+      }
+      .title-meta-container > .main-image {
+        width: auto !important;
+      }
+      .title-meta-container > .info {
+        margin-left: 16px !important;
+      }
 			`,
 });
 
-func();
-observe();
+
 
 function func() {
   // şu anki sayfanın başlık olup olmadığını denetle
@@ -131,19 +188,13 @@ function func() {
 
     // tuşlar alanındaki boşlukları kaldır
     document
-      .getElementById("container-list-header-buttons")
-      .classList.remove("clearfix");
+      .getElementById("container-list-header-buttons").classList.remove("clearfix");
     document
-      .getElementById("container-search-in-title")
-      .firstElementChild.classList.remove("form-inline");
+      .getElementById("container-search-in-title").firstElementChild.classList.remove("form-inline");
 
     // "sayfa sonu" tuşundaki metni kaldır
 	if (document.getElementsByClassName("entryscrollbottom")[0].children[1] !== undefined) {
-    document
-      .getElementsByClassName("entryscrollbottom")[0]
-      .removeChild(
-        document.getElementsByClassName("entryscrollbottom")[0].children[1]
-      );
+    document.getElementsByClassName("entryscrollbottom")[0].removeChild(document.getElementsByClassName("entryscrollbottom")[0].children[1]);
 	}
     // başlık kategorisini başlığın altına taşı
     var id = document.querySelector("#entriesheadingcontainer");
@@ -192,17 +243,16 @@ function func() {
 
       group.prepend(leftArrow);
       group.append(rightArrow);
-	  
-	  if (group === null) {
-		return;
-	  }
     }
+  }
+
+  if (window.location.href.indexOf("normalsozluk.com/yazar/") != -1) {
+  document.querySelector("#centerframe > div > hr").remove();
+  document.querySelector("#centerframe > div > hr").remove();
   }
 
   document.title = document.title.toLowerCase(); //belge başlığını küçült
   document.getElementById("titlesearch").placeholder = "sözlükte ara"; //genel arama yer tutucu yazını değiştir
-
-  
 }
 
 async function observe() {
@@ -222,3 +272,6 @@ async function observe() {
   }
   //observer.disconnect();
 }
+
+func();
+observe();
