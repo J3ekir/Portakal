@@ -1,6 +1,5 @@
 chrome.runtime.sendMessage({
   type: "injectCSS",
-  cssOrigin: "USER",
   CSS: `
       /* Tanim */
       .entrytext > .img > img {
@@ -89,6 +88,48 @@ chrome.runtime.sendMessage({
 			.dropdown-pagination > .btn-group > .btn-sm > .fa {
 				width: 8px !important;
 			}
+
+      /* Genel Header - Bildirimler Paneli */
+      #frame_notifications {
+        max-height: 560px !important;
+      }
+      #frame_notificationsheading {
+        position: sticky;
+        padding-top: 8px !important;
+        top: 0;
+        background: border-box ${window.getComputedStyle(document.body).backgroundColor} !important;
+        z-index: 1;
+        box-shadow: 0 3px 2px 0 ${window.getComputedStyle(document.body).backgroundColor};
+      }
+
+      /* Genel Header - Sag Tuslar */
+      #topnav-right {
+        display: flex !important;
+        gap: 8px;
+        padding-bottom: 4px !important;
+      }
+      #topnav-right > .nav-link {
+        background-color: #77777722;
+        border-radius: 4px;
+        padding: 2px 12px !important;
+        margin: 2px 0 !important;
+        line-height: 2;
+        transition: background-color 150ms ease-out, box-shadow 300ms linear, color 150ms ease-out;
+        user-select: none;
+      }
+      #topnav-right > .nav-link:hover {
+        background-color: #77777744;
+        box-shadow: 0 0 1px 2px #00000011 !important;
+        transition: background-color 150ms ease-out, box-shadow 300ms linear, color 150ms ease-out;
+      }
+      #topnav-right > .nav-link:active {
+        background-color: #77777733;
+        box-shadow: 0 0 1px 1px #00000022 !important;
+        transition: background-color 50ms ease-out, box-shadow 50ms linear;
+      }
+      #topnav-right > .nav-link > .fa {
+        margin-right: 4px;
+      }
 
 
       /* Sayfa Ici Sohbet */
