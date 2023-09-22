@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener(
     async function (request, sender, sendResponse) {
         switch (request.type) {
             case "injectCSS":
-                await injectCSS(sender.tab.id, request.CSS);
+                await injectCSS(sender.tab.id, request.css);
                 break;
             default:
                 break;
@@ -18,11 +18,11 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
-async function injectCSS(tabId, CSS) {
+async function injectCSS(tabId, css) {
     chrome.scripting.insertCSS({
         target: { tabId: tabId },
         origin: "AUTHOR",
-        css: CSS
+        css: css
     });
 }
 

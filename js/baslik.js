@@ -1,0 +1,59 @@
+run();
+observe();
+
+function run() {
+    // başlık içi arama yer tutucu yazılarını değiştir
+    dom.byName("q")[0].placeholder = "başlıkta ara"; 
+
+    // tuşlar alanındaki boşlukları kaldır
+    dom.cl.remove("#container-list-header-buttons", "clearfix");
+    dom.cl.remove("#container-list-header-buttons > form", "form-inline");
+
+    // "sayfa sonu" tuşundaki metni kaldır
+    dom.remove(".entryscrollbottom span");  // ??? neden undefined olsun
+    
+    // başlık kategorisini başlığın altına taşı
+    var category = document.querySelector("#entry-heading-category");
+    category.parentElement.insertBefore(category, category.parentElement.children[1]);
+
+
+    // sayfa tuşları varsa
+    var group = qs("#entriesheadingcontainer .dropdown-pagination > .btn-group");
+
+    if (group) {
+        // ilk/son sayfa tuşlarını ekle
+        var bodyColor = this.getComputedStyle(document.body).color;
+        var leftArrow = dom.clone(group.firstElementChild);
+        var rightArrow = dom.clone(group.firstElementChild);
+        leftArrow.firstElementChild.className = "fa fa-angle-double-left";
+        rightArrow.firstElementChild.className = "fa fa-angle-double-right";
+        var pageList = group.children[1].lastElementChild;
+        leftArrow.href = pageList.firstElementChild.href;
+        rightArrow.href = pageList.lastElementChild.href;
+
+        if (group.firstElementChild.href.length === 0) {
+            leftArrow.style.color = bodyColor;
+        }
+        if (group.lastElementChild.href.length === 0) {
+            rightArrow.style.color = bodyColor;
+        }
+
+        group.prepend(leftArrow);
+        group.append(rightArrow);
+    }
+}
+
+async function observe() {
+    const targetNode = document.querySelector("#ajaxloading");
+    const config = { attributes: true, attributeFilter: ["style"] };
+    const callback = async (mutationList, observer) => {
+        if (targetNode.style.display === "none") {
+            run();
+        }
+    };
+    const observer = new MutationObserver(callback);
+    if (targetNode) {
+        observer.observe(targetNode, config);
+    }
+    //observer.disconnect();
+}

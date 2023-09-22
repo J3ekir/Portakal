@@ -1,0 +1,290 @@
+/* Icerikli Baslik: Icerik Alani */
+header > .clear {
+    padding-top: 8px !important;
+}
+
+
+#button_searchinentries {
+    padding: 8px 10px 10px 10px !important;
+}
+
+#button_searchtitle {
+    width: 42px !important;
+}
+
+#chatpreviewcontainer {
+    padding: 4px 4px 0 4px !important;
+}
+
+#container-list-header-buttons {
+    justify-content: space-between !important;
+    border-bottom: none !important;
+}
+
+#container-list-header-buttons > * {
+    margin: 0 !important;
+    margin-bottom: 0px !important;
+}
+
+/* Baslik */
+#entriesheadingcontainer {
+    padding-bottom: 8px !important;
+    position: sticky !important;
+    top: 64px !important;
+    z-index: 1 !important;
+}
+
+#entriesheadingcontainer > header {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+#entriesheadingcontainer > .title-tabs {
+    display: flex !important;
+    flex-direction: column !important;
+    position: absolute !important;
+    width: 50% !important;
+    max-height: 250px !important;
+    height: 250px !important;
+    right: 0 !important;
+    top: 16px !important;
+    overflow: visible !important;
+}
+
+#entry-heading-category > * {
+    padding: 0px !important;
+}
+
+#frame_cockpit > .dropdown-item > .fa {
+    background-color: #77777744;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    margin-right: 4px !important;
+}
+
+/* Genel Header - Bildirimler Paneli */
+#frame_notifications {
+    max-height: 560px !important;
+}
+
+#frame_notificationsheading {
+    position: sticky;
+    padding-top: 8px !important;
+    top: 0;
+    z-index: 1;
+}
+
+#footer {
+    background-color: #00000000 !important;
+    /* ??? */
+    /* background-color: transparent !important; */
+}
+
+/* Footer */
+#footer > .clearfix {
+    display: none;
+}
+
+/* ??? */
+/* Sol Cerceve */
+#leftframe > div:nth-child(4) > div.list-group > div.list-group-item.list-group-item-action.p-0.active {
+    border-radius: 4px !important;
+    background-color: #c14114aa !important;
+    box-shadow: inset 0 0 0 1px #f95318 !important;
+}
+
+#titleAdvancedSearch {
+    width: 32px !important;
+}
+
+/* Genel Header */
+#topbarmenu {
+    box-shadow: none !important;
+}
+
+/* Genel Header - Sag Tuslar */
+#topnav-right {
+    display: flex !important;
+    gap: 8px;
+    padding-bottom: 4px !important;
+}
+
+#topnav-right > .nav-link {
+    background-color: #77777722;
+    border-radius: 4px;
+    padding: 2px 12px !important;
+    margin: 2px 0 !important;
+    line-height: 2;
+    transition: background-color 150ms ease-out, box-shadow 300ms linear, color 150ms ease-out;
+    user-select: none;
+}
+
+#topnav-right > .nav-link:hover {
+    background-color: #77777744;
+    box-shadow: 0 0 1px 2px #00000011 !important;
+    transition: background-color 150ms ease-out, box-shadow 300ms linear, color 150ms ease-out;
+}
+
+#topnav-right > .nav-link:active {
+    background-color: #77777733;
+    box-shadow: 0 0 1px 1px #00000022 !important;
+    transition: background-color 50ms ease-out, box-shadow 50ms linear;
+}
+
+#topnav-right > .nav-link > .fa {
+    margin-right: 4px;
+}
+
+
+.chatmessages {
+    padding: 0 8px;
+}
+
+.cover-photo {
+    border-radius: 16px;
+}
+
+/* Baslik - Sayfa Değiştirici */
+.clearfix.my-2:has(.dropdown-pagination) {
+    display: none !important;
+}
+
+.dropdown-item > .fa {
+    display: inline-flex !important;
+    min-width: 20px !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.dropdown-menu-pagination {
+    max-height: 80vh !important;
+}
+
+.dropdown-pagination > .btn-group > .btn-sm {
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.dropdown-pagination > .btn-group > .btn-sm > .fa {
+    width: 8px !important;
+}
+
+/* Tanim */
+.entrytext > .img > img {
+    border-radius: 8px !important;
+}
+
+.info > .tags {
+    max-width: 40% !important;
+}
+
+.info > .title-name {
+    max-width: 40% !important;
+}
+
+.inpagechatframe {
+    box-shadow: 0 0 8px 0 #00000022 !important;
+}
+
+/* Sayfa Ici Sohbet */
+.inpagechatframe,
+.inpagechatheader,
+.inpagechattoggle {
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.inpagechatinput {
+    margin: 0 4px !important;
+    border-radius: 4px !important;
+    width: 95% !important;
+}
+
+.inpagechattoggle {
+    display: flex;
+    height: 32px;
+    align-items: center;
+}
+
+.inpagechattogglenickname {
+    padding-left: 4px;
+}
+
+.messageseendate {
+    top: 6px !important;
+}
+
+.profile-badge > img {
+    object-fit: cover;
+    width: 100px !important;
+}
+
+.profile-badge-actions > .actionbutton {
+    height: 32px !important;
+    width: 32px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c8c8c8 !important;
+}
+
+.profile-photo-actions > .actionbutton {
+    height: 32px !important;
+    width: 32px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c8c8c8 !important;
+}
+
+.profile-actions {
+    max-width: 768px;
+    margin: auto;
+}
+
+/* Profil */
+.profile-picture > img {
+    object-fit: cover;
+    width: 100px !important;
+}
+
+/* Genel Header - Duser Menuler */
+.right-drop-menu {
+    box-shadow: 0 0 8px 0 #00000022 !important;
+    transition: box-shadow 2s ease-out;
+}
+
+.senderimage > a > img {
+    width: 32px !important;
+    height: 32px !important;
+    object-fit: cover;
+}
+
+.status-note {
+    padding: 4px !important;
+}
+
+.tab-content > .tab-pane > .entry {
+    max-height: 180px !important;
+    overflow: none !important;
+    display: inline-block !important;
+    flex-direction: column !important;
+    overflow-y: scroll !important;
+}
+
+.title-meta-container > .info {
+    margin-left: 16px !important;
+}
+
+.title-meta-container > .main-image {
+    width: auto !important;
+}
+
+/* Icerikli Baslik */
+.title-meta-container > .main-image > a > img {
+    max-height: 256px !important;
+    max-width: 162px !important;
+    object-fit: cover !important;
+    border-radius: 16px !important;
+}

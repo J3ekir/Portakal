@@ -17,10 +17,41 @@
             "matches": [
                 "https://normalsozluk.com/*"
             ],
-            "js": [
-                "js/contentScript.js"
+            "css": [
+                "css/genel.css"
             ],
-            "run_at": "document_idle"
+            "js": [
+                "js/dom.js"
+            ],
+            "run_at": "document_start"
+        },
+        {
+            "matches": [
+                "https://normalsozluk.com/*"
+            ],
+            "js": [
+                "js/backgroundColor.js",
+                "js/genel.js"
+            ],
+            "run_at": "document_end"
+        },
+        {
+            "matches": [
+                "https://normalsozluk.com/b/*"
+            ],
+            "js": [
+                "js/baslik.js"
+            ],
+            "run_at": "document_end"
+        },
+        {
+            "matches": [
+                "https://normalsozluk.com/yazar/*"
+            ],
+            "css": [
+                "css/yazar.css"
+            ],
+            "run_at": "document_start"
         }
     ],
     "description": "normal sözlük'ü sıkar atar.",
