@@ -36,10 +36,7 @@
     "manifest_version": 3,
     "name": "sıkılmış portakal",
     "permissions": [
-        "offscreen",
-        "scripting",
-        "storage",
-        "unlimitedStorage"
+        "scripting"
     ],
     "version": "0.0.4"
 }
