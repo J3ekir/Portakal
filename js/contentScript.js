@@ -352,13 +352,10 @@ function func() {
 
 async function observe() {
   const targetNode = document.querySelector("#ajaxloading");
-  const config = { attributes: true, childList: true, subtree: true };
+  const config = { attributes: true, childList: false, subtree: false };
   const callback = async (mutationList, observer) => {
-    for (const mutation of mutationList) {
-      if (targetNode.style.display === "none") {
-        func();
-        break;
-      }
+    if (targetNode.style.display === "none") {
+      func();
     }
   };
   const observer = new MutationObserver(callback);
