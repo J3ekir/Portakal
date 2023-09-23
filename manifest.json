@@ -33,7 +33,7 @@
                 "js/backgroundColor.js",
                 "js/genel.js"
             ],
-            "run_at": "document_end"
+            "run_at": "document_idle"
         },
         {
             "matches": [
@@ -42,7 +42,7 @@
             "js": [
                 "js/baslik.js"
             ],
-            "run_at": "document_end"
+            "run_at": "document_idle"
         },
         {
             "matches": [
