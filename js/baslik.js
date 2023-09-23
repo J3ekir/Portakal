@@ -13,7 +13,7 @@ function run() {
     dom.remove(".entryscrollbottom span");  // ??? neden undefined olsun
     
     // başlık kategorisini başlığın altına taşı
-    var category = document.querySelector("#entry-heading-category");
+    var category = qs("#entry-heading-category");
     category.parentElement.insertBefore(category, category.parentElement.children[1]);
 
 
@@ -44,7 +44,7 @@ function run() {
 }
 
 async function observe() {
-    const targetNode = document.querySelector("#ajaxloading");
+    const targetNode = qs("#ajaxloading");
     const config = { attributes: true, attributeFilter: ["style"] };
     const callback = async (mutationList, observer) => {
         if (targetNode.style.display === "none") {
