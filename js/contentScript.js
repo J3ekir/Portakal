@@ -1,9 +1,50 @@
+backgroundColor();
+general();
 observe();
-// run();
 
-function run() {
+
+function backgroundColor() {
+    var documentBackgroundColor = this.getComputedStyle(document.body).backgroundColor;
+
+    chrome.runtime.sendMessage({
+        type: "injectCSS",
+        css: `
+    
+    #entriesheadingcontainer {
+        background-color: ${documentBackgroundColor};
+        box-shadow: 0 -10px 0 ${documentBackgroundColor}, 0 2px 2px ${documentBackgroundColor};
+    }
+
+    #frame_notificationsheading {
+        background: border-box ${documentBackgroundColor} !important;
+        box-shadow: 0 3px 2px 0 ${documentBackgroundColor};
+    }
+
+    .inpagechatframe,
+    .inpagechattoggle {
+        border-color: ${documentBackgroundColor} !important;
+    }
+
+    .profile-badge > img,
+    .profile-picture > img,
+    .profile-badge-actions > .actionbutton,
+    .profile-photo-actions > .actionbutton {
+        box-shadow: 0 0 0 4px ${documentBackgroundColor} !important;
+    }
+    `
+    });
+}
+
+function general() {
+    //belge başlığını küçült
+    document.title = document.title.toLowerCase();
+    //genel arama yer tutucu yazını değiştir
+    qs("#titlesearch").placeholder = "sözlükte ara";
+}
+
+function entry() {
     // başlık içi arama yer tutucu yazılarını değiştir
-    dom.byName("q")[0].placeholder = "başlıkta ara"; 
+    dom.byName("q")[0].placeholder = "başlıkta ara";
 
     // tuşlar alanındaki boşlukları kaldır
     dom.cl.remove("#container-list-header-buttons", "clearfix");
@@ -11,7 +52,7 @@ function run() {
 
     // "sayfa sonu" tuşundaki metni kaldır
     dom.remove(".entryscrollbottom span");  // ??? neden undefined olsun
-    
+
     // başlık kategorisini başlığın altına taşı
     var category = qs("#entry-heading-category");
     category.parentElement.insertBefore(category, category.parentElement.children[1]);
@@ -50,7 +91,7 @@ async function observe() {
         if (targetNode.style.display === "none" &&
             /^https:\/\/normalsozluk\.com\/b\//.test(this.location.href))
         {
-            run();
+            entry();
         }
     };
     const observer = new MutationObserver(callback);

@@ -30,20 +30,9 @@
                 "https://normalsozluk.com/*"
             ],
             "js": [
-                "js/backgroundColor.js",
-                "js/genel.js",
-                "js/baslik.js"
+                "js/contentScript.js"
             ],
             "run_at": "document_end"
-        },
-        {
-            "matches": [
-                "https://normalsozluk.com/yazar/*"
-            ],
-            "css": [
-                "css/yazar.css"
-            ],
-            "run_at": "document_start"
         }
     ],
     "description": "normal sözlük'ü sıkar atar.",
