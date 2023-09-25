@@ -2,6 +2,8 @@
 header > .clear {
     padding-top: 8px !important;
 }
+/* ??? */
+/* #entriesheadingcontainer .clear */
 
 
 #button_searchinentries {
@@ -62,6 +64,8 @@ header > .clear {
     width: 24px;
     margin-right: 4px !important;
 }
+/* ??? */
+/* #frame_cockpit .fa */
 
 /* Genel Header - Bildirimler Paneli */
 #frame_notifications {
@@ -93,6 +97,8 @@ header > .clear {
     background-color: #c14114aa !important;
     box-shadow: inset 0 0 0 1px #f95318 !important;
 }
+/* ??? */
+/* #leftframe .list-group-item.active */
 
 #titleAdvancedSearch {
     width: 32px !important;
@@ -119,6 +125,8 @@ header > .clear {
     transition: background-color 150ms ease-out, box-shadow 300ms linear, color 150ms ease-out;
     user-select: none;
 }
+/* ??? */
+/* #topnav-right > * */
 
 #topnav-right > .nav-link:hover {
     background-color: #77777744;
@@ -135,6 +143,8 @@ header > .clear {
 #topnav-right > .nav-link > .fa {
     margin-right: 4px;
 }
+/* ??? */
+/* #topnav-right .fa */
 
 
 .chatmessages {
@@ -175,6 +185,8 @@ header > .clear {
 .entrytext > .img > img {
     border-radius: 8px !important;
 }
+/* ??? */
+/* .entrytext img */
 
 .info > .tags {
     max-width: 40% !important;
@@ -272,6 +284,8 @@ header > .clear {
     flex-direction: column !important;
     overflow-y: scroll !important;
 }
+/* ??? */
+/* #nav-metatabsContent .entry */
 
 .title-meta-container > .info {
     margin-left: 16px !important;
