@@ -156,7 +156,7 @@ header > .clear {
 }
 
 /* Baslik - Sayfa Değiştirici */
-.clearfix.my-2:has(.dropdown-pagination) {
+.clearfix:has(.dropdown-pagination):not(:is(#entriesheadingcontainer, #leftframe) .clearfix) {
     display: none !important;
 }
 
