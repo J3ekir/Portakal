@@ -1,5 +1,5 @@
-run();
 observe();
+// run();
 
 function run() {
     // başlık içi arama yer tutucu yazılarını değiştir
@@ -47,7 +47,9 @@ async function observe() {
     const targetNode = qs("#ajaxloading");
     const config = { attributes: true, attributeFilter: ["style"] };
     const callback = async (mutationList, observer) => {
-        if (targetNode.style.display === "none") {
+        if (targetNode.style.display === "none" &&
+            /^https:\/\/normalsozluk\.com\/b\//.test(this.location.href))
+        {
             run();
         }
     };

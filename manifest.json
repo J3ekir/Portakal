@@ -31,18 +31,10 @@
             ],
             "js": [
                 "js/backgroundColor.js",
-                "js/genel.js"
-            ],
-            "run_at": "document_idle"
-        },
-        {
-            "matches": [
-                "https://normalsozluk.com/b/*"
-            ],
-            "js": [
+                "js/genel.js",
                 "js/baslik.js"
             ],
-            "run_at": "document_idle"
+            "run_at": "document_end"
         },
         {
             "matches": [
