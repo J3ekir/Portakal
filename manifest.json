@@ -18,7 +18,7 @@
                 "https://normalsozluk.com/*"
             ],
             "css": [
-                "css/genel.css"
+                "css/style.css"
             ],
             "js": [
                 "js/dom.js"
@@ -50,5 +50,6 @@
     "permissions": [
         "scripting"
     ],
-    "version": "0.0.4"
+    "version": "0.0.4",
+    "version_name": "0.1 bekir"
 }
