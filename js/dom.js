@@ -25,7 +25,7 @@ qsa = function (a, b) {
 };
 
 
-dom.attr = function (target, attr, value = undefined) {
+dom.attr = function (target, attr, value) {
     for (const elem of normalizeTarget(target)) {
         if (value === undefined) {
             return elem.getAttribute(attr);
@@ -37,14 +37,6 @@ dom.attr = function (target, attr, value = undefined) {
             elem.setAttribute(attr, value);
         }
     }
-};
-
-dom.byId = function (id) {
-    return document.getElementById(id);
-};
-
-dom.byName = function (name) {
-    return document.getElementsByName(name);            // ??? [0] eklemek
 };
 
 dom.ce = function (tag) {
@@ -88,7 +80,7 @@ dom.cl.remove = function (target, ...name) {
     }
 };
 
-dom.cl.toggle = function (target, name, state = undefined) {
+dom.cl.toggle = function (target, name, state) {
     if (state === undefined) {
         for (const elem of normalizeTarget(target)) {
             elem.classList.toggle(name);
