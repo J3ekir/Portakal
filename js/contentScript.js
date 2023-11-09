@@ -1,10 +1,19 @@
+const regexes = [
+    {
+        regex: /^https:\/\/normalsozluk\.com\/b\//,
+        func: entry,
+    }
+];
+
+
 backgroundColor();
 general();
+checkURL();
 observe();
 
 
 function backgroundColor() {
-    var documentBackgroundColor = this.getComputedStyle(document.body).backgroundColor;
+    var documentBackgroundColor = getComputedStyle(document.body).backgroundColor;
 
     chrome.runtime.sendMessage({
         type: "injectCSS",
@@ -39,7 +48,18 @@ function general() {
     //belge başlığını küçült
     document.title = document.title.toLowerCase();
     //genel arama yer tutucu yazını değiştir
-    qs("#titlesearch").placeholder = "sözlükte ara";
+    var titleSearch = qs("#titlesearch");
+    if (titleSearch) {
+        titleSearch.placeholder = "sözlükte ara";
+    } 
+}
+
+function checkURL() {
+    for (const { regex, func } of regexes) {
+        if (regex.test(location.href)) {
+            func();
+        }
+    }
 }
 
 function entry() {
@@ -61,14 +81,14 @@ function entry() {
     // sayfa tuşları varsa
     var group = qs("#entriesheadingcontainer .dropdown-pagination > .btn-group");
 
-    if (group) {
+    if (group && group.children.length != 5) {
         // ilk/son sayfa tuşlarını ekle
-        var bodyColor = this.getComputedStyle(document.body).color;
+        var bodyColor = getComputedStyle(document.body).color;
+        var pageList = qs(group, ".dropdown-menu");
         var leftArrow = dom.clone(group.firstElementChild);
         var rightArrow = dom.clone(group.firstElementChild);
         leftArrow.firstElementChild.className = "fa fa-angle-double-left";
         rightArrow.firstElementChild.className = "fa fa-angle-double-right";
-        var pageList = group.children[1].lastElementChild;
         leftArrow.href = pageList.firstElementChild.href;
         rightArrow.href = pageList.lastElementChild.href;
 
@@ -88,10 +108,8 @@ async function observe() {
     const targetNode = qs("#ajaxloading");
     const config = { attributes: true, attributeFilter: ["style"] };
     const callback = async (mutationList, observer) => {
-        if (targetNode.style.display === "none" &&
-            /^https:\/\/normalsozluk\.com\/b\//.test(this.location.href))
-        {
-            entry();
+        if (targetNode.style.display === "none") {
+            checkURL();
         }
     };
     const observer = new MutationObserver(callback);
