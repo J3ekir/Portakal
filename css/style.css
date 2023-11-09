@@ -324,3 +324,105 @@ header > .clear {
 }
 /* ??? */
 /* .title-meta-container img */
+
+
+
+/************************************ BACKGROUND_COLOR ************************************/
+
+body {
+    #entriesheadingcontainer {
+        background-color: #fff;
+        box-shadow: 0 -10px 0 #fff, 0 2px 2px #fff;
+    }
+
+    #frame_notificationsheading {
+        background: border-box #fff !important;
+        box-shadow: 0 3px 2px 0 #fff;
+    }
+
+    .inpagechatframe,
+    .inpagechattoggle {
+        border-color: #fff !important;
+    }
+
+    .profile-badge > img,
+    .profile-picture > img,
+    .profile-badge-actions > .actionbutton,
+    .profile-photo-actions > .actionbutton {
+        box-shadow: 0 0 0 4px #fff !important;
+    }
+}
+
+body.grey {
+    #entriesheadingcontainer {
+        background-color: #ddd;
+        box-shadow: 0 -10px 0 #ddd, 0 2px 2px #ddd;
+    }
+
+    #frame_notificationsheading {
+        background: border-box #ddd !important;
+        box-shadow: 0 3px 2px 0 #ddd;
+    }
+
+    .inpagechatframe,
+    .inpagechattoggle {
+        border-color: #ddd !important;
+    }
+
+    .profile-badge > img,
+    .profile-picture > img,
+    .profile-badge-actions > .actionbutton,
+    .profile-photo-actions > .actionbutton {
+        box-shadow: 0 0 0 4px #ddd !important;
+    }
+}
+
+body.dark-grey {
+    #entriesheadingcontainer {
+        background-color: #282828;
+        box-shadow: 0 -10px 0 #282828, 0 2px 2px #282828;
+    }
+
+    #frame_notificationsheading {
+        background: border-box #282828 !important;
+        box-shadow: 0 3px 2px 0 #282828;
+    }
+
+    .inpagechatframe,
+    .inpagechattoggle {
+        border-color: #282828 !important;
+    }
+
+    .profile-badge > img,
+    .profile-picture > img,
+    .profile-badge-actions > .actionbutton,
+    .profile-photo-actions > .actionbutton {
+        box-shadow: 0 0 0 4px #282828 !important;
+    }
+}
+
+body.dark {
+    #entriesheadingcontainer {
+        background-color: #181818;
+        box-shadow: 0 -10px 0 #181818, 0 2px 2px #181818;
+    }
+
+    #frame_notificationsheading {
+        background: border-box #181818 !important;
+        box-shadow: 0 3px 2px 0 #181818;
+    }
+
+    .inpagechatframe,
+    .inpagechattoggle {
+        border-color: #181818 !important;
+    }
+
+    .profile-badge > img,
+    .profile-picture > img,
+    .profile-badge-actions > .actionbutton,
+    .profile-photo-actions > .actionbutton {
+        box-shadow: 0 0 0 4px #181818 !important;
+    }
+}
+
+/******************************** END OF BACKGROUND_COLOR *********************************/
