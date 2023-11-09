@@ -3,7 +3,7 @@ dom.cl = {}
 
 
 const normalizeTarget = target => {
-    if (typeof target === "string") { return Array.from(qsa(target)); }    // query stringi ise
+    if (typeof target === "string") { return Array.from(qsa(target)); }     // query stringi ise
     if (target instanceof Element) { return [target]; }                     // qs kullanıldıysa
     if (target === null) { return []; }                                     // ne olur ne olmaz
     if (Array.isArray(target)) { return target; }                           // ne olur ne olmaz?
