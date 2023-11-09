@@ -14,7 +14,13 @@ header > .clear {
     width: 42px !important;
 }
 
-/* yazar profili hr çizgileri*/
+/* Baslik - Sayfa Değiştirici */
+#centerframe div:has(> div > .dropdown-pagination),
+#leftframe > div:has(> .dropdown-pagination) {
+    display: none !important;
+}
+
+/* yazar profili hr çizgileri */
 #centerframe > .has-side-ad- > hr {
     display: none !important;
 }
@@ -105,8 +111,22 @@ header > .clear {
 /* ??? */
 /* #leftframe .list-group-item.active */
 
+/* ??? */
+/* margin-bottom: -1px; kullanmış, bu sayede border'lar kesişir demiş. ama ben ölçeklendirme kullanıyorum */
+/* bende 0.8px oluyor bir tanesi. diğeri 1 px kalıyor */
+#nav-metatabs > * {
+    /* border-bottom: none !important; */
+    /* margin-bottom: 0 !important; */
+}
+/* ??? */
+
 #titleAdvancedSearch {
     width: 32px !important;
+}
+
+#titleinfobox {
+    /* başlık bilgisi */
+    /* ??? */
 }
 
 /* Genel Header */
@@ -158,11 +178,6 @@ header > .clear {
 
 .cover-photo {
     border-radius: 16px;
-}
-
-/* Baslik - Sayfa Değiştirici */
-.clearfix:has(.dropdown-pagination):not(:is(#entriesheadingcontainer, #leftframe) .clearfix) {
-    display: none !important;
 }
 
 .dropdown-item > .fa {
@@ -272,7 +287,7 @@ header > .clear {
     transition: box-shadow 2s ease-out;
 }
 
-.senderimage > a > img {
+.senderimage img {
     width: 32px !important;
     height: 32px !important;
     object-fit: cover;
@@ -307,3 +322,5 @@ header > .clear {
     object-fit: cover !important;
     border-radius: 16px !important;
 }
+/* ??? */
+/* .title-meta-container img */
