@@ -21,23 +21,23 @@
                 "css/style.css"
             ],
             "js": [
-                "js/dom.js"
+                "js/genel.js"
             ],
             "run_at": "document_start"
         },
         {
             "matches": [
-                "https://normalsozluk.com/*"
+                "https://normalsozluk.com/b/*"
             ],
             "js": [
-                "js/contentScript.js"
+                "js/dom.js",
+                "js/baslik.js"
             ],
-            "run_at": "document_end"
+            "run_at": "document_start"
         }
     ],
     "description": "normal sözlük'ü sıkar atar.",
     "homepage_url": "https://github.com/Dekamir",
-    "host_permissions": ["https://normalsozluk.com/*"],
     "icons": {
         "16": "img/logo16.png",
         "32": "img/logo32.png",
