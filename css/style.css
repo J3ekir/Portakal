@@ -21,7 +21,7 @@ header > .clear {
 }
 
 /* yazar profili hr çizgileri */
-#centerframe > .has-side-ad- > hr {
+#centerframe:has(.profile-nickname) > .has-side-ad- > hr {
     display: none !important;
 }
 
@@ -37,6 +37,14 @@ header > .clear {
 #container-list-header-buttons > * {
     margin: 0 !important;
     margin-bottom: 0px !important;
+}
+
+#container-list-header-buttons.clearfix::after {
+    display: none;
+}
+
+#container-search-in-title > form.form-inline {
+    display: block;
 }
 
 /* Baslik */
@@ -62,6 +70,10 @@ header > .clear {
     right: 0 !important;
     top: 16px !important;
     overflow: visible !important;
+}
+
+#entriesheadingcontainer .entryscrollbottom span {
+    display: none;
 }
 
 #entry-heading-category > * {
