@@ -21,17 +21,8 @@
                 "css/style.css"
             ],
             "js": [
-                "js/genel.js"
-            ],
-            "run_at": "document_start"
-        },
-        {
-            "matches": [
-                "https://normalsozluk.com/b/*"
-            ],
-            "js": [
                 "js/dom.js",
-                "js/baslik.js"
+                "js/contentScript.js"
             ],
             "run_at": "document_start"
         }
