@@ -1,85 +1,88 @@
-const regexes = [
-    {
-        regex: /^https:\/\/normalsozluk\.com\/b\//,
-        func: entry,
+// waitForElementToExist(".entryscrollbottom span").then(elem => {
+waitForElementToExist("#centerframe").then(elem => {
+    func();
+    observe();
+});
+
+
+function func() {
+    //belge başlığını küçült
+    document.title = document.title.toLowerCase();
+
+    //genel arama yer tutucu yazını değiştir
+    var titleSearch = qs("#titlesearch");
+    if (titleSearch) {
+        titleSearch.placeholder = "sözlükte ara";
     }
-];
 
-
-checkURL();
-observe();
-
-
-
-function checkURL() {
-    for (const { regex, func } of regexes) {
-        if (regex.test(location.href)) {
-            func();
-        }
-    }
-}
-
-function entry() {
     // başlık içi arama yer tutucu yazılarını değiştir
-    qs(`[name="q"]`).placeholder = "başlıkta ara";
-
-    // tuşlar alanındaki boşlukları kaldır
-    dom.cl.remove("#container-list-header-buttons", "clearfix");
-    dom.cl.remove("#container-list-header-buttons > form", "form-inline");
-
-    // "sayfa sonu" tuşundaki metni kaldır
-    dom.remove(".entryscrollbottom span");  // ??? neden undefined olsun
+    var entrySearch = qs("[name='q']");
+    if (entrySearch) {
+        entrySearch.placeholder = "başlıkta ara";
+    }
 
     // başlık kategorisini başlığın altına taşı
     var category = qs("#entry-heading-category");
-    category.parentElement.insertBefore(category, category.parentElement.children[1]);
-
-
-    // sayfa tuşları varsa
-    var group = qs("#entriesheadingcontainer .dropdown-pagination > .btn-group");
-
-    if (group && group.children.length != 5) {
-        // ilk/son sayfa tuşlarını ekle
-        var bodyColor = getComputedStyle(document.body).color;
-        var pageList = qs(group, ".dropdown-menu");
-        var leftArrow = dom.clone(group.firstElementChild);
-        var rightArrow = dom.clone(group.firstElementChild);
-        leftArrow.firstElementChild.className = "fa fa-angle-double-left";
-        rightArrow.firstElementChild.className = "fa fa-angle-double-right";
-        leftArrow.href = pageList.firstElementChild.href;
-        rightArrow.href = pageList.lastElementChild.href;
-
-        if (group.firstElementChild.href.length === 0) {
-            leftArrow.style.color = bodyColor;
-        }
-        if (group.lastElementChild.href.length === 0) {
-            rightArrow.style.color = bodyColor;
-        }
-
-        group.prepend(leftArrow);
-        group.append(rightArrow);
+    if (category) {
+        category.parentElement.insertBefore(category, category.parentElement.children[1]);
     }
+
+    // ilk/son sayfa tuşlarını ekle
+    addPageButtons();
 }
 
-async function observe() {
-    const targetNode = qs("#ajaxloading");
-    const config = { attributes: true, attributeFilter: ["style"] };
-    const callback = async (mutationList, observer) => {
-        if (targetNode.style.display === "none") {
-            checkURL();
+function addPageButtons() {
+    waitForElementToExist("#entriesheadingcontainer .dropdown-pagination > .btn-group").then(group => {
+        if (group.children.length != 5) {
+            var pageList = qs(group, ".dropdown-menu");
+
+            group.innerHTML = `
+                <a class="btn btn-sm btn-secondary loadcenter"><i class="fa fa-angle-double-left"></i></a>
+                ${ group.innerHTML }
+                <a class="btn btn-sm btn-secondary loadcenter"><i class="fa fa-angle-double-right"></i></a>
+            `;
+
+            if (group.children[1].href) {
+                group.firstElementChild.href = pageList.firstElementChild.href;
+            }
+            if (group.children[3].href) {
+                group.lastElementChild.href = pageList.lastElementChild.href;
+            }
         }
-    };
-    const observer = new MutationObserver(callback);
-    if (targetNode) {
-        observer.observe(targetNode, config);
-    }
-    //observer.disconnect();
+    });
 }
 
+function waitForElementToExist(selector) {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
+        new MutationObserver((_, observer) => {
+            if (document.querySelector(selector)) {
+                observer.disconnect();
+                return resolve(document.querySelector(selector));
+            }
+        })
+            .observe(document, { childList: true, subtree: true });
+    });
+}
 
+function observe() {
+    // const targetNode = qs("#bodycontainer");
+    const targetNode = qs("#centerframe");
+    new MutationObserver(async (mutationList, observer) => {
+        func();
 
-dom.cl.remove("#container-list-header-buttons", "clearfix");
-
-var header = qs("#container-list-header-buttons");
-dom.cl.remove(header, "clearfix");
-
+        // mutationList.forEach(mutation => {
+        //     mutation.addedNodes.forEach(elem => {
+        //         if (elem.nodeType === Node.ELEMENT_NODE
+        //             && qs(elem, ".memberTooltip")
+        //             && !qs(elem, ".memberTooltip-note")
+        //         ) {
+        //             addNote(elem);
+        //         }
+        //     });
+        // });
+    })
+        .observe(targetNode, { /*attributes: true,*/ childList: true, /*subtree: true*/ });
+}
