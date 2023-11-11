@@ -90,7 +90,7 @@ header > .clear {
 }
 
 #entriesheadingcontainer .entryscrollbottom span {
-    display: none;
+    display: none !important;
 }
 
 #entry-heading-category > * {
