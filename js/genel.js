@@ -1,7 +1,8 @@
-//belge başlığını küçült
-document.title = document.title.toLowerCase();
-
 waitForElementToExist("#titlesearch").then(elem => {
+    //belge başlığını küçült
+    document.title = document.title.toLowerCase();
+
+    //genel arama yer tutucu yazını değiştir
     elem.placeholder = "sözlükte ara";
 });
 
