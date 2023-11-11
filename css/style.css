@@ -5,6 +5,23 @@ header > .clear {
 /* ??? */
 /* #entriesheadingcontainer .clear */
 
+/* Genel Header - Arama */
+.ui-menu {
+    font-family: "Source Sans Pro" !important;
+    box-shadow: 0 0 8px 0 #00000022 !important;
+    border-radius: 4px !important;
+}
+
+.ui-menu-item .ui-menu-item-wrapper:hover {
+    background: #77777722 !important;
+    border-color: #77777722 !important;
+    border-radius: 4px !important;
+}
+
+
+
+
+
 
 #button_searchinentries {
     padding: 8px 10px 10px 10px !important;
@@ -190,6 +207,7 @@ header > .clear {
 
 .cover-photo {
     border-radius: 16px;
+    transition: border-radius 0.25s ease-out;
 }
 
 .dropdown-item > .fa {
@@ -262,6 +280,7 @@ header > .clear {
 .profile-badge > img {
     object-fit: cover;
     width: 100px !important;
+    transition: box-shadow 0.25s ease-out;
 }
 
 .profile-badge-actions > .actionbutton {
@@ -291,6 +310,12 @@ header > .clear {
 .profile-picture > img {
     object-fit: cover;
     width: 100px !important;
+
+    transition: box-shadow 0.25s ease-out, border-radius 0.25s cubic-bezier(.47, 1.64, .41, .8);
+    
+        &:hover {
+            border-radius: 4px !important;
+        }
 }
 
 /* Genel Header - Duser Menuler */
