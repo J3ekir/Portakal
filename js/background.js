@@ -18,6 +18,10 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
+chrome.action.onClicked.addListener((tab) => {
+    chrome.tabs.create({ url: "https://normalsozluk.com/" });
+});
+
 function injectCSS(tabId, css) {
     chrome.scripting.insertCSS({
         target: { tabId: tabId },

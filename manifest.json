@@ -39,7 +39,8 @@
     "manifest_version": 3,
     "name": "sıkılmış portakal",
     "permissions": [
-        "scripting"
+        "scripting",
+        "tabs"
     ],
     "version": "0.0.4",
     "version_name": "bekir v2"
