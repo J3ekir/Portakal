@@ -1,36 +1,13 @@
-qs = function (a, b) {
-    if (typeof a === "string") {
-        return document.querySelector(a);
-    }
-    return a.querySelector(b);
-};
-
-qsa = function (a, b) {
-    if (typeof a === "string") {
-        return document.querySelectorAll(a);
-    }
-    return a.querySelectorAll(b);
-};
-
-waitForElementToExist(`.entryscrollbottom span`).then(elem => {
+waitForElementToExist(".entryscrollbottom span").then(elem => {
     func();
     observe();
 });
 
 
 
-
-
 function func() {
     // başlık içi arama yer tutucu yazılarını değiştir
-    qs(`[name="q"]`).placeholder = "başlıkta ara";
-
-    // tuşlar alanındaki boşlukları kaldır
-    dom.cl.remove("#container-list-header-buttons", "clearfix");
-    dom.cl.remove("#container-search-in-title > form", "form-inline");
-
-    // "sayfa sonu" tuşundaki metni kaldır
-    dom.remove(".entryscrollbottom span");
+    qs('[name="q"]').placeholder = "başlıkta ara";
 
     // başlık kategorisini başlığın altına taşı
     var category = qs("#entry-heading-category");
