@@ -202,6 +202,9 @@ header > .clear {
 #topnav-right > * > .fa {
     font-size: initial !important;
 }
+#topnav-right > a:last-child > i {
+    color: unset !important;
+}
 
 /* ??? */
 /* #topnav-right > * */
@@ -229,7 +232,30 @@ header > .clear {
 
 .cover-photo {
     border-radius: 16px;
-    transition: border-radius 0.25s ease-out;
+}
+
+.cover-photo-actions > .actionbutton {
+    font-size: 0 !important;
+    border-radius: 8px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px !important;
+    width: 32px !important;
+    transition: background-color 50ms ease-out !important;
+}
+.cover-photo-actions > .actionbutton:hover {
+    transition: background-color 50ms ease-out !important;
+}
+.cover-photo-actions > .actionbutton > .fa {
+    font-size: initial !important;
+}
+
+.dropdown-item:hover {
+    color: unset !important;
+    border-radius: 4px !important;
+    background-color: #77777744 !important;
+    transition: background-color 50ms ease-out;
 }
 
 .dropdown-item > .fa {
@@ -237,6 +263,10 @@ header > .clear {
     min-width: 20px !important;
     justify-content: center !important;
     align-items: center !important;
+}
+
+#frame_cockpit > a:nth-child(1) > i {
+    color: unset !important;
 }
 
 .dropdown-menu-pagination {
