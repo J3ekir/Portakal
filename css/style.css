@@ -18,17 +18,28 @@ header > .clear {
     border-radius: 4px !important;
 }
 
-
-
-
-
-
 #button_searchinentries {
     padding: 8px 10px 10px 10px !important;
 }
 
 #button_searchtitle {
-    width: 42px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1px 0 0;
+    min-width: 40px;
+}
+#titleAdvancedSearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 0 0 0;
+}
+#titlesearchcontainer {
+    margin-top: 3px;
+}
+#titlesearchcontainer > * {
+    height: 40px;
 }
 
 /* Baslik - Sayfa Değiştirici */
@@ -171,18 +182,32 @@ header > .clear {
 }
 
 #topnav-right > .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
     background-color: #77777722;
     border-radius: 4px;
-    padding: 2px 12px !important;
-    margin: 2px 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
     line-height: 2;
     transition: background-color 150ms ease-out, box-shadow 300ms linear, color 150ms ease-out;
     user-select: none;
 }
+
+#topnav-right > * {
+    font-size: 0 !important;
+}
+#topnav-right > * > .fa {
+    font-size: initial !important;
+}
+
 /* ??? */
 /* #topnav-right > * */
 
 #topnav-right > .nav-link:hover {
+    color: inherit !important;
     background-color: #77777744;
     box-shadow: 0 0 1px 2px #00000011 !important;
     transition: background-color 150ms ease-out, box-shadow 300ms linear, color 150ms ease-out;
@@ -194,9 +219,6 @@ header > .clear {
     transition: background-color 50ms ease-out, box-shadow 50ms linear;
 }
 
-#topnav-right > .nav-link > .fa {
-    margin-right: 4px;
-}
 /* ??? */
 /* #topnav-right .fa */
 
