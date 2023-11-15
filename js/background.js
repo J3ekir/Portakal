@@ -19,7 +19,12 @@ chrome.runtime.onMessage.addListener(
 );
 
 chrome.action.onClicked.addListener((tab) => {
-    chrome.tabs.create({ url: "https://normalsozluk.com/" });
+    if (tab.url === "chrome://newtab/") {
+        chrome.tabs.update({ url: "https://normalsozluk.com/" });
+    }
+    else {
+        chrome.tabs.create({ url: "https://normalsozluk.com/" });
+    }
 });
 
 function injectCSS(tabId) {
