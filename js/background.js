@@ -30,7 +30,7 @@ chrome.action.onClicked.addListener((tab) => {
 function injectCSS(tabId) {
     chrome.scripting.insertCSS({
         target: { tabId: tabId },
-        origin: "USER",
+        origin: "AUTHOR",
         files: ["css/style.css"],
     });
 }
