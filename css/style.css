@@ -188,7 +188,7 @@ header > .clear {
     width: 36px;
     height: 36px;
     background-color: #77777722;
-    border-radius: 4px;
+    border-radius: 50%;
     padding: 0 !important;
     margin: 0 !important;
     line-height: 2;
@@ -238,6 +238,7 @@ header > .clear {
 }
 
 .message > .img {
+    margin: 4px 4px 4px 0 !important;
     display: inline-block;
 }
 
@@ -261,11 +262,10 @@ header > .clear {
     font-size: initial !important;
 }
 
-.dropdown-item:hover {
+.right-drop-menu > .dropdown-item {
     color: unset !important;
     border-radius: 4px !important;
-    background-color: #77777744 !important;
-    transition: background-color 50ms ease-out;
+    user-select: none;
 }
 
 .dropdown-item > .fa {
@@ -275,7 +275,7 @@ header > .clear {
     align-items: center !important;
 }
 
-#frame_cockpit > a:nth-child(1) > i {
+#frame_cockpit > a:first-child > i {
     color: unset !important;
 }
 
@@ -294,6 +294,10 @@ header > .clear {
 }
 
 /* Tanim */
+.entrytext > .img {
+    width: fit-content;
+    display: block !important;
+}
 .entrytext > .img > img {
     border-radius: 8px !important;
 }
@@ -382,8 +386,13 @@ header > .clear {
 
 /* Genel Header - Duser Menuler */
 .right-drop-menu {
-    box-shadow: 0 0 8px 0 #00000022 !important;
+    box-shadow: 0 0 8px 0 #00000033 !important;
     transition: box-shadow 2s ease-out;
+    border-color: #bdbdbd66 !important;
+}
+
+.dropdown-divider {
+    border-color: #bdbdbd66 !important;
 }
 
 .senderimage img {
@@ -450,6 +459,16 @@ body {
     .profile-photo-actions > .actionbutton {
         box-shadow: 0 0 0 4px #fff !important;
     }
+    
+    .right-drop-menu {
+        background-color: #fcfcfc !important;
+    }
+    .right-drop-menu > .dropdown-item {
+        background-color: #fcfcfc !important;
+    }
+    .right-drop-menu > .dropdown-item:hover {
+        background-color: #ececec !important;
+    }
 }
 
 body.grey {
@@ -473,6 +492,16 @@ body.grey {
     .profile-badge-actions > .actionbutton,
     .profile-photo-actions > .actionbutton {
         box-shadow: 0 0 0 4px #ddd !important;
+    }
+
+    .right-drop-menu {
+        background-color: #d6d6d6 !important;
+    }
+    .right-drop-menu > .dropdown-item {
+        background-color: #d6d6d6 !important;
+    }
+    .right-drop-menu > .dropdown-item:hover {
+        background-color: #bebebe !important;
     }
 }
 
@@ -498,6 +527,16 @@ body.dark-grey {
     .profile-photo-actions > .actionbutton {
         box-shadow: 0 0 0 4px #282828 !important;
     }
+
+    .right-drop-menu {
+        background-color: #2c2c2c !important;
+    }
+    .right-drop-menu > .dropdown-item {
+        background-color: #2c2c2c !important;
+    }
+    .right-drop-menu > .dropdown-item:hover {
+        background-color: #444444 !important;
+    }
 }
 
 body.dark {
@@ -521,6 +560,16 @@ body.dark {
     .profile-badge-actions > .actionbutton,
     .profile-photo-actions > .actionbutton {
         box-shadow: 0 0 0 4px #181818 !important;
+    }
+
+    .right-drop-menu {
+        background-color: #1c1c1c !important;
+    }
+    .right-drop-menu > .dropdown-item {
+        background-color: #1c1c1c !important;
+    }
+    .right-drop-menu > .dropdown-item:hover {
+        background-color: #333333 !important;
     }
 }
 
