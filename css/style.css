@@ -230,10 +230,20 @@ header > .clear {
     padding: 0 8px;
 }
 
+.message > a > img {
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+.message > .img {
+    display: inline-block;
+}
+
 .cover-photo {
     border-radius: 16px;
 }
-
 .cover-photo-actions > .actionbutton {
     font-size: 0 !important;
     border-radius: 8px !important;
