@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener(
     async function (request, sender, sendResponse) {
         switch (request.type) {
             case "injectCSS":
-                injectCSS(sender.tab.id, request.css);
+                injectCSS(sender.tab.id);
                 break;
             default:
                 break;
@@ -22,11 +22,11 @@ chrome.action.onClicked.addListener((tab) => {
     chrome.tabs.create({ url: "https://normalsozluk.com/" });
 });
 
-function injectCSS(tabId, css) {
+function injectCSS(tabId) {
     chrome.scripting.insertCSS({
         target: { tabId: tabId },
-        origin: "AUTHOR",
-        css: css
+        origin: "USER",
+        files: ["css/style.css"],
     });
 }
 
