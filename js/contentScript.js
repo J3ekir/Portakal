@@ -4,6 +4,11 @@ waitForElementToExist("#centerframe").then(elem => {
     observe();
 });
 
+; (function connect() {
+    chrome.runtime.connect({ name: 'keepAlive' })
+        .onDisconnect.addListener(connect);
+})();
+
 
 function func() {
     //belge başlığını küçült
