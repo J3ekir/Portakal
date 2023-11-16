@@ -18,29 +18,37 @@ header > .clear {
     border-radius: 4px !important;
 }
 
-#button_searchinentries {
-    padding: 8px 10px 10px 10px !important;
+#titlesearchcontainer {
+    margin-top: 3px;
+    height: 40px !important;
+    max-height: 40px !important;
+}
+
+#titlesearchloading {
+    height: 40px !important;
+    max-height: 40px !important;
 }
 
 #button_searchtitle {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 1px 0 0;
-    min-width: 40px;
+    padding: 0 1px 1px 0;
+    width: 48px !important;
+    height: 40px;
 }
+
 #titleAdvancedSearch {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3px 0 0 0;
+    padding: 2px 0 0 0;
 }
-#titlesearchcontainer {
-    margin-top: 3px;
+
+#button_searchinentries {
+    padding: 8px 10px 10px 10px !important;
 }
-#titlesearchcontainer > * {
-    height: 40px;
-}
+
 
 /* Baslik - Sayfa Değiştirici */
 #centerframe div:has(> div > .dropdown-pagination),
