@@ -4,6 +4,10 @@
     text-transform: lowercase;
 }
 
+.btn:focus {
+    box-shadow: none !important;
+}
+
 /* Logo kaymasını önleme - average seo moment */
 #topnavlogo > .toplogo.text-center > h1 {
     all: unset !important;
