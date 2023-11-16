@@ -2,7 +2,13 @@
 waitForElementToExist("#centerframe").then(elem => {
     func();
     observe();
+//     chrome.runtime.sendMessage({
+//         type: "jqueryDeneme",
+//     });
 });
+
+
+
 
 (function connect() {
     chrome.runtime.connect({ name: 'keepAlive' })

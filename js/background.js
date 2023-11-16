@@ -12,6 +12,9 @@ chrome.runtime.onMessage.addListener(
             case "injectCSS":
                 injectCSS(sender.tab.id);
                 break;
+            case "jqueryDeneme":
+                jqueryDeneme(sender.tab.id);
+                break;
             default:
                 break;
         }
@@ -32,6 +35,15 @@ function injectCSS(tabId) {
         target: { tabId: tabId },
         origin: "AUTHOR",
         files: ["css/style.css"],
+    });
+}
+
+function jqueryDeneme(tabId) {
+    chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        injectImmediately: true,
+        world: "MAIN",
+        files: ["js/jqueryDeneme.js"],
     });
 }
 
