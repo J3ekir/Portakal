@@ -191,15 +191,6 @@ header > .clear {
 /* ??? */
 /* #leftframe .list-group-item.active */
 
-/* ??? */
-/* margin-bottom: -1px; kullanmış, bu sayede border'lar kesişir demiş. ama ben ölçeklendirme kullanıyorum */
-/* bende 0.8px oluyor bir tanesi. diğeri 1 px kalıyor */
-#nav-metatabs > * {
-    /* border-bottom: none !important; */
-    /* margin-bottom: 0 !important; */
-}
-/* ??? */
-
 #titleAdvancedSearch {
     width: 32px !important;
 }
@@ -486,11 +477,32 @@ header > .clear {
 }
 
 /* Icerikli Baslik */
+.title-meta-container {
+    min-height: 200px !important;
+}
 .title-meta-container > .main-image > a > img {
     max-height: 256px !important;
     max-width: 162px !important;
     object-fit: cover !important;
     border-radius: 16px !important;
+}
+#nav-metatabs > .nav-link {
+    text-transform: lowercase;
+    border-color: #77777788 !important;
+    margin: 0 4px 0 0 !important;
+    padding: 4px 12px !important;
+    border-radius: 32px !important;
+    height: 32px !important;
+    background-color: #77777712;
+    border: none;
+}
+#nav-metatabs > .active {
+    color: inherit;
+    background-color: #77777733;
+    box-shadow: 0 0 0 1px #f95318;
+}
+.nav-tabs {
+    border: none !important;
 }
 /* ??? */
 /* .title-meta-container img */
