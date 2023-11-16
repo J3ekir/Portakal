@@ -4,6 +4,11 @@
     text-transform: lowercase;
 }
 
+/* Logo kaymasını önleme - average seo moment */
+#topnavlogo > .toplogo.text-center > h1 {
+    all: unset !important;
+}
+
 /* Icerikli Baslik: Icerik Alani */
 header > .clear {
     padding-top: 8px !important;
@@ -68,6 +73,13 @@ header > .clear {
 #chatpreviewcontainer {
     padding-top: 4px !important;
     user-select: none;
+    min-height: 584px;
+}
+#frame_chatpreview::-webkit-scrollbar, #chatpreviewcontainer::-webkit-scrollbar, #frame_notifications::-webkit-scrollbar {
+    display: none;
+}
+#frame_chatpreview, #chatpreviewcontainer, #frame_notifications {
+    scrollbar-width: none;
 }
 
 #frame_chatpreviewheading {
