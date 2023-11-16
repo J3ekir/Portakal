@@ -120,8 +120,31 @@ header > .clear {
     display: block;
 }
 
+/* Çevrimiçi Yazarlar */
 #frame_onlineauthors {
     text-transform: lowercase !important;
+}
+#frame_onlineauthors > :nth-child(-n+4) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background-color: black;
+    width: 24px;
+    height: 24px;
+    font-size: 12pt !important;
+    background-color: #aaaaaa22;
+}
+#frame_onlineauthors > :nth-child(-n+4):hover {
+    background-color: #aaaaaa44;
+    transition: background-color 50ms ease-out;
+}
+#frame_onlineauthors > .onlinestatusbutton.text-muted {
+    color: inherit !important;
+}
+#frame_onlineauthors > .onlinestatusbutton.text-primary {
+    color: inherit !important;
+    box-shadow: inset 0 0 0 1px #f95318 !important;
 }
 .onlineauthornickname {
     border-radius: 4px;
