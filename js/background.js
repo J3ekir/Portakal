@@ -60,8 +60,4 @@ async function findTab(tabs) {
     }
     chrome.tabs.onUpdated.addListener(onUpdate);
 }
-function connect() {
-    chrome.runtime.connect({ name: "keepAlive" })
-        .onDisconnect.addListener(connect);
-}
 /****************************************************************************************/
