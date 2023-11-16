@@ -1,3 +1,9 @@
+/* Tooltip */
+.tooltip * {
+    font-family: "Source Sans Pro" !important;
+    text-transform: lowercase;
+}
+
 /* Icerikli Baslik: Icerik Alani */
 header > .clear {
     padding-top: 8px !important;
