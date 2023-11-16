@@ -479,6 +479,7 @@ header > .clear {
 .profile-picture > img {
     object-fit: cover;
     width: 100px !important;
+    height: 100px !important;
 
     transition: box-shadow 0.25s ease-out, border-radius 0.25s cubic-bezier(.47, 1.64, .41, .8);
     
