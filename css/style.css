@@ -2,8 +2,6 @@
 header > .clear {
     padding-top: 8px !important;
 }
-/* ??? */
-/* #entriesheadingcontainer .clear */
 
 /* Genel Header - Arama */
 .ui-menu {
@@ -62,7 +60,39 @@ header > .clear {
 }
 
 #chatpreviewcontainer {
-    padding: 4px 4px 0 4px !important;
+    padding-top: 4px !important;
+    user-select: none;
+}
+#frame_chatpreviewheading {
+    padding: 6px 0 8px 6px !important;
+    border: none !important;
+    user-select: none;
+    text-transform: lowercase;
+}
+#frame_chatpreviewheading > a, #frame_notificationsheading > a {
+    background-color: #77777722;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 10pt;
+}
+#frame_chatpreviewheading > a:hover, #frame_notificationsheading > a:hover {
+    background-color: #77777744;
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 50ms ease-out;
+}
+
+.chatlist {
+    border-radius: 4px;
+    padding: 8px 6px !important;
+    border: none !important;
+}
+.chatlist .date {
+    top: 10px !important;
+    font-size: 8pt !important;
+}
+.chatlist .authorimage {
+    margin: 4px 8px 0 0 !important;
 }
 
 #container-list-header-buttons {
@@ -116,15 +146,16 @@ header > .clear {
     padding: 0px !important;
 }
 
-#frame_cockpit > .dropdown-item > .fa {
+#frame_cockpit .fa {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     background-color: #77777744;
     border-radius: 50%;
     height: 24px;
     width: 24px;
     margin-right: 4px !important;
 }
-/* ??? */
-/* #frame_cockpit .fa */
 
 /* Genel Header - Bildirimler Paneli */
 #frame_notifications {
@@ -136,6 +167,7 @@ header > .clear {
     padding-top: 8px !important;
     top: 0;
     z-index: 1;
+    text-transform: lowercase;
 }
 
 #footer {
@@ -276,11 +308,33 @@ header > .clear {
     user-select: none;
 }
 
-.dropdown-item > .fa {
+
+.entry .dropdown-item {
+    text-transform: lowercase;
+}
+
+.entry .dropdown-item > .fa {
     display: inline-flex !important;
     min-width: 20px !important;
     justify-content: center !important;
     align-items: center !important;
+    background-color: #77777744;
+    border-radius: 50%;
+    height: 24px !important;
+    width: 24px !important;
+    margin-right: 4px !important;
+}
+/* not: madalya takma tuşu için, editör özelliği */
+.entry .entrymedal > img {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: #77777744;
+    border-radius: 50%;
+    height: 24px !important;
+    width: 24px !important;
+    margin-right: 4px !important;
+    padding: 3px;
 }
 
 #frame_cockpit > a:first-child > i {
