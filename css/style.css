@@ -223,13 +223,13 @@ header > .clear {
     text-transform: lowercase;
 }
 
-#footer {
-    background-color: #00000000 !important;
-    /* ??? */
-    /* background-color: transparent !important; */
-}
+
 
 /* Footer */
+#footer {
+    background-color: transparent !important;
+}
+
 #footer > .clearfix {
     display: none;
 }
