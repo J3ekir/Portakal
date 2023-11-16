@@ -195,10 +195,6 @@ header > .clear {
     width: 32px !important;
 }
 
-#titleinfobox {
-    /* başlık bilgisi */
-    /* ??? */
-}
 
 /* Genel Header */
 #topbarmenu {
@@ -577,6 +573,11 @@ body.grey {
     .right-drop-menu > .dropdown-item:hover {
         background-color: #bebebe !important;
     }
+
+    #titleinfobox {
+        background-color: #e3e3e3;
+        color: inherit;
+    }
 }
 
 body.dark-grey {
@@ -611,6 +612,12 @@ body.dark-grey {
     .right-drop-menu > .dropdown-item:hover {
         background-color: #444444 !important;
     }
+
+    #titleinfobox {
+        background-color: #212121;
+        border-color: #333;
+        color: inherit;
+    }
 }
 
 body.dark {
@@ -644,6 +651,12 @@ body.dark {
     }
     .right-drop-menu > .dropdown-item:hover {
         background-color: #333333 !important;
+    }
+
+    #titleinfobox {
+        background-color: #151515;
+        border-color: #333;
+        color: inherit;
     }
 }
 
