@@ -69,6 +69,7 @@ header > .clear {
     padding-top: 4px !important;
     user-select: none;
 }
+
 #frame_chatpreviewheading {
     padding: 6px 0 8px 6px !important;
     border: none !important;
@@ -118,6 +119,17 @@ header > .clear {
 #container-search-in-title > form.form-inline {
     display: block;
 }
+
+#frame_onlineauthors {
+    text-transform: lowercase !important;
+}
+.onlineauthornickname {
+    border-radius: 4px;
+}
+.onlineauthornickname > .nickname:hover {
+    color: inherit !important;
+}
+
 
 /* Baslik */
 #entriesheadingcontainer {
