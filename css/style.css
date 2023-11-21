@@ -4,6 +4,7 @@
     text-transform: lowercase;
 }
 
+/* Tuş odağı */
 .btn:focus {
     box-shadow: none !important;
 }
@@ -64,7 +65,7 @@ header > .clear {
 
 
 /* Baslik - Sayfa Değiştirici */
-#centerframe div:has(> div > .dropdown-pagination),
+#centerframe > div > .clearfix > .float-right > .dropdown-pagination > .btn-group,
 #leftframe > div:has(> .dropdown-pagination) {
     display: none !important;
 }
