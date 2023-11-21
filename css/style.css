@@ -217,7 +217,10 @@ header > .clear {
 
 /* Genel Header - Bildirimler Paneli */
 #frame_notifications {
-    max-height: 560px !important;
+    max-height: 70vh !important;
+}
+#notificationspreviewcontainer {
+    min-height: 560px !important;
 }
 
 #frame_notificationsheading {

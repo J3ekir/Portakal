@@ -29,7 +29,7 @@
                 "https://normalsozluk.com/*"
             ],
             "js": [
-                "js/jqueryDeneme.js"
+                "js/jqueryEdits.js"
             ],
             "run_at": "document_idle",
             "world": "MAIN"
