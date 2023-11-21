@@ -23,6 +23,16 @@
                 "js/contentScript.js"
             ],
             "run_at": "document_start"
+        },
+        {
+            "matches": [
+                "https://normalsozluk.com/*"
+            ],
+            "js": [
+                "js/jqueryDeneme.js"
+            ],
+            "run_at": "document_idle",
+            "world": "MAIN"
         }
     ],
     "description": "normal sözlük'ü sıkar atar.",
