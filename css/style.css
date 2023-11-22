@@ -201,7 +201,11 @@ header > .clear {
     overflow: visible !important;
 }
 
-#entriesheadingcontainer .entryscrollbottom span {
+#dropdown-title-share {
+    display: none !important;
+}
+
+#container-list-header-buttons span {
     display: none !important;
 }
 
