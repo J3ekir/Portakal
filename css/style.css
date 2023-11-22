@@ -140,6 +140,11 @@ header > .clear {
 /* Çevrimiçi Yazarlar */
 #frame_onlineauthors {
     text-transform: lowercase !important;
+    height: 75vh !important;
+    overflow-y: scroll !important;
+}
+#frame_onlineauthors::-webkit-scrollbar-track, #frame_onlineauthors::-webkit-scrollbar-thumb  {
+    border-radius: 8px !important;
 }
 #frame_onlineauthors > :nth-child(-n+4) {
     display: inline-flex;
@@ -219,7 +224,7 @@ header > .clear {
 #frame_notifications {
     max-height: 70vh !important;
 }
-#notificationspreviewcontainer {
+#notificationpreviewcontainer {
     min-height: 560px !important;
 }
 
