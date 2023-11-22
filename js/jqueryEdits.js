@@ -1,4 +1,9 @@
-setTimeout(adjustMenuAnims, 1500);
+setTimeout(initiateJQueryEdits, 1500);
+
+function initiateJQueryEdits() {
+  adjustMenuAnims();
+  adjustScrollToBottom();
+}
 
 function adjustMenuAnims() {
   $(document).off("mouseup");
@@ -32,6 +37,18 @@ function adjustMenuAnims() {
           $(this).slideUp("fast", "easeOutCirc").animate({ opacity: 0 },{ queue: false, duration: 'fast' });
       });
     });
+}
+
+function adjustScrollToBottom() {
+  $(document).off("click", ".entryscrollbottom");
+  $(document).on("click", ".entryscrollbottom", (function() {
+    var e = $("div.entrybar").last()
+      , t = e ? e.position().top - 420 : $(document).height();
+      $("html, body").animate({
+        scrollTop: t
+    }, 300)
+}
+))
 }
 
 function waitForVariables() {
