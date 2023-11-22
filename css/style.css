@@ -571,10 +571,17 @@ header > .clear {
 /* ??? */
 /* .title-meta-container img */
 
+/* Modallerin sayfayı kaydırmasını düzelt */
+.modal-open[style] {
+    padding-right: 0px !important;
+}
+
 
 /************************************ BACKGROUND_COLOR ************************************/
 
 body {
+    overflow-y: scroll !important;
+
     #entriesheadingcontainer {
         background-color: #fff;
         box-shadow: 0 -10px 0 #fff, 0 2px 2px #fff;
