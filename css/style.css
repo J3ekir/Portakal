@@ -636,6 +636,11 @@ header > .clear {
     z-index: unset !important;
 }
 
+/* İç reklam */
+div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-block > img {
+    border-radius: 12px;
+}
+
 /************************************ BACKGROUND_COLOR ************************************/
 
 body {
