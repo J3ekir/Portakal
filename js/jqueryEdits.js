@@ -1,4 +1,7 @@
-setTimeout(initiateJQueryEdits, 1500);
+waitForVariables().then(() => {
+    initiateJQueryEdits();
+});
+
 
 function initiateJQueryEdits() {
     adjustMenuAnims();
@@ -61,12 +64,16 @@ function adjustLoadingIndicator() {
     };
 }
 
-function waitForVariables() {
-    return new Promise((resolve) => {
-        if (typeof $ !== "undefined") {
-            resolve();
-        } else {
-            setTimeout(() => waitForVariables(resolve), 100);
-        }
+async function waitForVariables() {
+    return new Promise(resolve => {
+        const id = setInterval(() => {
+            if (
+                typeof jQuery !== "undefined" &&
+                $._data(document, "events").click.filter(event => event.selector === ".frame-toggler").length === 1
+            ) {
+                resolve();
+                clearInterval(id);
+            }
+        }, 50);
     });
 }
