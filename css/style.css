@@ -17,6 +17,10 @@
 #topnavlogo > .toplogo.text-center > h1 {
     all: unset !important;
 }
+#topnavlogo {
+    will-change: opacity;
+    transition: opacity 100ms;
+}
 
 /* Icerikli Baslik: Icerik Alani */
 header > .clear {

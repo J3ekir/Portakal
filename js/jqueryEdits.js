@@ -3,6 +3,7 @@ setTimeout(initiateJQueryEdits, 1500);
 function initiateJQueryEdits() {
   adjustMenuAnims();
   adjustScrollToBottom();
+  adjustLoadingIndicator();
 }
 
 function adjustMenuAnims() {
@@ -49,6 +50,15 @@ function adjustScrollToBottom() {
     }, 300)
 }
 ))
+}
+
+function adjustLoadingIndicator() {
+  window.showLoader = function() {
+    document.getElementById("topnavlogo").style.opacity = "0.7";
+  }
+  window.hideLoader = function() {
+    document.getElementById("topnavlogo").style.opacity = "1";
+  }
 }
 
 function waitForVariables() {
