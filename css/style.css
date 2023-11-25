@@ -40,6 +40,16 @@ header > .clear {
     border-radius: 4px !important;
 }
 
+.ui-menu .ui-state-active {
+    margin: 0 !important;
+    border: none !important;
+}
+
+.ui-widget-content .ui-state-active {
+    background: inherit !important;
+    border-color: inherit !important;
+}
+
 #titlesearchcontainer {
     margin-top: 3px;
     height: 40px !important;
