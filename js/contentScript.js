@@ -36,22 +36,26 @@ function func() {
 }
 
 function addPageButtons() {
-    waitForElementToExist("#entriesheadingcontainer .dropdown-pagination > .btn-group").then(group => {
-        if (group.children.length != 5) {
-            var pageList = qs(group, ".dropdown-menu");
+    waitForElementToExist("#entriesheadingcontainer .dropdown-pagination > .btn-group > .btn:not(:first-child)").then(rightArrow => {
+        var group = rightArrow.parentElement;
 
-            group.innerHTML = `
-                <a class="btn btn-sm btn-secondary loadcenter"><i class="fa fa-angle-double-left"></i></a>
-                ${ group.innerHTML }
-                <a class="btn btn-sm btn-secondary loadcenter"><i class="fa fa-angle-double-right"></i></a>
-            `;
+        if (!group || group.children.length === 5) {
+            return;
+        }
 
-            if (group.children[1].href) {
-                group.firstElementChild.href = pageList.firstElementChild.href;
-            }
-            if (group.children[3].href) {
-                group.lastElementChild.href = pageList.lastElementChild.href;
-            }
+        var pageList = qs(group, ".dropdown-menu");
+
+        group.innerHTML = `
+            <a class="btn btn-sm btn-secondary loadcenter"><i class="fa fa-angle-double-left"></i></a>
+            ${ group.innerHTML }
+            <a class="btn btn-sm btn-secondary loadcenter"><i class="fa fa-angle-double-right"></i></a>
+        `;
+
+        if (group.children[1].href) {
+            group.firstElementChild.href = pageList.firstElementChild.href;
+        }
+        if (group.children[3].href) {
+            group.lastElementChild.href = pageList.lastElementChild.href;
         }
     });
 }
