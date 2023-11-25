@@ -12,11 +12,6 @@ chrome.runtime.onMessage.addListener(
             case "injectCSS":
                 injectCSS(sender.tab.id);
                 break;
-            case "jqueryDeneme":
-                jqueryDeneme(sender.tab.id);
-                break;
-            default:
-                break;
         }
     }
 );
