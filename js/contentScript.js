@@ -1,14 +1,7 @@
-// waitForElementToExist(".entryscrollbottom span").then(elem => {
 waitForElementToExist("#centerframe").then(elem => {
     func();
     observe();
-//     chrome.runtime.sendMessage({
-//         type: "jqueryDeneme",
-//     });
 });
-
-
-
 
 (function connect() {
     chrome.runtime.connect({ name: 'keepAlive' })
@@ -79,21 +72,9 @@ function waitForElementToExist(selector) {
 }
 
 function observe() {
-    // const targetNode = qs("#bodycontainer");
     const targetNode = qs("#centerframe");
     new MutationObserver(async (mutationList, observer) => {
         func();
-
-        // mutationList.forEach(mutation => {
-        //     mutation.addedNodes.forEach(elem => {
-        //         if (elem.nodeType === Node.ELEMENT_NODE
-        //             && qs(elem, ".memberTooltip")
-        //             && !qs(elem, ".memberTooltip-note")
-        //         ) {
-        //             addNote(elem);
-        //         }
-        //     });
-        // });
     })
-        .observe(targetNode, { /*attributes: true,*/ childList: true, /*subtree: true*/ });
+        .observe(targetNode, { childList: true });
 }
