@@ -54,10 +54,10 @@ function adjustScrollToBottom() {
 
 function adjustLoadingIndicator() {
   window.showLoader = function() {
-    document.getElementById("topnavlogo").style.opacity = "0.7";
+    document.querySelector("#topnavlogo").style.opacity = "0.7";
   }
   window.hideLoader = function() {
-    document.getElementById("topnavlogo").style.opacity = "1";
+    document.querySelector("#topnavlogo").style.opacity = "1";
   }
 }
 
