@@ -17,7 +17,7 @@
 #topnavlogo > .toplogo.text-center > h1 {
     all: unset !important;
 }
-#topnavlogo {
+#centerframe, #leftframe {
     will-change: opacity;
     transition: opacity 100ms;
 }

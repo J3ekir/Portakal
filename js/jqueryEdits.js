@@ -57,10 +57,12 @@ function adjustScrollToBottom() {
 
 function adjustLoadingIndicator() {
     window.showLoader = function () {
-        document.querySelector("#topnavlogo").style.opacity = "0.7";
+        document.querySelector("#centerframe").style.opacity = "0.7";
+        document.querySelector("#leftframe").style.opacity = "0.7";
     };
     window.hideLoader = function () {
-        document.querySelector("#topnavlogo").style.opacity = "1";
+        document.querySelector("#centerframe").style.opacity = "1";
+        document.querySelector("#leftframe").style.opacity = "1";
     };
 }
 
