@@ -591,11 +591,6 @@ header > .clear {
     background-color: #c8c8c8 !important;
 }
 
-.profile-actions {
-    max-width: 768px;
-    margin: auto;
-}
-
 .profile-picture > img {
     object-fit: cover;
     width: 100px !important;
@@ -608,6 +603,67 @@ header > .clear {
         }
 }
 
+.profile-nickname {
+    text-align: left !important;
+    max-width: calc(100% - 260px) !important;
+}
+.profile-nickname a {
+    font-weight: bold !important;
+}
+
+.profile-actions {
+    gap: 16px;
+    max-width: calc(100% - 260px);
+    margin: auto;
+    height: 24px;
+    justify-content: flex-start !important;
+}
+#centerframe > div > div.text-center.my-2 {
+    display: flex;
+    gap: 16px;
+    max-width: calc(100% - 260px);
+    margin: auto;
+    justify-content: flex-start !important;
+    font-size: 10pt;
+}
+#centerframe > div > div.text-center.my-2 img {
+    width: 12px !important;
+}
+@media screen and (min-width: 768px)  {
+    .has-side-ad- .profile-actions { 
+        justify-content: flex-start !important;
+    }
+}
+.sendmessage {
+    position: relative;
+    top: -66px;
+    font-size: 12pt;
+    border: none !important;
+    padding: 2px 6px !important;
+    margin: 0 0 0 auto !important;
+}
+.sendmessage:before {
+    content: "✉ "
+}
+.profile-actions .statbox{
+    font-size: 10pt;
+    border: none !important;
+    height: 24px;
+    padding: 2px !important;
+    margin: 0 !important;
+}
+.status-note {
+    max-width: calc(100% - 260px) !important;
+    text-transform: lowercase;
+    margin: 8px auto 4px auto !important;
+    background-color: #77777712;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+.profile-follow-block {
+    text-transform: lowercase;
+    margin-bottom: 8px !important;
+}
 /* Genel Header - Duser Menuler */
 .right-drop-menu {
     box-shadow: 0 0 8px 0 #00000033 !important;
@@ -623,10 +679,6 @@ header > .clear {
     width: 32px !important;
     height: 32px !important;
     object-fit: cover;
-}
-
-.status-note {
-    padding: 4px !important;
 }
 
 #nav-metatabsContent .entry {
