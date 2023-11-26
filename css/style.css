@@ -637,7 +637,7 @@ header > .clear {
         justify-content: flex-start !important;
     }
 }
-.sendmessage {
+.profile-actions .sendmessage {
     position: relative;
     top: -66px;
     font-size: 12pt;
@@ -678,6 +678,7 @@ header > .clear {
     position: relative !important;
     left: calc(100% - 195px) !important;
     height: 1px;
+    max-width: 72px !important;
 }
 .profile-tabs * {
     font-size: 10pt !important;
