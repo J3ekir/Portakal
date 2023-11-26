@@ -218,6 +218,9 @@ header > .clear {
     top: 16px !important;
     overflow: visible !important;
 }
+#entriesheadingcontainer > header > h1 > a > span {
+    font-weight: bold;
+}
 
 #dropdown-title-share {
     display: none !important;
@@ -652,17 +655,33 @@ header > .clear {
     padding: 2px !important;
     margin: 0 !important;
 }
+.status-warning {
+    text-align: left !important;
+    max-width: calc(100% - 260px) !important;
+    margin: auto !important;
+}
 .status-note {
     max-width: calc(100% - 260px) !important;
     text-transform: lowercase;
-    margin: 8px auto 4px auto !important;
+    margin: 8px auto !important;
     background-color: #77777712;
     padding: 8px 12px;
     border-radius: 8px;
 }
-.profile-follow-block {
+.profile-follow-block * {
     text-transform: lowercase;
-    margin-bottom: 8px !important;
+    font-size: 10pt !important;
+    margin-bottom: 4px !important;
+}
+.text-center.profile-social-media {
+    display: flex !important;
+    position: relative !important;
+    left: calc(100% - 195px) !important;
+    height: 1px;
+}
+.profile-tabs * {
+    font-size: 10pt !important;
+    text-transform: lowercase;
 }
 /* Genel Header - Duser Menuler */
 .right-drop-menu {
