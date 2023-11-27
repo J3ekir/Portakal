@@ -377,6 +377,9 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     transition: background-color 50ms ease-out;
     
 }
+#leftframe > div.sticktop.py-1.clearfix > div > div > span {
+    font-weight: bold;
+}
 
 
 /* 03 
