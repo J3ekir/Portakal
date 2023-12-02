@@ -316,6 +316,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     user-select: none !important;
     pointer-events: none !important;
 }
+
 .cat-btn {
     transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
     box-shadow: none;
@@ -434,8 +435,47 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 .title-meta-container > .main-image {
     width: auto !important;
 }
-header > .clear { /* Üstveri içerik alanı */
-    padding-top: 8px !important;
+#entriesheadingcontainer:has(.title-meta-container) > header {
+    display: flex;
+}
+#entriesheadingcontainer:has(.title-meta-container) > header > .clear { /* Üstveri içerik alanı */
+    display: flex;
+    height: 36px !important;
+    font-size: 0;
+    gap: 2px;
+    flex-grow: 1;
+}
+#entriesheadingcontainer:has(.title-meta-container) > header .dropdown-pagination {
+    margin: 8px 0;
+}
+#entriesheadingcontainer:has(.title-meta-container) > header > .clear > a {
+    font-size: 12pt !important;
+    transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+    box-shadow: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    height: 36px !important;
+    border-radius: 24px !important;
+    padding: 12px !important;
+    margin: 2px 0 0 0 !important;
+    text-decoration: none;
+}
+#entriesheadingcontainer:has(.title-meta-container) > header > .clear > a:hover {
+    background-color: #77777711;
+    transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+    color: inherit !important;
+}
+#entriesheadingcontainer:has(.title-meta-container) > header > .clear > a:active {
+    background-color: #55555511;
+    transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+    color: inherit !important;
+}
+#entriesheadingcontainer:has(.title-meta-container) > header > .clear > a.text-primary {
+    box-shadow: inset 0 0 0 1px #f95318 !important;
+    background-color: #77777722;
+    transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
+    color: inherit !important;
 }
 #dropdown-title-share { /* Başlığı paylaş tuşu */
     display: none !important;
@@ -662,10 +702,10 @@ header > .clear { /* Üstveri içerik alanı */
     font-size: initial !important;
 }
 
-#centerframe:has(.profile-nickname) > .has-side-ad- > hr {
+#centerframe:has(.profile-nickname) > .has-side-ad- > hr { /* profil headerı ile tanımlar arası çizgi */
     display: none !important;
 }
-#centerframe > div > div.text-center.my-2 {
+#centerframe:has(.profile-nickname) > .has-side-ad- > div.text-center.my-2 { /* profil madalya ve öne çıkan alanı */
     display: flex;
     gap: 16px;
     max-width: calc(100% - 260px);
@@ -673,13 +713,48 @@ header > .clear { /* Üstveri içerik alanı */
     justify-content: flex-start !important;
     font-size: 10pt;
 }
-#centerframe > div > div.text-center.my-2 img {
+#centerframe:has(.profile-nickname) > .has-side-ad- > div.text-center.my-2 img { /* profil madalya ve öne çıkan simgeleri */
     width: 12px !important;
 }
 @media screen and (min-width: 768px)  {
     .has-side-ad- .profile-actions { 
         justify-content: flex-start !important;
     }
+}
+#centerframe:has(.profile-nickname) > div > h2 {
+    display: flex;
+    height: 36px !important;
+    font-size: 0;
+    gap: 2px;
+}
+#centerframe:has(.profile-nickname) > div > h2 > a {
+    font-size: 12pt !important;
+    transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+    box-shadow: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    height: 36px !important;
+    border-radius: 24px !important;
+    padding: 12px !important;
+    margin-top: 4px !important;
+    text-decoration: none;
+}
+#centerframe:has(.profile-nickname) > div > h2 > a:hover {
+    background-color: #77777711;
+    transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+    color: inherit !important;
+}
+#centerframe:has(.profile-nickname) > div > h2 > a:active {
+    background-color: #55555511;
+    transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+    color: inherit !important;
+}
+#centerframe:has(.profile-nickname) > div > h2 > a.text-primary {
+    box-shadow: inset 0 0 0 1px #f95318 !important;
+    background-color: #77777722;
+    transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
+    color: inherit !important;
 }
 
 .profile-actions {
