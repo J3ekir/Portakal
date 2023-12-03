@@ -759,12 +759,16 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 .profile-actions .sendmessage {
     position: relative;
-    top: -66px;
+    top: -36px;
     font-size: 12pt;
     border: none !important;
     padding: 2px 6px !important;
     margin: 0 0 0 auto !important;
 }
+.has-side-ad-:has(.text-center.my-2) .profile-actions .sendmessage {
+    top: -68px !important;
+}
+
 .profile-actions .sendmessage:before {
     content: "✉ "
 }
