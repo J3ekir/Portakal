@@ -604,6 +604,10 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     max-width: 40% !important;
 }
 
+.entry > h3, .entry > h2 {
+    font-weight: bold !important;
+}
+
 
 
 /* Sayfa Ici Sohbet */
