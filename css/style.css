@@ -665,9 +665,10 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     object-fit: cover;
     width: 100px !important;
     height: 100px !important;
-    transition: box-shadow 0.25s ease-out, border-radius 0.25s cubic-bezier(.47, 1.64, .41, .8);
+    transition: box-shadow 0.25s ease-out, border-radius 0.20s cubic-bezier(.47, 1.64, 1, 1);
         &:hover {
             border-radius: 4px !important;
+            transition: border-radius 0.25s cubic-bezier(.47, 1.64, .41, .8);
         }
 }
 .profile-nickname {
