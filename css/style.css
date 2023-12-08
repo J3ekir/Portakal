@@ -808,6 +808,10 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     font-size: 10pt !important;
     text-transform: lowercase;
 }
+.profile-tabs .btn {
+    border-radius: 24px !important;
+    border: none;
+}
 
 
 
