@@ -589,6 +589,9 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 /* 04 
    Tanım
       -- */
+.entry {
+    box-shadow: 0 2px 0px 0px #00000011;
+}
 .entrytext > .img {
     width: fit-content;
     display: block !important;
