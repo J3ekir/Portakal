@@ -375,7 +375,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 /* 03 
    Başlık
        -- */
-#entriesheadingcontainer { /* Başlık sayfası headerı */
+#entriesheadingcontainer:not(:has(.nav-tabs)) { /* Başlık sayfası headerı */
     padding-bottom: 8px !important;
     position: sticky !important;
     top: 64px !important;
@@ -388,6 +388,23 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     padding: 0px !important;
     letter-spacing: -0.4px;
 }
+
+#dropdown-title-share { /* Başlığı paylaş tuşu */
+    display: none !important;
+}
+#container-list-header-buttons .entryscrollbottom span, #container-list-header-buttons > div.mb-2.i-3.text-right > div > div:nth-child(2) > button > span { /* Sayfa sonuna kaydır */
+    display: none !important;
+}
+#button_searchinentries { /* Başlıkta ara */
+    padding: 8px 10px 10px 10px !important;
+}
+
+#centerframe > div > .clearfix > .float-right > .dropdown-pagination > .btn-group,
+#leftframe > div:has(> .dropdown-pagination) { /* - Sayfa Değiştirici */
+    display: none !important;
+}
+
+/* Üstverili Başlık */
 .top-tags> * { /* Üstverili başlık alt kategorileri */
     letter-spacing: -0.4px;
 }
@@ -413,19 +430,39 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     flex-direction: column !important;
     overflow-y: scroll !important;
 }
-
+#entriesheadingcontainer:has(.nav-tabs) { /* Üstverili Başlık sayfası headerı */
+    padding-bottom: 8px !important;
+    position: sticky !important;
+    top: -206px !important;
+    z-index: 1 !important;
+}
+#entriesheadingcontainer:has(.top-tags) { /* Üstverili Başlık sayfası headerı */
+    padding-bottom: 8px !important;
+    position: sticky !important;
+    top: -210px !important;
+    z-index: 1 !important;
+}
+.title-meta-container {
+    height: 200px !important;
+}
 .title-meta-container > .info {
     margin-left: 16px !important;
 }
 .title-meta-container .text-primary {
     font-weight: bold;
 }
-
 .title-meta-container > .main-image {
     width: auto !important;
 }
+.title-meta-container > .main-image img {
+    max-height: 256px !important;
+    max-width: 162px !important;
+    object-fit: cover !important;
+    border-radius: 16px !important;
+}
 #entriesheadingcontainer:has(.title-meta-container) > header {
     display: flex;
+    padding: 8px 0 0 0;
 }
 #entriesheadingcontainer:has(.title-meta-container) > header > .clear { /* Üstveri içerik alanı */
     display: flex;
@@ -466,22 +503,27 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
     color: inherit !important;
 }
-#dropdown-title-share { /* Başlığı paylaş tuşu */
-    display: none !important;
+#nav-metatabs > .nav-link {
+    text-transform: lowercase;
+    border-color: #77777788 !important;
+    margin: 0 4px 0 0 !important;
+    padding: 4px 12px !important;
+    border-radius: 32px !important;
+    height: 32px !important;
+    background-color: #77777712;
+    border: none;
 }
-#container-list-header-buttons .entryscrollbottom span, #container-list-header-buttons > div.mb-2.i-3.text-right > div > div:nth-child(2) > button > span { /* Sayfa sonuna kaydır */
-    display: none !important;
+#nav-metatabs > .active {
+    color: inherit;
+    background-color: #77777733;
+    box-shadow: 0 0 0 1px #f95318;
 }
-#button_searchinentries { /* Başlıkta ara */
-    padding: 8px 10px 10px 10px !important;
+.nav-tabs {
+    border: none !important;
 }
 
-#centerframe > div > .clearfix > .float-right > .dropdown-pagination > .btn-group,
-#leftframe > div:has(> .dropdown-pagination) { /* - Sayfa Değiştirici */
-    display: none !important;
-}
 
-
+/* Sohbet */
 #chatpreviewcontainer {
     padding-top: 4px !important;
     user-select: none;
@@ -819,34 +861,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 
 
 
-/* Icerikli Baslik */
-.title-meta-container {
-    min-height: 200px !important;
-}
-.title-meta-container > .main-image img {
-    max-height: 256px !important;
-    max-width: 162px !important;
-    object-fit: cover !important;
-    border-radius: 16px !important;
-}
-#nav-metatabs > .nav-link {
-    text-transform: lowercase;
-    border-color: #77777788 !important;
-    margin: 0 4px 0 0 !important;
-    padding: 4px 12px !important;
-    border-radius: 32px !important;
-    height: 32px !important;
-    background-color: #77777712;
-    border: none;
-}
-#nav-metatabs > .active {
-    color: inherit;
-    background-color: #77777733;
-    box-shadow: 0 0 0 1px #f95318;
-}
-.nav-tabs {
-    border: none !important;
-}
 
 
 
