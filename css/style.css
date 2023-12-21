@@ -424,7 +424,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     overflow: visible !important;
 }
 #nav-metatabsContent .entry {
-    max-height: 180px !important;
+    max-height: 160px !important;
     overflow: none !important;
     display: inline-block !important;
     flex-direction: column !important;
@@ -433,10 +433,10 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 #entriesheadingcontainer:has(.nav-tabs) { /* Üstverili Başlık sayfası headerı */
     padding-bottom: 8px !important;
     position: sticky !important;
-    top: -206px !important;
+    top: -178px !important;
     z-index: 1 !important;
 }
-#entriesheadingcontainer:has(.top-tags) { /* Üstverili Başlık sayfası headerı */
+#entriesheadingcontainer:has(.top-tags > span) { /* Üstverili Başlık sayfası headerı */
     padding-bottom: 8px !important;
     position: sticky !important;
     top: -210px !important;
@@ -455,7 +455,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     width: auto !important;
 }
 .title-meta-container > .main-image img {
-    max-height: 256px !important;
+    max-height: 240px !important;
     max-width: 162px !important;
     object-fit: cover !important;
     border-radius: 16px !important;
