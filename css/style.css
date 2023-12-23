@@ -676,6 +676,13 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     font-weight: bold !important;
 }
 
+.entryauthor {
+    letter-spacing: -0.2px;
+}
+.entrydate {
+    font-size: 9pt !important;
+}
+
 
 
 /* Sayfa Ici Sohbet */
