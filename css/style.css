@@ -614,9 +614,24 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     text-transform: lowercase !important;
     height: 75vh !important;
     overflow-y: scroll !important;
-}
-#frame_onlineauthors::-webkit-scrollbar-track, #frame_onlineauthors::-webkit-scrollbar-thumb  {
-    border-radius: 8px !important;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+        background: none !important;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(249,83,24,.5);
+        border: 2px solid transparent;
+        border-radius: 8px;
+        background-clip: content-box;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(249,83,24,.8);
+        border: 2px solid transparent;
+        background-clip: content-box;
+    }
 }
 #frame_onlineauthors > :nth-child(-n+4) {
     display: inline-flex;
@@ -938,6 +953,8 @@ body {
 
     &::-webkit-scrollbar {
         width: 8px;
+    }
+    &::-webkit-scrollbar-track {
         background: none;
     }
     &::-webkit-scrollbar-thumb {
