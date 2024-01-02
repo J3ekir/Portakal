@@ -21,7 +21,6 @@
 .btn:focus { /* Takılı kalan tuş odağını gizle */
     box-shadow: none !important;
 }
-
 .modal-open[style] { /* Modallerin sayfayı kaydırmasını düzelt */
     padding-right: 0px !important;
 }
@@ -40,6 +39,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 /* 01 
    Genel Header 
              -- */
+
 /* 01l - Logo */
 #topnavlogo > .toplogo.text-center > h1 { /* Ana logonun kaymasını önle */
     all: unset !important;
@@ -80,6 +80,9 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     margin-top: 3px;
     height: 40px !important;
     max-height: 40px !important;
+}
+#titlesearchcontainer * {
+    box-shadow: none !important;
 }
 #titlesearchloading {
     height: 40px !important;
@@ -914,6 +917,10 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 body {
     overflow-y: scroll !important;
 
+    header {
+        box-shadow: 4px 10px 2px 0 #fff;
+    }
+
     #entriesheadingcontainer {
         background-color: #fff;
         box-shadow: 0 -10px 0 #fff, 0 2px 2px #fff;
@@ -972,6 +979,11 @@ body {
 }
 
 body.grey {
+
+    header {
+        box-shadow: 4px 10px 2px 0 #ddd;
+    }
+
     #entriesheadingcontainer {
         background-color: #ddd;
         box-shadow: 0 -10px 0 #ddd, 0 2px 2px #ddd;
@@ -1016,6 +1028,11 @@ body.grey {
 }
 
 body.dark-grey {
+
+    header {
+        box-shadow: 4px 10px 2px 0 #282828;
+    }
+
     #entriesheadingcontainer {
         background-color: #282828;
         box-shadow: 0 -10px 0 #282828, 0 2px 2px #282828;
@@ -1061,6 +1078,11 @@ body.dark-grey {
 }
 
 body.dark {
+
+    header {
+        box-shadow: 4px 10px 2px 0 #181818;
+    }
+
     #entriesheadingcontainer {
         background-color: #181818;
         box-shadow: 0 -10px 0 #181818, 0 2px 2px #181818;
