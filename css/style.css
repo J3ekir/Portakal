@@ -21,6 +21,9 @@
 .btn:focus { /* Takılı kalan tuş odağını gizle */
     box-shadow: none !important;
 }
+.btn.titleinfo {
+    border-radius: 0.2rem 0 0 0.2rem!important;
+}
 .modal-open[style] { /* Modallerin sayfayı kaydırmasını düzelt */
     padding-right: 0px !important;
 }
