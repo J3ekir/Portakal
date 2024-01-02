@@ -259,6 +259,10 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     max-height: 80vh !important;
 }
 
+#entriesheadingcontainer .dropdown-pagination {
+    top: 2px !important;
+    position: relative;
+}
 .dropdown-pagination > .btn-group > .btn-sm {
     display: flex;
     align-items: center !important;
@@ -1033,7 +1037,7 @@ body.grey {
 body.dark-grey {
 
     header {
-        box-shadow: 4px 8px 2px 0 #282828;
+        box-shadow: 4px 10px 2px 0 #282828;
     }
 
     #entriesheadingcontainer {
