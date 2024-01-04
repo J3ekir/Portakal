@@ -31,11 +31,11 @@ function func() {
         category.parentElement.insertBefore(category, category.parentElement.children[1]);
     }
 
-    addPortakalNavCSS();
-
     if (!qs("#portakal-nav")) {
         addPortakalNav();
     }
+
+    addPortakalNavCSS();
 
     // ilk/son sayfa tuşlarını ekle
     addPageButtons();
@@ -54,6 +54,13 @@ function addPortakalNavCSS() {
             CSS: "#portakal-nav{display:none!important;}",
         });
     }
+
+    dom.cl.remove(".portakal-navitem.portakal-navitem-active", "portakal-navitem-active");
+    qsa(".portakal-navitem").forEach(elem => {
+        if (elem.href === location.href) {
+            dom.cl.add(elem, "portakal-navitem-active");
+        }
+    });
 }
 
 function addPortakalNav() {
