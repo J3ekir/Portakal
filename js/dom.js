@@ -68,15 +68,15 @@ dom.text = function (target, text) {
 };
 
 
-dom.cl.add = function (target, ...name) {
+dom.cl.add = function (target, name) {
     for (const elem of normalizeTarget(target)) {
-        elem.classList.add(...name);
+        elem.classList.add(...name.split(" "));
     }
 };
 
-dom.cl.remove = function (target, ...name) {
+dom.cl.remove = function (target, name) {
     for (const elem of normalizeTarget(target)) {
-        elem.classList.remove(...name);
+        elem.classList.remove(...name.split(" "));
     }
 };
 
