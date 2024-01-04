@@ -12,6 +12,12 @@ chrome.runtime.onMessage.addListener(
             case "injectCSS":
                 injectCSS(sender.tab.id);
                 break;
+            case "insertCSSString":
+                insertCSSString(sender.tab.id, request.CSS);
+                break;
+            case "removeCSSString":
+                removeCSSString(sender.tab.id, request.CSS);
+                break;
         }
     }
 );
@@ -33,14 +39,31 @@ function injectCSS(tabId) {
     });
 }
 
-function jqueryDeneme(tabId) {
-    chrome.scripting.executeScript({
+function insertCSSString(tabId, CSS) {
+    chrome.scripting.insertCSS({
         target: { tabId: tabId },
-        injectImmediately: true,
-        world: "MAIN",
-        files: ["js/jqueryDeneme.js"],
+        origin: "USER",
+        css: CSS,
     });
 }
+
+function removeCSSString(tabId, CSS) {
+    chrome.scripting.removeCSS({
+        target: { tabId: tabId },
+        origin: "USER",
+        css: CSS,
+    });
+}
+
+// TODO: bunu sil
+// function jqueryDeneme(tabId) {
+//     chrome.scripting.executeScript({
+//         target: { tabId: tabId },
+//         injectImmediately: true,
+//         world: "MAIN",
+//         files: ["js/jqueryDeneme.js"],
+//     });
+// }
 
 
 /****************************************************************************************/

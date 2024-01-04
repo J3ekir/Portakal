@@ -31,8 +31,56 @@ function func() {
         category.parentElement.insertBefore(category, category.parentElement.children[1]);
     }
 
+    addPortakalNavCSS();
+
+    if (!qs("#portakal-nav")) {
+        addPortakalNav();
+    }
+
     // ilk/son sayfa tuşlarını ekle
     addPageButtons();
+}
+
+function addPortakalNavCSS() {
+    if (/^https:\/\/normalsozluk\.com\/(?:|feed|myfeed)$/.test(location.href)) {
+        chrome.runtime.sendMessage({
+            type: "insertCSSString",
+            CSS: "#portakal-nav{display:flex!important;}",
+        });
+    }
+    else {
+        chrome.runtime.sendMessage({
+            type: "insertCSSString",
+            CSS: "#portakal-nav{display:none!important;}",
+        });
+    }
+}
+
+function addPortakalNav() {
+    var parent = qs("#centerframe").parentElement;
+
+    var nav = dom.ce("nav");
+    nav.id = "portakal-nav";
+
+
+    var baseNavButton = dom.ce("a");
+    dom.cl.add(baseNavButton, "loadcenter");
+
+    var mainPage = dom.clone(baseNavButton);
+    dom.attr(mainPage, "href", "https://normalsozluk.com/");
+    dom.text(mainPage, "en iyiler");
+
+    var feedPage = dom.clone(baseNavButton);
+    dom.attr(feedPage, "href", "https://normalsozluk.com/feed");
+    dom.text(feedPage, "son tanımlar");
+
+    var myFeedPage = dom.clone(baseNavButton);
+    dom.attr(myFeedPage, "href", "https://normalsozluk.com/myfeed");
+    dom.text(myFeedPage, "takip ettiklerim");
+
+    nav.append(mainPage, feedPage, myFeedPage);
+
+    parent.prepend(nav);
 }
 
 function addPageButtons() {

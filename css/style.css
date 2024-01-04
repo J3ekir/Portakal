@@ -1135,3 +1135,41 @@ body.dark {
 }
 
 /******************************** END OF BACKGROUND_COLOR *********************************/
+
+/********************************** Ana Sayfa Sekmeleri ***********************************/
+
+#portakal-nav {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+#portakal-nav > a {
+    font-size: 12pt !important;
+    transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+    box-shadow: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    height: 36px !important;
+    border-radius: 24px !important;
+    padding: 12px !important;
+    margin-top: 4px !important;
+    text-decoration: none;
+}
+#portakal-nav > a:hover {
+    background-color: #77777711;
+    transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+    color: inherit !important;
+}
+#portakal-nav > a:active {
+    background-color: #55555511;
+    transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+    color: inherit !important;
+}
+
+#portakal-nav > a.portakal-navitem-active {
+    box-shadow: inset 0 0 0 1px #f95318 !important;
+    background-color: #77777722;
+    transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
+}
