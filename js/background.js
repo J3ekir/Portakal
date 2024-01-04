@@ -55,17 +55,6 @@ function removeCSSString(tabId, CSS) {
     });
 }
 
-// TODO: bunu sil
-// function jqueryDeneme(tabId) {
-//     chrome.scripting.executeScript({
-//         target: { tabId: tabId },
-//         injectImmediately: true,
-//         world: "MAIN",
-//         files: ["js/jqueryDeneme.js"],
-//     });
-// }
-
-
 /****************************************************************************************/
 // keepAlive
 // https://stackoverflow.com/a/66618269/13630257
