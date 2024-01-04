@@ -1144,7 +1144,7 @@ body.dark {
     margin-top: 6px;
 }
 
-#portakal-nav > a {
+.portakal-navitem {
     font-size: 12pt !important;
     transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
     box-shadow: none;
@@ -1157,18 +1157,18 @@ body.dark {
     margin-top: 4px !important;
     text-decoration: none;
 }
-#portakal-nav > a:hover {
+.portakal-navitem:hover {
     background-color: #77777711;
     transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
     color: inherit !important;
 }
-#portakal-nav > a:active {
+.portakal-navitem:active {
     background-color: #55555511;
     transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
     color: inherit !important;
 }
 
-#portakal-nav > a.portakal-navitem-active {
+.portakal-navitem.portakal-navitem-active {
     box-shadow: inset 0 0 0 1px #f95318 !important;
     background-color: #77777722;
     transition: background-color 150ms ease-out, box-shadow 150ms ease-out;

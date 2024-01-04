@@ -62,9 +62,8 @@ function addPortakalNav() {
     var nav = dom.ce("nav");
     nav.id = "portakal-nav";
 
-
     var baseNavButton = dom.ce("a");
-    dom.cl.add(baseNavButton, "loadcenter");
+    dom.cl.add(baseNavButton, "portakal-navitem loadcenter");
 
     var mainPage = dom.clone(baseNavButton);
     dom.attr(mainPage, "href", "https://normalsozluk.com/");
