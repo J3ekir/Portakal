@@ -87,18 +87,22 @@ function addPortakalNav() {
 
     var mainPage = dom.clone(baseNavButton);
     dom.attr(mainPage, "href", "https://normalsozluk.com/");
+    dom.attr(mainPage, "title", "tüm zamanların beğenilen tanımları");
     dom.text(mainPage, "keşfet");
 
     var feedPage = dom.clone(baseNavButton);
     dom.attr(feedPage, "href", "https://normalsozluk.com/feed");
+    dom.attr(feedPage, "title", "en son girilen tanımlar");
     dom.text(feedPage, "akış");
 
     var myFeedPage = dom.clone(baseNavButton);
     dom.attr(myFeedPage, "href", "https://normalsozluk.com/myfeed");
+    dom.attr(myFeedPage, "title", "bildirimi açık başlıklara girilen ve takip ettiğiniz yazarlar tarafından girilen tanımlar");
     dom.text(myFeedPage, "takip");
 
     var portakalPage = dom.clone(baseNavButton);
     dom.attr(portakalPage, "href", "https://normalsozluk.com/portakal");
+    dom.attr(portakalPage, "title", "dünün en beğenilen tanımları");
     dom.text(portakalPage, "portakal");
 
     nav.append(mainPage, feedPage, myFeedPage, portakalPage);
