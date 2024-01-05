@@ -10,7 +10,7 @@
     display: none !important;
 }
 #centerframe, #leftframe { /* Yükleme animasyonunu hazırla */
-    will-change: opacity;
+    will-change: opacity, contents;
     transition: opacity 100ms;
 }
 /* 00c - Bootstrap hover tooltip */
@@ -1166,9 +1166,9 @@ body.dark {
     flex-grow: 1;
     position: sticky;
     top: 60px;
-    z-index: 1;
     gap: 4px;
     padding: 2px 0 6px 0;
+    transition: height 0.20s cubic-bezier(.47, 1.64, 1, 1), padding 0.20s cubic-bezier(.47, 1.64, 1, 1), opacity 150ms ease-out;
 }
 
 .portakal-navitem {

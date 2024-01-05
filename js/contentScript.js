@@ -45,13 +45,13 @@ function addPortakalNavCSS() {
     if (/^https:\/\/normalsozluk\.com\/(?:|feed|myfeed|portakal)$/.test(location.href)) {
         chrome.runtime.sendMessage({
             type: "insertCSSString",
-            CSS: "#portakal-nav{display:flex!important;}",
+            CSS: "#portakal-nav{height:48px;padding:2px 0 6px 0;opacity:100!important;}",
         });
     }
     else {
         chrome.runtime.sendMessage({
             type: "insertCSSString",
-            CSS: "#portakal-nav{display:none!important;}",
+            CSS: "#portakal-nav{height:2px;padding:0!important;opacity:0!important;}",
         });
     }
 
@@ -69,6 +69,8 @@ function addPortakalNavCSS() {
     }
 
     dom.cl.remove(".portakal-navitem.portakal-navitem-active", "portakal-navitem-active");
+    dom.cl.add(".toplogo a, .bkz, .entryauthor, .entry > h2 > a, .entry > h3 > a", "loadcenter");
+    dom.cl.remove(".bkz-external", "loadcenter");
     qsa(".portakal-navitem").forEach(elem => {
         if (elem.href === location.href) {
             dom.cl.add(elem, "portakal-navitem-active");
