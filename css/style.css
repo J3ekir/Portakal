@@ -196,6 +196,20 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     font-size: 1rem;
     content: 'çevrimiçi yazarlar';
 }
+#hamburger-menu {
+    margin-right: 9.7rem;
+}
+#hamburger-menu:before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #77777744;
+    font-size: smaller;
+    content: "turunçgiller";
+}
+#hamburger-menu > a:nth-child(1), #hamburger-menu > a:nth-child(2), #hamburger-menu > a:nth-child(7), #hamburger-menu > a:nth-child(8), #hamburger-menu > a:nth-child(9) {
+    display: none;
+}
 .chatmessages {
     padding: 0 8px;
 }
@@ -212,7 +226,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 .right-drop-menu > .dropdown-item {
     color: unset !important;
-    border-radius: 4px !important;
     user-select: none;
 }
 .entry .dropdown-item {
@@ -240,7 +253,17 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     margin-right: 4px !important;
     padding: 3px;
 }
-
+#frame_cockpit {
+    margin-right: 0.7rem;
+}
+#frame_cockpit:before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #77777744;
+    font-size: smaller;
+    content: "kokpit";
+}
 #frame_cockpit .fa {
     display: inline-flex !important;
     justify-content: center !important;
@@ -1140,7 +1163,7 @@ body.dark {
 
 #portakal-nav {
     display: flex;
-    gap: 8px;
+    gap: 4px;
     margin-top: 6px;
 }
 
@@ -1161,11 +1184,13 @@ body.dark {
     background-color: #77777711;
     transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
     color: inherit !important;
+    text-decoration: none !important; 
 }
 .portakal-navitem:active {
     background-color: #55555511;
     transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
     color: inherit !important;
+    text-decoration: none !important; 
 }
 
 .portakal-navitem.portakal-navitem-active {
