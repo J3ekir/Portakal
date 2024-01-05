@@ -1163,10 +1163,11 @@ body.dark {
 
 #portakal-nav {
     display: flex;
+    height: 0;
     position: sticky;
     top: 60px;
     gap: 4px;
-    padding: 2px 0 6px 0;
+    padding: 0;
     transition: height 0.20s cubic-bezier(.47, 1.64, 1, 1), padding 0.20s cubic-bezier(.47, 1.64, 1, 1), opacity 150ms ease-out;
 }
 
