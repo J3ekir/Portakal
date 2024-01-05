@@ -1163,7 +1163,6 @@ body.dark {
 
 #portakal-nav {
     display: flex;
-    flex-grow: 1;
     position: sticky;
     top: 60px;
     gap: 4px;
