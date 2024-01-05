@@ -1172,7 +1172,7 @@ body.dark {
 }
 
 .portakal-navitem {
-    min-width: 9rem;
+    min-width: 6rem;
     font-size: 12pt !important;
     transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
     box-shadow: none;

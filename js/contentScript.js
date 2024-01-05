@@ -42,7 +42,7 @@ function func() {
 }
 
 function addPortakalNavCSS() {
-    if (/^https:\/\/normalsozluk\.com\/(?:|feed|myfeed)$/.test(location.href)) {
+    if (/^https:\/\/normalsozluk\.com\/(?:|feed|myfeed|portakal)$/.test(location.href)) {
         chrome.runtime.sendMessage({
             type: "insertCSSString",
             CSS: "#portakal-nav{display:flex!important;}",
@@ -74,17 +74,21 @@ function addPortakalNav() {
 
     var mainPage = dom.clone(baseNavButton);
     dom.attr(mainPage, "href", "https://normalsozluk.com/");
-    dom.text(mainPage, "en iyiler");
+    dom.text(mainPage, "keşfet");
 
     var feedPage = dom.clone(baseNavButton);
     dom.attr(feedPage, "href", "https://normalsozluk.com/feed");
-    dom.text(feedPage, "son tanımlar");
+    dom.text(feedPage, "akış");
 
     var myFeedPage = dom.clone(baseNavButton);
     dom.attr(myFeedPage, "href", "https://normalsozluk.com/myfeed");
-    dom.text(myFeedPage, "takip ettiklerim");
+    dom.text(myFeedPage, "takip");
 
-    nav.append(mainPage, feedPage, myFeedPage);
+    var portakalPage = dom.clone(baseNavButton);
+    dom.attr(portakalPage, "href", "https://normalsozluk.com/portakal");
+    dom.text(portakalPage, "portakal");
+
+    nav.append(mainPage, feedPage, myFeedPage, portakalPage);
 
     parent.prepend(nav);
 }
