@@ -207,7 +207,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     font-size: smaller;
     content: "turunçgiller";
 }
-#hamburger-menu > a:nth-child(1), #hamburger-menu > a:nth-child(2), #hamburger-menu > a:nth-child(7), #hamburger-menu > a:nth-child(8), #hamburger-menu > a:nth-child(9) {
+#hamburger-menu > a:nth-child(1), #hamburger-menu > a:nth-child(2), #hamburger-menu > a:nth-child(3), #hamburger-menu > a:nth-child(7), #hamburger-menu > a:nth-child(8), #hamburger-menu > a:nth-child(9) {
     display: none;
 }
 .chatmessages {
