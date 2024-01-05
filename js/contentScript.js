@@ -55,6 +55,19 @@ function addPortakalNavCSS() {
         });
     }
 
+    if (/^https:\/\/normalsozluk\.com\/portakal$/.test(location.href)) {
+        chrome.runtime.sendMessage({
+            type: "insertCSSString",
+            CSS: "#entriesheadingcontainer{display:none!important;}",
+        });
+    }
+    else {
+        chrome.runtime.sendMessage({
+            type: "insertCSSString",
+            CSS: "#entriesheadingcontainer{display:block!important;}",
+        });
+    }
+
     dom.cl.remove(".portakal-navitem.portakal-navitem-active", "portakal-navitem-active");
     qsa(".portakal-navitem").forEach(elem => {
         if (elem.href === location.href) {
