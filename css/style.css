@@ -948,10 +948,10 @@ body {
     overflow-y: scroll !important;
 
     header {
-        box-shadow: 4px 10px 2px 0 #fff;
+        box-shadow: 4px 10px 0 #fff;
     }
 
-    #entriesheadingcontainer {
+    #entriesheadingcontainer, #portakal-nav {
         background-color: #fff;
         box-shadow: 0 -10px 0 #fff, 0 2px 2px #fff;
     }
@@ -1011,10 +1011,10 @@ body {
 body.grey {
 
     header {
-        box-shadow: 4px 10px 2px 0 #ddd;
+        box-shadow: 4px 10px 0 #ddd;
     }
 
-    #entriesheadingcontainer {
+    #entriesheadingcontainer, #portakal-nav {
         background-color: #ddd;
         box-shadow: 0 -10px 0 #ddd, 0 2px 2px #ddd;
     }
@@ -1060,10 +1060,10 @@ body.grey {
 body.dark-grey {
 
     header {
-        box-shadow: 4px 10px 2px 0 #282828;
+        box-shadow: 4px 8px 0 #282828;
     }
 
-    #entriesheadingcontainer {
+    #entriesheadingcontainer, #portakal-nav {
         background-color: #282828;
         box-shadow: 0 -10px 0 #282828, 0 2px 2px #282828;
     }
@@ -1110,10 +1110,10 @@ body.dark-grey {
 body.dark {
 
     header {
-        box-shadow: 4px 10px 2px 0 #181818;
+        box-shadow: 4px 10px 0 #181818;
     }
 
-    #entriesheadingcontainer {
+    #entriesheadingcontainer, #portakal-nav {
         background-color: #181818;
         box-shadow: 0 -10px 0 #181818, 0 2px 2px #181818;
     }
@@ -1163,11 +1163,16 @@ body.dark {
 
 #portakal-nav {
     display: flex;
+    flex-grow: 1;
+    position: sticky;
+    top: 60px;
+    z-index: 1;
     gap: 4px;
-    margin-top: 6px;
+    padding: 2px 0 6px 0;
 }
 
 .portakal-navitem {
+    min-width: 9rem;
     font-size: 12pt !important;
     transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
     box-shadow: none;
