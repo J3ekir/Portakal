@@ -36,11 +36,27 @@ function func() {
     }
 
     addPortakalNavCSS();
+    //changeGlobalFont();
 
     // ilk/son sayfa tuşlarını ekle
     addPageButtons();
 }
 
+function changeGlobalFont() {
+    var fontLoader = function (param) {
+        var link = document.createElement('link');
+        link.type = 'text/css';
+        link.rel = 'stylesheet';
+
+        document.head.appendChild(link);
+
+        link.href = 'https://fonts.googleapis.com/css?family=' + param.family;
+    };
+
+    fontLoader({
+        family: 'Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'
+    });
+}
 function addPortakalNavCSS() {
     if (/^https:\/\/normalsozluk\.com\/(?:|feed|myfeed|portakal)$/.test(location.href)) {
         chrome.runtime.sendMessage({

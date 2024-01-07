@@ -1,6 +1,9 @@
 /* 00 
    Genel 
       -- */
+body b {
+    font-weight: 600;
+}
 /* 00a - Footer */
 #footer {
     background-color: transparent !important;
@@ -10,7 +13,7 @@
     display: none !important;
 }
 #centerframe, #leftframe { /* Yükleme animasyonunu hazırla */
-    will-change: opacity, contents;
+    /* will-change: opacity, contents; */
     transition: opacity 100ms;
 }
 /* 00c - Bootstrap hover tooltip */
@@ -193,7 +196,8 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     font-size: 0;
 }
 #hamburger-menu > a.dropdown-item.frame-toggler:after {
-    font-size: 1rem;
+    font-size: 11pt;
+    font-weight: 500;
     content: 'çevrimiçi yazarlar';
 }
 #hamburger-menu {
@@ -205,6 +209,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     justify-content: center;
     background-color: #77777744;
     font-size: smaller;
+    font-weight: 500;
     content: "turunçgiller";
 }
 #hamburger-menu > a:nth-child(1), #hamburger-menu > a:nth-child(2), #hamburger-menu > a:nth-child(3), #hamburger-menu > a:nth-child(7), #hamburger-menu > a:nth-child(8), #hamburger-menu > a:nth-child(9) {
@@ -227,6 +232,8 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 .right-drop-menu > .dropdown-item {
     color: unset !important;
     user-select: none;
+    font-size: 11pt;
+    font-weight: 500;
 }
 .entry .dropdown-item {
     text-transform: lowercase;
@@ -401,7 +408,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     
 }
 #leftframe > div.sticktop.py-1.clearfix > div > div > span {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 
@@ -415,7 +422,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     z-index: 1 !important;
 }
 #entriesheadingcontainer > header > h1 > a > span { /* Başlık adı */
-    font-weight: bold;
+    font-weight: 600;
 }
 #entry-heading-category > * { /* Başlık ana kategorileri */
     padding: 0px !important;
@@ -501,7 +508,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     margin-left: 16px !important;
 }
 .title-meta-container .text-primary {
-    font-weight: bold;
+    font-weight: 600;
 }
 .title-meta-container > .main-image {
     width: auto !important;
@@ -602,7 +609,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     background-color: #77777722;
     border-radius: 4px;
     padding: 2px 8px;
-    font-size: 10pt;
+    font-size: 11pt;
 }
 #frame_chatpreviewheading > a:hover, #frame_notificationsheading > a:hover {
     background-color: #77777744;
@@ -721,10 +728,11 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 
 .entry > h3, .entry > h2 {
-    font-weight: bold !important;
+    font-weight: 600 !important;
 }
 
 .entryauthor {
+    font-weight: 500;
     letter-spacing: -0.2px;
 }
 .entrydate {
@@ -796,7 +804,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     max-width: calc(100% - 260px) !important;
 }
 .profile-nickname a {
-    font-weight: bold !important;
+    font-weight: 600 !important;
 }
 
 .cover-photo {
@@ -1168,7 +1176,7 @@ body.dark {
     top: 60px;
     gap: 4px;
     padding: 0;
-    transition: height 0.20s cubic-bezier(.47, 1.64, 1, 1), padding 0.20s cubic-bezier(.47, 1.64, 1, 1), opacity 150ms ease-out;
+    transition: height 200ms cubic-bezier(0, 0.55, 0.45, 1), padding 200ms cubic-bezier(0, 0.55, 0.45, 1), opacity 200ms ease-out;
 }
 
 .portakal-navitem {
