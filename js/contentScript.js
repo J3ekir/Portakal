@@ -38,6 +38,8 @@ function func() {
     addPortakalNavCSS();
     //changeGlobalFont();
 
+    addProfilePicture()
+
     // ilk/son sayfa tuşlarını ekle
     addPageButtons();
 }
@@ -128,6 +130,32 @@ function addPortakalNav() {
     parent.prepend(nav);
 }
 
+function addProfilePicture() {
+    if (!qs("#profilePicture")) {
+        dom.remove("[data-target='#frame_cockpit']>:is(i,span)");
+
+        const profilePicture = dom.ce("img");
+        profilePicture.id = "profilePicture";
+        qs("[data-target='#frame_cockpit']").append(profilePicture);
+
+        chrome.storage.local.get("profilePictureURL").then(settings => {
+            qs("#profilePicture").src = settings.profilePictureURL || "https://normalsozluk.com/images/no_avatarfb.jpg";
+        });
+    }
+
+    if (qs(".profile-photo-actions")) {
+        chrome.storage.local.get("profilePictureURL").then(settings => {
+            const newprofilePictureURL = dom.attr(".profile-picture>img", "src").replace(/_l\.jpeg$/, "_s.jpeg");
+
+            if (newprofilePictureURL !== settings.profilePictureURL) {
+                chrome.storage.local.set({
+                    profilePictureURL: newprofilePictureURL,
+                });
+            }
+        });
+    }
+}
+
 function addPageButtons() {
     waitForElementToExist("#entriesheadingcontainer .dropdown-pagination > .btn-group > .btn:not(:first-child)").then(rightArrow => {
         var group = rightArrow.parentElement;
@@ -175,3 +203,11 @@ function observe() {
     })
         .observe(targetNode, { childList: true });
 }
+
+chrome.storage.onChanged.addListener(changes => {
+    Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
+        if (key === "profilePictureURL") {
+            qs("#profilePicture").src = newValue;
+        }
+    });
+});

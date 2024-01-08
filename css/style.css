@@ -1211,3 +1211,9 @@ body.dark {
     background-color: #77777722;
     transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
 }
+
+#profilePicture {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
