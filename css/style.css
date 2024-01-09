@@ -149,7 +149,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     box-shadow: none !important;
 }
 
-/* Genel Header - Sag Tuslar */
+/* Genel Header - Sağ Tuşlar */
 #topnav-right {
     display: flex !important;
     gap: 8px;
@@ -215,6 +215,21 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 #hamburger-menu > a:nth-child(1), #hamburger-menu > a:nth-child(2), #hamburger-menu > a:nth-child(4), #hamburger-menu > a:nth-child(7), #hamburger-menu > a:nth-child(11) {
     display: none;
 }
+#cockpitProfilePicture {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    transition: filter 150ms ease-out;
+    &:hover {
+        filter: brightness(120%);
+        transition: filter 150ms ease-out;
+    }
+    &:active {
+        filter: brightness(100%);
+        transition: filter 50ms ease-out;
+    }
+}
+
 .chatmessages {
     padding: 0 8px;
 }
@@ -1212,8 +1227,4 @@ body.dark {
     transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
 }
 
-#profilePicture {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-}
+

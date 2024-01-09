@@ -131,15 +131,15 @@ function addPortakalNav() {
 }
 
 function addProfilePicture() {
-    if (!qs("#profilePicture")) {
+    if (!qs("#cockpitProfilePicture")) {
         dom.remove("[data-target='#frame_cockpit']>:is(i,span)");
 
         const profilePicture = dom.ce("img");
-        profilePicture.id = "profilePicture";
+        profilePicture.id = "cockpitProfilePicture";
         qs("[data-target='#frame_cockpit']").append(profilePicture);
 
         chrome.storage.local.get("profilePictureURL").then(settings => {
-            qs("#profilePicture").src = settings.profilePictureURL || "https://normalsozluk.com/images/no_avatarfb.jpg";
+            qs("#cockpitProfilePicture").src = settings.profilePictureURL || "https://normalsozluk.com/images/no_avatarfb.jpg";
         });
     }
 
