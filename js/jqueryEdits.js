@@ -7,6 +7,7 @@ function initiateJQueryEdits() {
     adjustMenuAnims();
     adjustScrollToBottom();
     adjustLoadingIndicator();
+    adjustTitleInfoAnims();
 }
 
 function adjustMenuAnims() {
@@ -41,6 +42,20 @@ function adjustMenuAnims() {
                 $(this).slideUp("fast", "easeOutCirc").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
         });
     });
+}
+
+function adjustTitleInfoAnims() {
+    $(document).off("click", ".titleinfo");
+    // $(document).on("click", ".titleinfo", (function() {
+    //     $("#titleinfobox").slideToggle("fast", "easeOutCubic")
+    // }));
+    $(document).on("click", ".titleinfo", (function() {
+        $("#titleinfobox").animate({
+            height: "toggle",
+            opacity: "toggle",
+            padding: "toggle"
+        }, "fast");
+    }));
 }
 
 function adjustScrollToBottom() {

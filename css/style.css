@@ -4,6 +4,9 @@
 body b {
     font-weight: 600;
 }
+body {
+    overflow-y: scroll !important;
+}
 /* 00a - Footer */
 #footer {
     background-color: transparent !important;
@@ -162,7 +165,8 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     justify-content: center;
     width: 36px;
     height: 36px;
-    background-color: #77777722;
+    /* background-color: #77777722; */
+    background-color: #212121;
     border-radius: 50%;
     padding: 0 !important;
     margin: 0 !important;
@@ -183,13 +187,13 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 #topnav-right > .nav-link:hover {
     color: inherit !important;
-    background-color: #77777744;
-    box-shadow: 0 0 1px 2px #00000011 !important;
+    background-color: #aaaaaa44 !important;
+    box-shadow: 0 0 1px 2px #bbbbbb11 !important;
     transition: background-color 150ms ease-out, box-shadow 300ms linear, color 150ms ease-out;
 }
 #topnav-right > .nav-link:active {
-    background-color: #77777733;
-    box-shadow: 0 0 1px 1px #00000022 !important;
+    background-color: #aaaaaa33 !important;
+    box-shadow: 0 0 1px 1px #bbbbbb22 !important;
     transition: background-color 50ms ease-out, box-shadow 50ms linear;
 }
 #hamburger-menu > a.dropdown-item.frame-toggler {
@@ -430,6 +434,19 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 /* 03 
    Başlık
        -- */
+#titleinfobox { /* Bilgi kutusu */
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+}
+#titleinfobox p {
+    padding: 12px !important;
+    margin: 0 !important;
+}
+#titleinfobox a {
+    color: #f95318 !important;
+}
 #entriesheadingcontainer:not(:has(.nav-tabs)) { /* Başlık sayfası headerı */
     padding-bottom: 8px !important;
     position: sticky !important;
@@ -968,7 +985,10 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 /************************************ BACKGROUND_COLOR ************************************/
 
 body {
-    overflow-y: scroll !important;
+    #topnav-right > .nav-link {
+        background-color: #f9f9f9;
+    }
+
 
     header {
         box-shadow: 4px 10px 0 #fff;
@@ -1032,6 +1052,9 @@ body {
 }
 
 body.grey {
+    #topnav-right > .nav-link {
+        background-color: #e3e3e3;
+    }
 
     header {
         box-shadow: 4px 10px 0 #ddd;
@@ -1082,6 +1105,10 @@ body.grey {
 
 body.dark-grey {
 
+    #topnav-right > .nav-link {
+        background-color: #212121;
+    }
+
     header {
         box-shadow: 4px 8px 0 #282828;
     }
@@ -1131,6 +1158,10 @@ body.dark-grey {
 }
 
 body.dark {
+
+    #topnav-right > .nav-link {
+        background-color: #151515;
+    }
 
     header {
         box-shadow: 4px 10px 0 #181818;
