@@ -63,13 +63,13 @@ function addPortakalNavCSS() {
     if (/^https:\/\/normalsozluk\.com\/(?:|feed|myfeed|portakal)$/.test(location.href)) {
         chrome.runtime.sendMessage({
             type: "insertCSSString",
-            CSS: "#portakal-nav{height:48px!important;padding-top:2px!important;padding-bottom:6px!important;opacity:100;z-index:1;}",
+            CSS: "#portakal-nav{height:48px!important;padding-top:2px!important;padding-bottom:6px!important;opacity:100;z-index:1;pointer-events:revert;}",
         });
     }
     else {
         chrome.runtime.sendMessage({
             type: "insertCSSString",
-            CSS: "#portakal-nav{height:0!important;padding:0!important;opacity:0;z-index:0;}",
+            CSS: "#portakal-nav{height:0!important;padding:0!important;opacity:0;z-index:0;pointer-events:none;}",
         });
     }
 
