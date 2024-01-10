@@ -60,6 +60,9 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 	display: inline-flex;
 	gap: 6px;
 }
+.toplogo a {
+	letter-spacing: -0.5px;
+}
 #topnavlogo {
 	justify-content: center;
 	display: inline-flex;
