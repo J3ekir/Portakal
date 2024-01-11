@@ -17,7 +17,7 @@ function adjustMenuAnims() {
         e.preventDefault();
         var t = $(this).data("target");
         if ("block" !== $(t).css("display")) {
-            $(t).css('opacity', 0).slideDown("fast", "easeOutCirc").animate({ opacity: 1 }, { queue: false, duration: 'fast' }),
+            $(t).css('opacity', 0).slideDown("fast", "easeOutCubic").animate({ opacity: 1 }, { queue: false, duration: 'fast' }),
                 "#frame_onlineauthors" === t && notifyOnline(),
                 "#frame_notifications" === t &&
                 "" === $("#notificationpreviewcontainer").html() &&
@@ -32,14 +32,14 @@ function adjustMenuAnims() {
                 ),
                     updateMessages());
         } else {
-            $(t).slideUp("fast", "easeInOutCirc").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
+            $(t).slideUp("fast", "easeOutCubic").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
         }
     });
     $(document).mouseup(function (e) {
         $(".right-drop-menu").each(function () {
             $(this).is(e.target) ||
                 0 !== $(this).has(e.target).length ||
-                $(this).slideUp("fast", "easeInOutCirc").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
+                $(this).slideUp("fast", "easeOutCubic").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
         });
     });
 }

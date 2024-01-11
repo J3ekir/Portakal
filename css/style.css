@@ -121,6 +121,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     box-shadow: 0 0 8px 0 #00000033 !important;
     transition: box-shadow 2s ease-out;
     border-color: #bdbdbd66 !important;
+    will-change: transform, opacity;
 }
 
 .dropdown-divider {
@@ -623,7 +624,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 
 /* Sohbet */
 #chatpreviewcontainer {
-    padding: 0 8px 8px 8px !important;
+    padding: 4px !important;
     user-select: none;
     min-height: 584px;
 }
@@ -686,6 +687,10 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     border-radius: 4px;
     padding: 8px 6px !important;
     border: none !important;
+    transition: background-color 50ms linear;
+    &:hover {
+        transition: background-color 0s linear;
+    }
 }
 .chatlist .date {
     top: 10px !important;
