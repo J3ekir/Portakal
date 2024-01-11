@@ -85,15 +85,16 @@ function addPortakalNavCSS() {
             CSS: "#entriesheadingcontainer{display:block!important;}",
         });
     }
+    
+    dom.cl.remove(".portakal-navitem.portakal-navitem-active", "portakal-navitem-active");
 
      // Tüm sayfayı yeniden yüklemeyi gerektirmeyen bağlantılara 
     // gerekli sınıfı ekle (sol çerçeveyi değiştiren sayfalar hariç)
     if (!/^https:\/\/normalsozluk\.com\/(?:|admin|modlog|stats)$/.test(location.href)) { 
-        dom.cl.remove(".portakal-navitem.portakal-navitem-active", "portakal-navitem-active");
         dom.cl.add(".toplogo a, .bkz, .entryauthor, .entry > h2 > a, .entry > h3 > a, #notificationpreviewcontainer .bkz", "loadcenter");
         dom.cl.remove(".bkz-external", "loadcenter");
     }
-    
+
     qsa(".portakal-navitem").forEach(elem => {
         if (elem.href === location.href) {
             dom.cl.add(elem, "portakal-navitem-active");
