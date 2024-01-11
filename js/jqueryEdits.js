@@ -32,14 +32,14 @@ function adjustMenuAnims() {
                 ),
                     updateMessages());
         } else {
-            $(t).slideUp("fast", "easeOutCirc").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
+            $(t).slideUp("fast", "easeInOutCirc").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
         }
     });
     $(document).mouseup(function (e) {
         $(".right-drop-menu").each(function () {
             $(this).is(e.target) ||
                 0 !== $(this).has(e.target).length ||
-                $(this).slideUp("fast", "easeOutCirc").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
+                $(this).slideUp("fast", "easeInOutCirc").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
         });
     });
 }
