@@ -61,9 +61,7 @@ function adjustEntrySearchPlaceholder() {
  */
 function moveTitleCategory() {
     const category = qs("#entry-heading-category");
-    if (category) {
-        category.parentElement.insertBefore(category, category.parentElement.children[1]);
-    }
+    category?.parentElement.insertBefore(category, category.parentElement.children[1]);
 }
 
 function changeGlobalFont() {
