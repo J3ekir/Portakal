@@ -16,38 +16,54 @@ chrome.storage.onChanged.addListener(changes => {
 
 
 function centerframe() {
-    //belge başlığını küçült
-    document.title = document.title.toLowerCase();
+    adjustPageTitle();
+    adjustSearchPlaceholders();
+    adjustEntrySearchPlaceholder();
+    moveTitleCategory();
 
-    //genel arama yer tutucu yazını değiştir
-    var titleSearch = qs("#titlesearch");
-    if (titleSearch) {
-        titleSearch.placeholder = "sözlükte ara";
-    }
-
-    // başlık içi arama yer tutucu yazılarını değiştir
-    var entrySearch = qs("[name='q']");
-    if (entrySearch) {
-        entrySearch.placeholder = "başlıkta ara";
-    }
-
-    // başlık kategorisini başlığın altına taşı
-    var category = qs("#entry-heading-category");
-    if (category) {
-        category.parentElement.insertBefore(category, category.parentElement.children[1]);
-    }
-
-    if (!qs("#portakal-nav")) {
-        addPortakalNav();
-    }
-
+    addPortakalNav();
     addPortakalNavCSS();
     //changeGlobalFont();
 
     addProfilePicture();
-
-    // ilk/son sayfa tuşlarını ekle
     addPageButtons();
+}
+
+/**
+ * belge başlığını küçült
+ */
+function adjustPageTitle() {
+    document.title = document.title.toLowerCase();
+}
+
+/**
+ * genel arama yer tutucu yazını değiştir
+ */
+function adjustSearchPlaceholders() {
+    var titleSearch = qs("#titlesearch");
+    if (titleSearch) {
+        titleSearch.placeholder = "sözlükte ara";
+    }
+}
+
+/**
+ * başlık içi arama yer tutucu yazılarını değiştir
+ */
+function adjustEntrySearchPlaceholder() {
+    var entrySearch = qs("[name='q']");
+    if (entrySearch) {
+        entrySearch.placeholder = "başlıkta ara";
+    }
+}
+
+/**
+ * başlık kategorisini başlığın altına taşı
+ */
+function moveTitleCategory() {
+    var category = qs("#entry-heading-category");
+    if (category) {
+        category.parentElement.insertBefore(category, category.parentElement.children[1]);
+    }
 }
 
 function changeGlobalFont() {
@@ -142,6 +158,9 @@ function addPortakalNav() {
     parent.prepend(nav);
 }
 
+/**
+ * profil resmini ekle
+ */
 function addProfilePicture() {
     if (!qs("#cockpitProfilePicture")) {
         dom.remove("[data-target='#frame_cockpit']>:is(i,span)");
@@ -168,6 +187,9 @@ function addProfilePicture() {
     }
 }
 
+/**
+ * ilk/son sayfa tuşlarını ekle
+ */
 function addPageButtons() {
     waitForElementToExist("#entriesheadingcontainer .btn-group:has(.fa-angle-right)").then(group => {
         if (group.children.length === 5) {
