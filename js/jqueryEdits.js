@@ -5,9 +5,9 @@ if (!/^https:\/\/normalsozluk\.com\/external/.test(location.href)) {
         removeJQueryEventListener("click", ".titleinfo").then(adjustTitleInfoAnims);
         removeJQueryEventListener("click", ".entryscrollbottom").then(adjustScrollToBottom);
     });
-
-    adjustLoadingIndicator();
 }
+
+adjustLoadingIndicator();
 
 
 function adjustMenuAnimsMouseup() {
@@ -70,14 +70,23 @@ function adjustScrollToBottom() {
 }
 
 function adjustLoadingIndicator() {
-    window.showLoader = function () {
-        document.querySelector("#centerframe").style.opacity = "0.7";
-        document.querySelector("#leftframe").style.opacity = "0.7";
-    };
-    window.hideLoader = function () {
-        document.querySelector("#centerframe").style.opacity = "1";
-        document.querySelector("#leftframe").style.opacity = "1";
-    };
+    Object.defineProperty(window, "showLoader", {
+        value: function () {
+            document.querySelector("#centerframe").style.opacity = "0.7";
+            document.querySelector("#leftframe").style.opacity = "0.7";
+        },
+        writable: false,
+        configurable: false,
+    });
+
+    Object.defineProperty(window, "hideLoader", {
+        value: function () {
+            document.querySelector("#centerframe").style.opacity = "1";
+            document.querySelector("#leftframe").style.opacity = "1";
+        },
+        writable: false,
+        configurable: false,
+    });
 }
 
 async function waitForVariable(variable) {
