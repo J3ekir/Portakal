@@ -1,7 +1,4 @@
-waitForElementToExist("#centerframe").then(elem => {
-    func();
-    observe();
-});
+observe("#centerframe", centerframe);
 
 (function connect() {
     chrome.runtime.connect({ name: 'keepAlive' })
@@ -9,7 +6,7 @@ waitForElementToExist("#centerframe").then(elem => {
 })();
 
 
-function func() {
+function centerframe() {
     //belge başlığını küçült
     document.title = document.title.toLowerCase();
 
@@ -202,12 +199,15 @@ function waitForElementToExist(selector) {
     });
 }
 
-function observe() {
-    const targetNode = qs("#centerframe");
-    new MutationObserver(async (mutationList, observer) => {
+function observe(selector, func) {
+    waitForElementToExist(selector).then(elem => {
         func();
-    })
-        .observe(targetNode, { childList: true });
+
+        new MutationObserver(async (mutationList, observer) => {
+            func();
+        })
+            .observe(elem, { childList: true });
+    });
 }
 
 chrome.storage.onChanged.addListener(changes => {
