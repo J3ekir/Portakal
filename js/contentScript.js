@@ -170,27 +170,34 @@ function addProfilePicture() {
 }
 
 function addPageButtons() {
-    waitForElementToExist("#entriesheadingcontainer .dropdown-pagination > .btn-group > .btn:not(:first-child)").then(rightArrow => {
-        var group = rightArrow.parentElement;
-
-        if (!group || group.children.length === 5) {
+    waitForElementToExist("#entriesheadingcontainer .btn-group:has(.fa-angle-right)").then(group => {
+        if (group.children.length === 5) {
             return;
         }
 
-        var pageList = qs(group, ".dropdown-menu");
+        const leftArrowButton = dom.ce("a");
+        dom.cl.add(leftArrowButton, "btn btn-sm btn-secondary loadcenter");
+        const leftArrowIcon = dom.ce("i");
+        dom.cl.add(leftArrowIcon, "fa fa-angle-double-left");
+        leftArrowButton.append(leftArrowIcon);
 
-        group.innerHTML = `
-            <a class="btn btn-sm btn-secondary loadcenter"><i class="fa fa-angle-double-left"></i></a>
-            ${ group.innerHTML }
-            <a class="btn btn-sm btn-secondary loadcenter"><i class="fa fa-angle-double-right"></i></a>
-        `;
+        const rightArrowButton = dom.ce("a");
+        dom.cl.add(rightArrowButton, "btn btn-sm btn-secondary loadcenter");
+        const rightArrowIcon = dom.ce("i");
+        dom.cl.add(rightArrowIcon, "fa fa-angle-double-right");
+        rightArrowButton.append(rightArrowIcon);
 
-        if (group.children[1].href) {
-            group.firstElementChild.href = pageList.firstElementChild.href;
+        const pageList = qs(group, ".dropdown-menu");
+
+        if (group.firstElementChild.href) {
+            leftArrowButton.href = pageList.firstElementChild.href;
         }
-        if (group.children[3].href) {
-            group.lastElementChild.href = pageList.lastElementChild.href;
+        if (group.lastElementChild.href) {
+            rightArrowButton.href = pageList.lastElementChild.href;
         }
+
+        group.prepend(leftArrowButton);
+        group.append(rightArrowButton);
     });
 }
 
