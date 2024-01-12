@@ -104,8 +104,7 @@ function addPortakalNavCSS() {
     // Tüm sayfayı yeniden yüklemeyi gerektirmeyen bağlantılara 
     // gerekli sınıfı ekle (sol çerçeveyi değiştiren sayfalar hariç)
     if (!/^https:\/\/normalsozluk\.com\/(admin|modlog|stats)$/.test(location.href)) {
-        dom.cl.add(".toplogo a, .bkz, .entryauthor, .entry > h2 > a, .entry > h3 > a, #notificationpreviewcontainer .bkz", "loadcenter");
-        dom.cl.remove(".bkz-external", "loadcenter");
+        dom.cl.add(".toplogo a, .bkz:not(.bkz-external), .entryauthor, .entry > h2 > a, .entry > h3 > a, #notificationpreviewcontainer .bkz", "loadcenter");
     }
 }
 
