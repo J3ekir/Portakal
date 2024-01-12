@@ -196,29 +196,29 @@ function addPageButtons() {
             return;
         }
 
-        const leftArrowButton = dom.ce("a");
-        dom.cl.add(leftArrowButton, "btn btn-sm btn-secondary loadcenter");
+        const firstPageButton = dom.ce("a");
+        dom.cl.add(firstPageButton, "btn btn-sm btn-secondary loadcenter");
         const leftArrowIcon = dom.ce("i");
         dom.cl.add(leftArrowIcon, "fa fa-angle-double-left");
-        leftArrowButton.append(leftArrowIcon);
+        firstPageButton.append(leftArrowIcon);
 
-        const rightArrowButton = dom.ce("a");
-        dom.cl.add(rightArrowButton, "btn btn-sm btn-secondary loadcenter");
+        const lastPageButton = dom.ce("a");
+        dom.cl.add(lastPageButton, "btn btn-sm btn-secondary loadcenter");
         const rightArrowIcon = dom.ce("i");
         dom.cl.add(rightArrowIcon, "fa fa-angle-double-right");
-        rightArrowButton.append(rightArrowIcon);
+        lastPageButton.append(rightArrowIcon);
 
         const pageList = qs(group, ".dropdown-menu");
 
         if (group.firstElementChild.href) {
-            leftArrowButton.href = pageList.firstElementChild.href;
+            firstPageButton.href = pageList.firstElementChild.href;
         }
         if (group.lastElementChild.href) {
-            rightArrowButton.href = pageList.lastElementChild.href;
+            lastPageButton.href = pageList.lastElementChild.href;
         }
 
-        group.prepend(leftArrowButton);
-        group.append(rightArrowButton);
+        group.prepend(firstPageButton);
+        group.append(lastPageButton);
     });
 }
 
