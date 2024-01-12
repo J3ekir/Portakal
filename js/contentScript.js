@@ -1,9 +1,18 @@
 observe("#centerframe", centerframe);
 
 (function connect() {
-    chrome.runtime.connect({ name: 'keepAlive' })
+    chrome.runtime.connect({ name: "keepAlive" })
         .onDisconnect.addListener(connect);
 })();
+
+chrome.storage.onChanged.addListener(changes => {
+    Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
+        switch (key) {
+            case "profilePictureURL":
+                qs("#profilePicture").src = newValue;
+        }
+    });
+});
 
 
 function centerframe() {
@@ -35,7 +44,7 @@ function centerframe() {
     addPortakalNavCSS();
     //changeGlobalFont();
 
-    addProfilePicture()
+    addProfilePicture();
 
     // ilk/son sayfa tuşlarını ekle
     addPageButtons();
@@ -43,19 +52,20 @@ function centerframe() {
 
 function changeGlobalFont() {
     var fontLoader = function (param) {
-        var link = document.createElement('link');
-        link.type = 'text/css';
-        link.rel = 'stylesheet';
+        var link = document.createElement("link");
+        link.type = "text/css";
+        link.rel = "stylesheet";
 
         document.head.appendChild(link);
 
-        link.href = 'https://fonts.googleapis.com/css?family=' + param.family;
+        link.href = "https://fonts.googleapis.com/css?family=" + param.family;
     };
 
     fontLoader({
-        family: 'Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'
+        family: "Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     });
 }
+
 function addPortakalNavCSS() {
     if (/^https:\/\/normalsozluk\.com\/(?:|feed|myfeed|portakal)$/.test(location.href)) {
         chrome.runtime.sendMessage({
@@ -82,7 +92,7 @@ function addPortakalNavCSS() {
             CSS: "#entriesheadingcontainer{display:block!important;}",
         });
     }
-    
+
     dom.cl.remove(".portakal-navitem.portakal-navitem-active", "portakal-navitem-active");
 
     qsa(".portakal-navitem").forEach(elem => {
@@ -91,14 +101,12 @@ function addPortakalNavCSS() {
         }
     });
 
-
-     // Tüm sayfayı yeniden yüklemeyi gerektirmeyen bağlantılara 
+    // Tüm sayfayı yeniden yüklemeyi gerektirmeyen bağlantılara 
     // gerekli sınıfı ekle (sol çerçeveyi değiştiren sayfalar hariç)
-    if (!/^https:\/\/normalsozluk\.com\/(admin|modlog|stats)$/.test(location.href)) { 
+    if (!/^https:\/\/normalsozluk\.com\/(admin|modlog|stats)$/.test(location.href)) {
         dom.cl.add(".toplogo a, .bkz, .entryauthor, .entry > h2 > a, .entry > h3 > a, #notificationpreviewcontainer .bkz", "loadcenter");
         dom.cl.remove(".bkz-external", "loadcenter");
     }
-
 }
 
 function addPortakalNav() {
@@ -211,11 +219,3 @@ function observe(selector, func) {
             .observe(elem, { childList: true });
     });
 }
-
-chrome.storage.onChanged.addListener(changes => {
-    Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
-        if (key === "profilePictureURL") {
-            qs("#profilePicture").src = newValue;
-        }
-    });
-});
