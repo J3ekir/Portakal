@@ -123,7 +123,9 @@ function addPortakalNavCSS() {
 }
 
 function addPortakalNav() {
-    var parent = qs("#centerframe").parentElement;
+    if (qs("#portakal-nav")) {
+        return;
+    }
 
     const nav = dom.ce("nav");
     nav.id = "portakal-nav";
@@ -153,7 +155,7 @@ function addPortakalNav() {
 
     nav.append(mainPage, feedPage, myFeedPage, portakalPage);
 
-    parent.prepend(nav);
+    qs("#centerframe").parentElement.prepend(nav);
 }
 
 /**
