@@ -40,7 +40,7 @@ function adjustPageTitle() {
  * genel arama yer tutucu yazını değiştir
  */
 function adjustSearchPlaceholders() {
-    var titleSearch = qs("#titlesearch");
+    const titleSearch = qs("#titlesearch");
     if (titleSearch) {
         titleSearch.placeholder = "sözlükte ara";
     }
@@ -50,7 +50,7 @@ function adjustSearchPlaceholders() {
  * başlık içi arama yer tutucu yazılarını değiştir
  */
 function adjustEntrySearchPlaceholder() {
-    var entrySearch = qs("[name='q']");
+    const entrySearch = qs("[name='q']");
     if (entrySearch) {
         entrySearch.placeholder = "başlıkta ara";
     }
@@ -60,15 +60,15 @@ function adjustEntrySearchPlaceholder() {
  * başlık kategorisini başlığın altına taşı
  */
 function moveTitleCategory() {
-    var category = qs("#entry-heading-category");
+    const category = qs("#entry-heading-category");
     if (category) {
         category.parentElement.insertBefore(category, category.parentElement.children[1]);
     }
 }
 
 function changeGlobalFont() {
-    var fontLoader = function (param) {
-        var link = document.createElement("link");
+    const fontLoader = function (param) {
+        const link = document.createElement("link");
         link.type = "text/css";
         link.rel = "stylesheet";
 
@@ -127,28 +127,28 @@ function addPortakalNavCSS() {
 function addPortakalNav() {
     var parent = qs("#centerframe").parentElement;
 
-    var nav = dom.ce("nav");
+    const nav = dom.ce("nav");
     nav.id = "portakal-nav";
 
-    var baseNavButton = dom.ce("a");
+    const baseNavButton = dom.ce("a");
     dom.cl.add(baseNavButton, "portakal-navitem loadcenter");
 
-    var mainPage = dom.clone(baseNavButton);
+    const mainPage = dom.clone(baseNavButton);
     dom.attr(mainPage, "href", "https://normalsozluk.com/");
     dom.attr(mainPage, "title", "tüm zamanların beğenilen tanımları");
     dom.text(mainPage, "keşfet");
 
-    var feedPage = dom.clone(baseNavButton);
+    const feedPage = dom.clone(baseNavButton);
     dom.attr(feedPage, "href", "https://normalsozluk.com/feed");
     dom.attr(feedPage, "title", "en son girilen tanımlar");
     dom.text(feedPage, "akış");
 
-    var myFeedPage = dom.clone(baseNavButton);
+    const myFeedPage = dom.clone(baseNavButton);
     dom.attr(myFeedPage, "href", "https://normalsozluk.com/myfeed");
     dom.attr(myFeedPage, "title", "bildirimi açık başlıklara girilen ve takip ettiğiniz yazarlar tarafından girilen tanımlar");
     dom.text(myFeedPage, "takip");
 
-    var portakalPage = dom.clone(baseNavButton);
+    const portakalPage = dom.clone(baseNavButton);
     dom.attr(portakalPage, "href", "https://normalsozluk.com/portakal");
     dom.attr(portakalPage, "title", "dünün en beğenilen tanımları");
     dom.text(portakalPage, "portakal");
