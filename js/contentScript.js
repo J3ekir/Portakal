@@ -9,7 +9,7 @@ chrome.storage.onChanged.addListener(changes => {
     Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
         switch (key) {
             case "profilePictureURL":
-                qs("#profilePicture").src = newValue;
+                qs("#cockpitProfilePicture").src = newValue;
         }
     });
 });
