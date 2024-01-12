@@ -1,18 +1,26 @@
-waitForVariables().then(() => {
-    initiateJQueryEdits();
-});
+if (!/^https:\/\/normalsozluk\.com\/external/.test(location.href)) {
+    waitForVariable("jQuery").then(() => {
+        removeJQueryEventListener("mouseup").then(adjustMenuAnimsMouseup);
+        removeJQueryEventListener("click", ".frame-toggler").then(adjustMenuAnims);
+        removeJQueryEventListener("click", ".titleinfo").then(adjustTitleInfoAnims);
+        removeJQueryEventListener("click", ".entryscrollbottom").then(adjustScrollToBottom);
+    });
 
-
-function initiateJQueryEdits() {
-    adjustMenuAnims();
-    adjustScrollToBottom();
     adjustLoadingIndicator();
-    adjustTitleInfoAnims();
+}
+
+
+function adjustMenuAnimsMouseup() {
+    $(document).mouseup(function (e) {
+        $(".right-drop-menu").each(function () {
+            $(this).is(e.target) ||
+                0 !== $(this).has(e.target).length ||
+                $(this).slideUp("fast", "easeOutCubic").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
+        });
+    });
 }
 
 function adjustMenuAnims() {
-    $(document).off("mouseup");
-    $(document).off("click", ".frame-toggler");
     $(document).on("click", ".frame-toggler", function (e) {
         e.preventDefault();
         var t = $(this).data("target");
@@ -35,21 +43,13 @@ function adjustMenuAnims() {
             $(t).slideUp("fast", "easeOutCubic").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
         }
     });
-    $(document).mouseup(function (e) {
-        $(".right-drop-menu").each(function () {
-            $(this).is(e.target) ||
-                0 !== $(this).has(e.target).length ||
-                $(this).slideUp("fast", "easeOutCubic").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
-        });
-    });
 }
 
 function adjustTitleInfoAnims() {
-    $(document).off("click", ".titleinfo");
     // $(document).on("click", ".titleinfo", (function() {
     //     $("#titleinfobox").slideToggle("fast", "easeOutCubic")
     // }));
-    $(document).on("click", ".titleinfo", (function() {
+    $(document).on("click", ".titleinfo", (function () {
         $("#titleinfobox").animate({
             height: "toggle",
             opacity: "toggle",
@@ -59,7 +59,6 @@ function adjustTitleInfoAnims() {
 }
 
 function adjustScrollToBottom() {
-    $(document).off("click", ".entryscrollbottom");
     $(document).on("click", ".entryscrollbottom", (function () {
         var e = $("div.entrybar").last()
             , t = e ? e.position().top - 420 : $(document).height();
@@ -81,13 +80,24 @@ function adjustLoadingIndicator() {
     };
 }
 
-async function waitForVariables() {
+async function waitForVariable(variable) {
     return new Promise(resolve => {
         const id = setInterval(() => {
-            if (
-                typeof jQuery !== "undefined" &&
-                $._data(document, "events").click.filter(event => event.selector === ".frame-toggler").length === 1
-            ) {
+            if (window[variable] !== undefined) {
+                resolve();
+                clearInterval(id);
+            }
+        }, 50);
+    });
+}
+
+async function removeJQueryEventListener(event, selector) {
+    return new Promise(resolve => {
+        const id = setInterval(() => {
+            const events = $._data(document, "events")[event];
+
+            if (events && events.filter(event => event.selector === selector).length === 1) {
+                $(document).off(event, selector);
                 resolve();
                 clearInterval(id);
             }
