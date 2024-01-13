@@ -1000,6 +1000,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 .text-center.profile-social-media {
     display: flex !important;
+    flex-flow: row-reverse;
     position: relative !important;
     left: calc(100% - 195px) !important;
     height: 1px;
