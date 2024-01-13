@@ -1,12 +1,13 @@
 /* 00 
    Genel 
       -- */
-body b {
-    font-weight: 600;
-}
 body {
     overflow-y: scroll !important;
+    & b {
+        font-weight: 600;
+    }
 }
+
 /* 00a - Footer */
 #footer {
     background-color: transparent !important;
@@ -89,7 +90,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 
 #titlesearchcontainer {
-    margin-top: 3px;
+    margin-top: 4px;
     height: 40px !important;
     max-height: 40px !important;
 }
@@ -141,6 +142,43 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 #notificationpreviewcontainer {
     min-height: 560px !important;
+    padding: 4px 0 4px 0;
+}
+#notificationpreviewcontainer > div {
+    border-top: none !important;
+    padding: 10px 10px !important;
+    max-width: 450px !important;
+    margin: 0 4px !important;
+    border-radius: 4px;
+    cursor: unset !important;
+    transition: background-color 50ms linear;
+    &:hover {
+        transition: background-color 0s linear;
+    }
+    & a {
+        color: #f95318;
+    }
+}
+#notificationpreviewcontainer > div > .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    & i {
+        padding-bottom: 1px !important;
+    }
+}
+#notificationpreviewcontainer .notification_delete, #notificationpreviewcontainer .notification_markseen  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    background-color: #77777722;
+    &:hover {
+        background-color: #77777744;
+    }
 }
 
 #frame_notificationsheading {
@@ -148,6 +186,14 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     padding-top: 8px !important;
     top: 0;
     z-index: 1;
+    text-transform: lowercase;
+    height: 28px;
+    font-size: 10pt;
+    display: flex;
+    align-items: center;
+    padding: 4px 6px 4px 8px!important;
+    border: none !important;
+    user-select: none;
     text-transform: lowercase;
 }
 
@@ -159,16 +205,17 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 /* Genel Header - Sağ Tuşlar */
 #topnav-right {
     display: flex !important;
-    gap: 8px;
-    padding-bottom: 4px !important;
+    gap: 6px;
+    margin-top: 4px !important;
 }
 
 #topnav-right > .nav-link {
+    border: 1px #333 solid;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     /* background-color: #77777722; */
     background-color: #212121;
     border-radius: 50%;
@@ -209,14 +256,14 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     content: 'çevrimiçi yazarlar';
 }
 #hamburger-menu {
-    margin-right: 96px;
+    margin-right: 102px;
 }
 #hamburger-menu:before {
     height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: smaller;
+    font-size: 10pt;
     font-weight: 500;
     content: "🍊 turunçgiller   ";
 }
@@ -224,8 +271,9 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     display: none;
 }
 #cockpitProfilePicture {
-    width: 36px;
-    height: 36px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     border-radius: 50%;
     transition: filter 150ms ease-out;
     &:hover {
@@ -257,11 +305,25 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     user-select: none;
     font-size: 11pt;
     font-weight: 500;
+    transition: background-color 50ms linear;
+    &:hover {
+        transition: background-color 0s linear;
+    }
 }
-.entry .dropdown-item {
+
+.entry .dropdown-menu, #frame_chatpreviewheading .dropdown-menu {
+    box-shadow: 0 0 8px 0 #00000033 !important;
+}
+.entry .dropdown-item, #frame_chatpreviewheading .dropdown-menu > .dropdown-item {
+    font-size: 11pt;
     text-transform: lowercase;
+    transition: background-color 50ms linear;
+    &:hover {
+        background-color: #77777722;
+        transition: background-color 0s linear;
+    }
 }
-.entry .dropdown-item > .fa {
+.entry .dropdown-item > .fa, #frame_chatpreviewheading .dropdown-menu > .dropdown-item > .fa {
     display: inline-flex !important;
     min-width: 20px !important;
     justify-content: center !important;
@@ -291,8 +353,8 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     align-items: center;
     justify-content: center;
     height: 28px;
-    font-size: smaller;
-    content: "✈ kokpit";
+    font-size: 10pt;
+    content: "🛩️ kokpit";
 }
 #frame_cockpit .fa {
     display: inline-flex !important;
@@ -424,11 +486,11 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 #categories > div > div > .dropdown-item {
     border-radius: 12px !important;
     text-align: center;
-}
-#categories > div > div > .dropdown-item:hover {
-    background-color: #77777722;
-    transition: background-color 50ms ease-out;
-    
+    transition: background-color 50ms linear;
+    &:hover {
+        background-color: #77777722;
+        transition: background-color 0s linear;
+    }
 }
 #leftframe > div.sticktop.py-1.clearfix > div > div > span {
     font-weight: 600;
@@ -622,7 +684,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 
 
-/* Sohbet */
+/* Mesajlar */
 #chatpreviewcontainer {
     padding: 4px !important;
     user-select: none;
@@ -638,7 +700,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     scrollbar-width: none;
 }
 
-#frame_chatpreviewheading, #frame_notificationsheading {
+#frame_chatpreviewheading {
     height: 28px;
     font-size: 10pt;
     display: flex;
@@ -653,39 +715,46 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
         content: "💬 ";
     }
     font-weight: 500 !important;
+    font-size: 10pt !important;
 }
 #frame_notificationsheading > strong {
     &:before {
         content: "🔔 ";
     }
     font-weight: 500 !important;
+    font-size: 10pt !important;
 }
 #frame_chatpreviewheading > .dropdown.float-right {
     float: unset !important;
     order: 3;
-    padding-top: 2px;
+    & :hover {
+        color: inherit !important;
+    }
 }
-#frame_chatpreviewheading > a, #frame_notificationsheading > a {
+#frame_chatpreviewheading > a, #frame_notificationsheading > a, #frame_chatpreviewheading i.fa-ellipsis-v  {
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 600;
+    height: 20px;
     background-color: #77777722;
     border-radius: 4px;
     padding: 2px 8px;
     font-size: 8pt;
     margin-left: auto;
+    transition: background-color 50ms linear;
+    &:hover {
+        background-color: #77777744;
+        color: inherit;
+        text-decoration: none;
+        transition: background-color 50ms linear;
+    }
 }
-#frame_chatpreviewheading > a:hover, #frame_notificationsheading > a:hover {
-    background-color: #77777744;
-    color: inherit;
-    text-decoration: none;
-    transition: background-color 50ms ease-out;
-}
+
 
 .chatlist {
     border-radius: 4px;
-    padding: 8px 6px !important;
+    padding: 8px 8px !important;
     border: none !important;
     transition: background-color 50ms linear;
     &:hover {
@@ -694,6 +763,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 .chatlist .date {
     top: 10px !important;
+    right: 10px !important;
     font-size: 8pt !important;
 }
 .chatlist .authorimage {
@@ -1040,11 +1110,6 @@ body {
         box-shadow: 0 -10px 0 #fff, 0 2px 2px #fff;
     }
 
-    #frame_notificationsheading {
-        background: border-box #fff;
-        box-shadow: 0 3px 2px 0 #fff;
-    }
-
     .inpagechatframe,
     .inpagechattoggle {
         border-color: #fff !important;
@@ -1110,11 +1175,6 @@ body.grey {
         box-shadow: 0 -10px 0 #ddd, 0 2px 2px #ddd;
     }
 
-    #frame_notificationsheading {
-        background: border-box #ddd;
-        box-shadow: 0 3px 2px 0 #ddd;
-    }
-
     .inpagechatframe,
     .inpagechattoggle {
         border-color: #ddd !important;
@@ -1152,6 +1212,7 @@ body.dark-grey {
 
     #topnav-right > .nav-link {
         background-color: #212121;
+        border-color: #333;
     }
 
     #frame_chatpreviewheading, #frame_notificationsheading, #hamburger-menu:before, #frame_cockpit:before {
@@ -1165,11 +1226,6 @@ body.dark-grey {
     #entriesheadingcontainer, #portakal-nav {
         background-color: #282828;
         box-shadow: 0 -10px 0 #282828, 0 2px 2px #282828;
-    }
-
-    #frame_notificationsheading {
-        background: border-box #282828;
-        box-shadow: 0 3px 2px 0 #282828;
     }
 
     .inpagechatframe,
@@ -1223,11 +1279,6 @@ body.dark {
     #entriesheadingcontainer, #portakal-nav {
         background-color: #181818;
         box-shadow: 0 -10px 0 #181818, 0 2px 2px #181818;
-    }
-
-    #frame_notificationsheading {
-        background: border-box #181818;
-        box-shadow: 0 3px 2px 0 #181818;
     }
 
     .inpagechatframe,
