@@ -94,19 +94,6 @@ function addPortakalNavCSS() {
         });
     }
 
-    if (/^https:\/\/normalsozluk\.com\/portakal$/.test(location.href)) {
-        chrome.runtime.sendMessage({
-            type: "insertCSSString",
-            CSS: "#entriesheadingcontainer{display:none!important;}",
-        });
-    }
-    else {
-        chrome.runtime.sendMessage({
-            type: "insertCSSString",
-            CSS: "#entriesheadingcontainer{display:block!important;}",
-        });
-    }
-
     dom.cl.remove(".portakal-navitem.portakal-navitem-active", "portakal-navitem-active");
 
     qsa(".portakal-navitem").forEach(elem => {
@@ -162,6 +149,7 @@ function addPortakalNav() {
  * profil resmini ekle
  */
 function addProfilePicture() {
+    // profil resmi yoksa ekle
     if (!qs("#cockpitProfilePicture")) {
         dom.remove("[data-target='#frame_cockpit']>:is(i,span)");
 
@@ -174,6 +162,7 @@ function addProfilePicture() {
         });
     }
 
+    // profil resmi değişmişse kaydet ve değiştir
     if (qs(".profile-photo-actions")) {
         chrome.storage.local.get("profilePictureURL").then(settings => {
             const newprofilePictureURL = dom.attr(".profile-picture>img", "src").replace(/_l\.jpeg$/, "_s.jpeg");
