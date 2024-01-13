@@ -54,18 +54,18 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     all: unset !important;
 }
 #topbar .row:first-child {
-	box-shadow: unset;
+    box-shadow: unset;
 }
 .toplogo {
-	display: inline-flex;
-	gap: 6px;
+    display: inline-flex;
+    gap: 6px;
 }
 .toplogo a {
-	letter-spacing: -0.5px;
+    letter-spacing: -0.5px;
 }
 #topnavlogo {
-	justify-content: center;
-	display: inline-flex;
+    justify-content: center;
+    display: inline-flex;
 }
 
 /* 01a - Arama */
