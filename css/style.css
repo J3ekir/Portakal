@@ -210,7 +210,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 
 #topnav-right > .nav-link {
-    border: 1px #333 solid;
+    border: 1px solid;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1095,6 +1095,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 body {
     #topnav-right > .nav-link {
         background-color: #f9f9f9;
+        border-color: #f6f6f6;
     }
 
     #frame_chatpreviewheading, #frame_notificationsheading, #hamburger-menu:before, #frame_cockpit:before {
@@ -1160,6 +1161,7 @@ body {
 body.grey {
     #topnav-right > .nav-link {
         background-color: #e3e3e3;
+        border-color: #e6e6e6;
     }
 
     #frame_chatpreviewheading, #frame_notificationsheading, #hamburger-menu:before, #frame_cockpit:before {
@@ -1266,6 +1268,7 @@ body.dark {
 
     #topnav-right > .nav-link {
         background-color: #151515;
+        border-color: #333;
     }
 
     #frame_chatpreviewheading, #frame_notificationsheading, #hamburger-menu:before, #frame_cockpit:before {
