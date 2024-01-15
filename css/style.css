@@ -920,7 +920,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     object-fit: cover;
     width: 100px !important;
     transition: box-shadow 0.25s ease-out;
-    pointer-events: auto;
 }
 .profile-badge-actions > .actionbutton, .profile-photo-actions > .actionbutton {
     height: 32px !important;
@@ -929,7 +928,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     align-items: center;
     justify-content: center;
     background-color: #c8c8c8 !important;
-    pointer-events: auto;
     transition: background-color 100ms linear;
     &:hover {
         background-color: #b5b5b5 !important;
@@ -942,7 +940,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     }
 }
 .profile-picture > img {
-    pointer-events: auto;
     object-fit: cover;
     width: 100px !important;
     height: 100px !important;
@@ -961,7 +958,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 
 .cover-photo {
-    pointer-events: auto;
     border-radius: 16px;
 }
 .cover-photo-actions > .actionbutton {
@@ -1034,9 +1030,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     background-color: #77777722;
     transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
     color: inherit !important;
-}
-#profile-top {
-    pointer-events: none;
 }
 .profile-actions {
     gap: 16px;
