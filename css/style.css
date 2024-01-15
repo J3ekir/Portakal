@@ -7,6 +7,14 @@ body {
         font-weight: 600;
     }
 }
+.modal-dialog {
+	text-transform: lowercase;
+}
+.modal-header {
+	font-weight: 600;
+	border: none !important;
+	box-shadow: 0 4px 8px -2px #00000022;
+}
 
 /* 00a - Footer */
 #footer {
