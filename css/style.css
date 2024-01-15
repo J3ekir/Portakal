@@ -1380,7 +1380,3 @@ body.dark {
     background-color: #77777722;
     transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
 }
-
-#entriesheadingcontainer:not(:has(h1.float-left>*)) {
-    display: none !important;
-}
