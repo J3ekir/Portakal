@@ -104,7 +104,7 @@ function addPortakalNavCSS() {
 
     // Tüm sayfayı yeniden yüklemeyi gerektirmeyen bağlantılara 
     // gerekli sınıfı ekle (sol çerçeveyi değiştiren sayfalar hariç)
-    if (!/^https:\/\/normalsozluk\.com\/(admin|modlog|stats)$/.test(location.href)) {
+    if (!/^https:\/\/normalsozluk\.com\/(admin|modlog|stats)/.test(location.href)) {
         dom.cl.add(
             ".toplogo a, \
             .bkz:not(.bkz-external), \
