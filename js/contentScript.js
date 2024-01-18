@@ -81,17 +81,12 @@ function changeGlobalFont() {
 }
 
 function addPortakalNavCSS() {
+    var portakalNav = qs("#portakal-nav");
     if (/^https:\/\/normalsozluk\.com\/(?:|feed|myfeed|portakal)$/.test(location.href)) {
-        chrome.runtime.sendMessage({
-            type: "insertCSSString",
-            CSS: "#portakal-nav{height:48px!important;padding-top:2px!important;padding-bottom:6px!important;opacity:100;z-index:1;pointer-events:revert;}",
-        });
+        dom.cl.add(portakalNav, "portakal-nav-visible");
     }
     else {
-        chrome.runtime.sendMessage({
-            type: "insertCSSString",
-            CSS: "#portakal-nav{height:0!important;padding:0!important;opacity:0;z-index:0;pointer-events:none;}",
-        });
+        dom.cl.remove(portakalNav, "portakal-nav-visible");
     }
 
     dom.cl.remove(".portakal-navitem.portakal-navitem-active", "portakal-navitem-active");

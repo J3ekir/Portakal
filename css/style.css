@@ -1334,12 +1334,21 @@ body.dark {
 
 #portakal-nav {
     display: flex;
-    height: 0;
     position: sticky;
     top: 60px;
     gap: 4px;
-    padding: 0;
+    will-change: transform;
     transition: height 150ms ease-out, padding 150ms ease-out, opacity 150ms ease-out;
+    height: 0;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+.portakal-nav-visible {
+    height: 52px!important;
+    opacity: 100 !important;
+    z-index: 1 !important;
+    pointer-events: revert !important;
 }
 
 .portakal-navitem {
@@ -1353,7 +1362,7 @@ body.dark {
     height: 36px !important;
     border-radius: 24px !important;
     padding: 12px !important;
-    margin-top: 4px !important;
+    margin-top: 8px !important;
     text-decoration: none;
 }
 .portakal-navitem:hover {
