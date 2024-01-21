@@ -4,6 +4,10 @@ if (!/^https:\/\/normalsozluk\.com\/external/.test(location.href)) {
         removeJQueryEventListener("click", ".frame-toggler").then(adjustMenuAnims);
         removeJQueryEventListener("click", ".titleinfo").then(adjustTitleInfoAnims);
         removeJQueryEventListener("click", ".entryscrollbottom").then(adjustScrollToBottom);
+
+        waitForElement("#centerframe").then(elem => {
+            adjustHistoryState(elem);
+        });
     });
 }
 
@@ -87,6 +91,12 @@ function adjustLoadingIndicator() {
         writable: false,
         configurable: false,
     });
+}
+
+function adjustHistoryState(centerframe) {
+    if (!window.history.state) {
+        window.pushHistory(window.location.href, "#centerframe", centerframe.innerHTML);
+    }
 }
 
 async function waitForVariable(variable) {
