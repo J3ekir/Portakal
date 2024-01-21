@@ -100,6 +100,21 @@ async function waitForVariable(variable) {
     });
 }
 
+async function waitForElement(selector) {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
+        new MutationObserver((_, observer) => {
+            if (document.querySelector(selector)) {
+                observer.disconnect();
+                return resolve(document.querySelector(selector));
+            }
+        })
+            .observe(document, { childList: true, subtree: true });
+    });
+}
+
 async function removeJQueryEventListener(event, selector) {
     return new Promise(resolve => {
         const id = setInterval(() => {
