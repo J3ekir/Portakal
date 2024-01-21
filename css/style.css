@@ -514,13 +514,41 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     display: flex;
     flex-direction: column;
     will-change: transform;
-}
-#titleinfobox p {
-    padding: 12px !important;
-    margin: 0 !important;
-}
-#titleinfobox a {
-    color: #f95318 !important;
+    & p {
+        padding: 12px !important;
+        margin: 0 !important;
+    }
+    & a {
+        color: #f95318 !important;
+    }
+
+    /* Başlık günlüğü tablosu */
+    & h4 {
+        display: none;
+    }
+    & table {
+        width: calc(100% - 32px) !important;
+        margin: 16px !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+        font-size: smaller;
+    }
+    & tbody {
+        box-shadow: 0 0 0 2px #77777722 inset;
+        border-radius: 8px !important;
+    }
+    & tbody td, th {
+        border: none !important;
+    }
+    & tr:first-of-type {
+        text-transform: lowercase;
+    }
+    & tr:last-of-type, tr:first-of-type {
+        border-radius: 8px !important;
+    }
+    & tr > td:last-of-type {
+        font-family: monospace;
+    }
 }
 #entriesheadingcontainer:not(:has(.nav-tabs)) { /* Başlık sayfası headerı */
     padding-bottom: 8px !important;
