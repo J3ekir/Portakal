@@ -111,7 +111,7 @@ function addPortakalNavCSS() {
             #entriesheadingcontainer > header > h1 > a, \
             #frame_cockpit > a:nth-child(-n+6)", "loadcenter");
     }
-    if (!/^https:\/\/normalsozluk\.com\/(admin|modlog|stats)$/.test(location.href)) {
+    if (!/^https:\/\/normalsozluk\.com\/(admin|modlog|stats)/.test(location.href)) {
         var cockpitCenterLoaders = qsa("#frame_cockpit > a:nth-child(-n+6)");
         dom.cl.add(cockpitCenterLoaders, "frame-toggler");
         dom.attr(cockpitCenterLoaders, "onclick", "if (!window.__cfRLUnblockHandlers) return false; $('#frame_cockpit').fadeOut(100, 'swing')");
