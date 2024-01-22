@@ -162,8 +162,8 @@ function addPortakalNav() {
  * profil resmini ekle
  */
 function addProfilePicture() {
-    // profil resmi yoksa ekle
-    if (!qs("#cockpitProfilePicture")) {
+    // profil resmi ve giriş yapmışsa yoksa ekle
+    if (!qs("#cockpitProfilePicture") && !qs(".button_signup")) {
         dom.remove("[data-target='#frame_cockpit']>:is(i,span)");
 
         const profilePicture = dom.ce("img");
