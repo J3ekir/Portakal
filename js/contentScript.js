@@ -192,7 +192,7 @@ function addProfilePicture() {
  * ilk/son sayfa tuşlarını ekle
  */
 function addPageButtons() {
-    waitForElementToExist("#entriesheadingcontainer .btn-group:has(.fa-angle-right)").then(group => {
+    waitForElementToExist("#entriesheadingcontainer .btn-group:has([role='group']+.btn>.fa-angle-right)").then(group => {
         if (group.children.length === 5) {
             return;
         }
