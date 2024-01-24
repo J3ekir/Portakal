@@ -949,7 +949,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     width: 100px !important;
     transition: box-shadow 0.25s ease-out;
 }
-.profile-badge-actions > .actionbutton, .profile-photo-actions > .actionbutton {
+.profile-badge-actions > .actionbutton, .profile-photo-actions > .actionbutton, .action-button.select-badge  {
     height: 32px !important;
     width: 32px !important;
     display: flex;
@@ -965,6 +965,26 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     &:active {
         transition: background-color 100ms linear;
         background-color: #a1a1a1 !important;
+    }
+}
+.action-button.select-badge {
+    padding: 0 !important;
+    & i {
+        color: unset !important;
+        height: 32px !important;
+        width: 32px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 1px;
+    }
+}
+.badge-list-item {
+    border-radius: 4px;
+    transition: background-color 50ms linear;
+    &:hover {
+        background-color: #77777722 !important;
+        transition: background-color 0s linear;
     }
 }
 .profile-picture > img {
