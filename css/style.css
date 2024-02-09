@@ -52,7 +52,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 	box-shadow: 0 4px 8px -2px #00000022;
 }
 .modal-open[style] { /* Modallerin sayfayı kaydırmasını düzelt */
-    padding-right: 0px !important;
+    padding-right: 0 !important;
 }
 /* #endregion Modal */
 
@@ -489,7 +489,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 
 #container-list-header-buttons > * {
     margin: 0 !important;
-    margin-bottom: 0px !important;
+    margin-bottom: 0 !important;
 }
 
 #container-list-header-buttons.clearfix::after {
@@ -768,7 +768,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     font-weight: 600;
 }
 #entry-heading-category > * { /* Başlık ana kategorileri */
-    padding: 0px !important;
+    padding: 0 !important;
     letter-spacing: -0.4px;
 }
 
@@ -951,7 +951,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 
 /* #region Tanım */
 .entry {
-    box-shadow: 0 2px 0px 0px #00000011;
+    box-shadow: 0 2px 0 0 #00000011;
 }
 .entrytext > .img {
     width: fit-content;
