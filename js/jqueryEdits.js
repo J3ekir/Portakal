@@ -94,46 +94,99 @@ function adjustHamburgerToOnlineAnimation() {
     });
 }
 
-
 function overridePushHistory() {
     overrideRenderCenter();
     overrideLoadCenter();
 
-
-    window.pushHistory = function (e, t, o, title) {
-        if (!(o.length / 1024 > 630)) {
-            var a = ""
-                , r = ""
-                , s = $("<div>" + o + "</div>")
-                , c = s.find(".xhr-mt").first()
-                , d = s.find(".xhr-mdesc").first()
-                , l = s.find(".xhr-cnn").first();
-            a = void 0 !== c && 1 === c.length ? c.html() : title && title.toLowerCase(),
-                void 0 !== d && 1 === d.length && (r = d.html(),
-                    $("meta[name='description']").attr("content", r)),
-                void 0 !== l && 1 === l.length && $('link[rel="canonical"]').attr("href", l.html());
+    window.pushHistory = function (url, selector, html, title, centerframeJQueryObject, centerframeTitle) {
+        if (!(html.length / 1024 > 630)) {
+            var s = centerframeJQueryObject || $("<div>" + html + "</div>");
+            var c = centerframeTitle || s.find(".xhr-mt").first();
+            var d = s.find(".xhr-mdesc").first();
+            var l = s.find(".xhr-cnn").first();
+            var r = "";
+            var a = title !== undefined ? title.toLowerCase() : c.html();
+            if (d !== undefined && d !== "") {
+                r = d.html();
+                $("meta[name='description']").attr("content", r);
+            }
+            if (l !== undefined && l !== "") {
+                $('link[rel="canonical"]').attr("href", l.html());
+            }
             var u = {
-                path: e,
-                selector: t,
-                html: o,
+                path: url,
+                selector: selector,
+                html: html,
                 title: a,
                 desc: r
             };
             if ("function" == typeof window.history.pushState) {
-                if (window.history.state && window.history.state.path === e)
-                    return void (window.history.state.html = o);
-                window.history.pushState(u, e, e);
-            } else
-                window.location.hash = "#!" + e;
+                if (window.history.state && window.history.state.path === url) {
+                    return void (window.history.state.html = html);
+                }
+
+                window.history.pushState(u, url, url);
+            }
+            else {
+                window.location.hash = "#!" + url;
+            }
+
             if ("function" == typeof gtag && "" !== window.location.pathname && "/" !== window.location.pathname) {
                 var h = {
                     page_title: a,
                     page_location: window.location.href,
-                    page_path: e
+                    page_path: url
                 };
                 gtag("event", "page_view", h);
             }
             updateTitle(a);
+        }
+    };
+}
+
+function overrideRenderCenter() {
+    window.renderCenter = function (html, url, title, centerframeJQueryObject, centerframeTitle) {
+        $("#centerframe").html(html),
+            isMobile() && collapseLeftFrame(),
+            window.scrollTo(0, 0),
+            pushHistory(url, "#centerframe", html, title, centerframeJQueryObject, centerframeTitle),
+            stickPanels(),
+            processEntry(),
+            "undefined" != typeof AUTHOR_ID && initInputEntryBody(),
+            hideLoader();
+    };
+}
+
+function overrideLoadCenter() {
+    window.loadCenter = function (url) {
+        if (url !== "" && url !== undefined) {
+            if (typeof pageLeaveCheck !== "function" || pageLeaveCheck() || confirm("bu sayfaya girdiğiniz fakat göndermediğiniz içerikler var. \nsayfadan ayrılırsanız bu içerikler kaybolacaktır. \n\nilerlemek istiyor musunuz?")) {
+                showLoader();
+
+                $.ajax({
+                    method: "GET",
+                    url: url,
+                    cache: false,
+                    async: true,
+                    success: function (html) {
+                        var centerframeJQueryObject = $("<div>" + html + "</div>");
+                        var centerframeTitle = centerframeJQueryObject.find(".xhr-mt").first();
+
+                        if (centerframeTitle !== undefined && centerframeTitle.length === 1) {
+                            renderCenter(html, url, undefined, centerframeJQueryObject, centerframeTitle);
+                        }
+                        else {
+                            fetchTitle(url).then(title => {
+                                renderCenter(html, url, title, centerframeJQueryObject, centerframeTitle);
+                            });
+                        }
+                    },
+                    error: function (t, i) {
+                        t.status < 500 ? renderCenter(t.responseText, url) : alert("istediğiniz içerik yüklenemedi. \nbir süre sonra yeniden deneyin."),
+                            hideLoader();
+                    }
+                });
+            }
         }
     };
 }
@@ -203,46 +256,4 @@ async function fetchTitle(url) {
     const html = await response.text();
     const match = html.match(/<title>(.*?)<\/title>/);
     return match ? match[1] : window.windowTitle;
-}
-
-function overrideRenderCenter() {
-    window.renderCenter = function (e, t, title) {
-        $("#centerframe").html(e),
-            isMobile() && collapseLeftFrame(),
-            window.scrollTo(0, 0),
-            pushHistory(t, "#centerframe", e, title),
-            stickPanels(),
-            processEntry(),
-            "undefined" != typeof AUTHOR_ID && initInputEntryBody(),
-            hideLoader();
-    };
-}
-
-function overrideLoadCenter() {
-    window.loadCenter = function (e) {
-        "" !== e && void 0 !== e && ("function" != typeof pageLeaveCheck || pageLeaveCheck() || confirm("bu sayfaya girdiğiniz fakat göndermediğiniz içerikler var. \nsayfadan ayrılırsanız bu içerikler kaybolacaktır. \n\nilerlemek istiyor musunuz?")) && (showLoader(),
-            $.ajax({
-                method: "GET",
-                url: e,
-                cache: !1,
-                async: !0,
-                success: function (t) {
-                    var s = $("<div>" + t + "</div>");
-                    var c = s.find(".xhr-mt").first();
-
-                    if (c !== undefined && c.length === 1) {
-                        renderCenter(t, e);
-                    }
-                    else {
-                        fetchTitle(e).then(title => {
-                            renderCenter(t, e, title);
-                        });
-                    }
-                },
-                error: function (t, i) {
-                    t.status < 500 ? renderCenter(t.responseText, e) : alert("istediğiniz içerik yüklenemedi. \nbir süre sonra yeniden deneyin."),
-                        hideLoader();
-                }
-            }));
-    };
 }
