@@ -35,7 +35,7 @@
             "world": "MAIN"
         }
     ],
-    "description": "normal sözlük'ü sıkar atar.",
+    "description": "normal sözlük'ü sıkar atar (web sitesini iyileştirir).",
     "homepage_url": "https://github.com/Dekamir",
     "host_permissions": [ "<all_urls>" ],
     "icons": {
