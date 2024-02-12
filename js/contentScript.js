@@ -171,6 +171,16 @@ function addProfilePicture() {
 
         chrome.storage.local.get("profilePictureURL").then(settings => {
             qs("#cockpitProfilePicture").src = settings.profilePictureURL || "https://normalsozluk.com/images/no_avatarfb.jpg";
+
+            fetchProfilePictureURL().then(profilePictureURL => {
+                if (profilePictureURL !== settings.profilePictureURL) {
+                    chrome.storage.local.set({
+                        profilePictureURL,
+                    });
+
+                    return;
+                }
+            });
         });
     }
 
@@ -186,6 +196,17 @@ function addProfilePicture() {
             }
         });
     }
+}
+
+async function fetchProfilePictureURL() {
+    const profileButton = await waitForElementToExist("#frame_cockpit>:first-child");
+    const response = await fetch(profileButton.href);
+    const html = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    const profilePictureURL = doc.querySelector(".profile-picture>img").src.replace(/_l\.jpeg$/, "_s.jpeg");
+
+    return profilePictureURL;
 }
 
 /**
