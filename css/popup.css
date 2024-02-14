@@ -1,0 +1,102 @@
+:root {
+    --color-background-entry: #2c2c2c;
+    --color-background-button: #212121;
+    --color-background-header: #1c1c1c;
+    --color-background-menu-item-hover: #444444;
+    --color-border-button: #333;
+    --color-accent-1: #F95318;
+    --color-text-1: #aaa;
+    --color-user-editor: #6495ed;
+}
+
+body {
+    width: 300px;
+    color: var(--color-text-1);
+    background-color: #282828;
+    font-family: 'Source Sans 3', 'Source Sans Pro', 'Asap', 'Trebuchet MS', 'Segoe UI', 'Lucida Sans Unicode', 'Lucida Sans', Roboto, Arial, Helvetica, sans-serif;
+    font-size: 13pt;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-accent-1);
+}
+select {
+    background-color: var(--color-background-button);
+    color: var(--color-text-1);
+    padding: 4pt;
+    width: 100%;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 12pt;
+    outline: var(--color-border-button);
+    &:focus {
+        outline: unset;
+    }
+}
+option:checked {
+    color: var(--color-accent-1) !important;
+    font-weight: 500;
+}
+
+footer, header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-background-header);
+    padding: 8px 16px;
+}
+header {
+    color: var(--color-accent-1);
+    font-weight: 500;
+    letter-spacing: -0.4px;
+}
+footer {
+    background-color: var(--color-background-header);
+    justify-content: space-between;
+    margin-top: 8px;
+}
+.about-developers {
+    font-size: 12pt;
+}
+
+.user-blue {
+    color: var(--color-user-editor)
+}
+.user-orange {
+    color: var(--color-accent-1)
+}
+
+.setting-container {
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.setting-title {
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    pointer-events: none;
+}
+.setting-title-container {
+    display: flex;
+    justify-content: space-between;
+}
+.setting-note {
+    font-size: smaller;
+    font-style: italic;
+}
+.icon-github > a {
+    display: flex;
+}
+.pseudo-symbol {
+    font-family: 'IBM Plex Mono', 'Consolas', 'Courier New', Courier, monospace;
+    transition: color 100ms, background-color 100ms;
+    border-radius: 10px;
+    cursor: context-menu;
+    &:hover {
+        color: var(--color-accent-1);
+        background-color: var(--color-background-menu-item-hover);
+    }
+}
