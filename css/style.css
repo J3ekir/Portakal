@@ -568,11 +568,49 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     color: inherit !important;
     box-shadow: inset 0 0 0 1px #f95318 !important;
 }
+#onlineauthors {
+    display: flex !important;
+    flex-direction: column;
+}
+.onlineauthor {
+    display: flex;
+    flex-grow: 1;
+}
+.onlineauthorbuttons {
+    float: unset !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0 !important;
+    width: 48px !important;
+    & i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 18px;
+        width: 18px;
+    }
+}
 .onlineauthornickname {
+    flex-grow: 1;
+    display: inline-flex !important;
     border-radius: 4px;
 }
+#onlineauthors .onlineauthornickname > a {
+    flex-grow: 1;
+    display: inline-flex;
+    min-width: 0;
+    gap: 4px;
+    align-items: center;
+    & i {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 16px;
+    }
+}
 .onlineauthornickname > .nickname:hover {
-    color: inherit !important;
+    color: unset !important;
 }
 /* #endregion Çevrimiçi Yazarlar */
 
