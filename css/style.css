@@ -4,6 +4,12 @@ body {
     & b {
         font-weight: 600;
     }
+    & ::selection {
+        background-color: #f9531866;
+    }
+    input { /* Seçim aksan rengi */
+        accent-color: #f95318;
+    }
 }
 
 .btn:focus { /* Takılı kalan tuş odağını gizle */
