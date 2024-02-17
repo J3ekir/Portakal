@@ -827,8 +827,37 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 
 #centerframe > div > .clearfix > .float-right > .dropdown-pagination > .btn-group,
-#leftframe > div:has(> .dropdown-pagination) { /* - Sayfa Değiştirici */
+#leftframe > div:has(> .dropdown-pagination) { /* Sayfa Değiştirici */
     display: none !important;
+}
+
+#form_entry_add label { /* Tanım gönderme zamanı seçici */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 9px 0 8px;
+    height: 28px;
+    background-color: #77777722;
+    border-radius: 24px;
+    transition: outline 100ms ease-out, background-color 100ms linear;
+    outline: 1.5px solid transparent;
+    user-select: none;
+    &:hover {
+        background-color: #77777744;
+        transition: outline 100ms ease-out, background-color 0ms linear;
+    }
+}
+#form_entry_add label:has(input:checked) {
+    outline: 1.5px solid #f95318;
+    background-color: #77777744 !important;
+}
+#entryinput_charcount {
+    height: 28px;
+    text-align: right;
+    box-shadow: none !important;
+    &:focus {
+        box-shadow: none !important;
+    }
 }
 /* #endregion Başlık */
 
