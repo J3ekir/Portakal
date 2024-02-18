@@ -284,8 +284,10 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
    /* #endregion Düşer Menüler */
 
 /* #region Kokpit */
-#frame_cockpit {
-    margin-right: 10px;
+@media screen and ( min-width: 768px ) {
+    #frame_cockpit {
+        margin-right: 10px;
+    }
 }
 #frame_cockpit:before {
     display: flex;
@@ -311,8 +313,10 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 /* #endregion Kokpit */
 
 /* #region Turunçgiller / Hamburger Menü */
-#hamburger-menu {
-    margin-right: 102px;
+@media screen and ( min-width: 768px ) {
+    #hamburger-menu {
+        margin-right: 102px;
+    }
 }
 #hamburger-menu:before {
     height: 28px;
@@ -408,9 +412,17 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     padding: 4px !important;
     user-select: none;
     min-height: 584px;
+    @media screen and ( max-width: 768px ) {
+        min-width: none !important;
+        max-width: none !important;
+    }
 }
 #frame_chatpreview {
     padding: 0 !important;
+    @media screen and ( max-width: 768px ) {
+        min-width: none !important;
+        max-width: none !important;
+    }
 }
 #frame_chatpreview::-webkit-scrollbar, #chatpreviewcontainer::-webkit-scrollbar, #frame_notifications::-webkit-scrollbar {
     display: none;
@@ -428,6 +440,10 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     border: none !important;
     user-select: none;
     text-transform: lowercase;
+    @media screen and ( max-width: 768px ) {
+        top: 0;
+        position: sticky;
+    }
 }
 #frame_chatpreviewheading > strong {
     &:before {
@@ -496,6 +512,15 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 #container-list-header-buttons > * {
     margin: 0 !important;
     margin-bottom: 0 !important;
+}
+#container-list-header-buttons > div > div > button, #container-list-header-buttons > div > div > div > button {
+    @media screen and ( max-width: 768px ) {
+        height: 32px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+    }
 }
 
 #container-list-header-buttons.clearfix::after {
@@ -688,6 +713,11 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     pointer-events: none !important;
 }
 
+@media only screen and (max-width: 768px) {
+    #categories {
+        height: 50px;
+    }
+} 
 .cat-btn {
     transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
     box-shadow: none;
@@ -805,8 +835,11 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 #entriesheadingcontainer:not(:has(.nav-tabs)) { /* Başlık sayfası headerı */
     padding-bottom: 8px !important;
     position: sticky !important;
-    top: 64px !important;
     z-index: 1 !important;
+    top: 64px !important;
+    @media only screen and (max-width: 768px) { 
+        top: 0px !important;
+    }
 }
 #entriesheadingcontainer > header > h1 > a { /* Başlık adı */
     font-weight: 600;
@@ -1056,6 +1089,17 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 
 
 /* #region Profil */
+#centerframe:has(.profile-nickname) > .has-side-ad- > hr { /* Profil headerı ile tanımlar arası çizgi */
+    display: none !important;
+}
+.badge-list-item {
+    border-radius: 4px;
+    transition: background-color 50ms linear;
+    &:hover {
+        background-color: #77777722 !important;
+        transition: background-color 0s linear;
+    }
+}
 .profile-badge > img {
     object-fit: cover;
     width: 100px !important;
@@ -1091,13 +1135,8 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
         padding-right: 1px;
     }
 }
-.badge-list-item {
-    border-radius: 4px;
-    transition: background-color 50ms linear;
-    &:hover {
-        background-color: #77777722 !important;
-        transition: background-color 0s linear;
-    }
+.profile-nickname a {
+    font-weight: 600 !important;
 }
 .profile-picture > img {
     object-fit: cover;
@@ -1109,14 +1148,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
             transition: border-radius 0.25s cubic-bezier(.47, 1.64, .41, .8);
         }
 }
-.profile-nickname {
-    text-align: left !important;
-    max-width: calc(100% - 260px) !important;
-}
-.profile-nickname a {
-    font-weight: 600 !important;
-}
-
 .cover-photo {
     border-radius: 16px;
 }
@@ -1136,27 +1167,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 .cover-photo-actions > .actionbutton > .fa {
     font-size: initial !important;
 }
-
-#centerframe:has(.profile-nickname) > .has-side-ad- > hr { /* profil headerı ile tanımlar arası çizgi */
-    display: none !important;
-}
-#centerframe:has(.profile-nickname) > .has-side-ad- > div.text-center.my-2 { /* profil madalya ve öne çıkan alanı */
-    display: flex;
-    gap: 16px;
-    max-width: calc(100% - 260px);
-    margin: auto;
-    justify-content: flex-start !important;
-    font-size: 10pt;
-}
-#centerframe:has(.profile-nickname) > .has-side-ad- > div.text-center.my-2 img { /* profil madalya ve öne çıkan simgeleri */
-    width: 12px !important;
-}
-@media screen and (min-width: 768px)  {
-    .has-side-ad- .profile-actions { 
-        justify-content: flex-start !important;
-    }
-}
-#centerframe:has(.profile-nickname) > div > h2 {
+#centerframe:has(.profile-nickname) > div > h2 { /* Profil Tanım Sekmeleri */
     display: flex;
     height: 36px !important;
     font-size: 0;
@@ -1191,68 +1202,92 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
     color: inherit !important;
 }
-.profile-actions {
-    gap: 16px;
-    max-width: calc(100% - 260px);
-    margin: auto;
-    height: 24px;
-    justify-content: flex-start !important;
-}
-.profile-actions .sendmessage {
-    position: relative;
-    top: -36px;
-    font-size: 12pt;
-    border: none !important;
-    padding: 2px 6px !important;
-    margin: 0 0 0 auto !important;
-}
-.has-side-ad-:has(.text-center.my-2) .profile-actions .sendmessage {
-    top: -68px !important;
-}
-
-.profile-actions .sendmessage:before {
-    content: "✉ "
-}
-.profile-actions .statbox{
-    font-size: 10pt;
-    border: none !important;
-    height: 24px;
-    padding: 2px !important;
-    margin: 0 !important;
-}
-.status-warning {
-    text-align: left !important;
-    max-width: calc(100% - 260px) !important;
-    margin: auto !important;
-}
-.status-note {
-    max-width: calc(100% - 260px) !important;
-    text-transform: lowercase;
-    margin: 8px auto !important;
-    background-color: #77777712;
-    padding: 8px 12px;
-    border-radius: 8px;
-}
-.profile-follow-block * {
-    text-transform: lowercase;
-    font-size: 10pt !important;
-    margin-bottom: 4px !important;
-}
-.text-center.profile-social-media {
-    display: flex !important;
-    flex-flow: row-reverse;
-    position: relative !important;
-    left: calc(100% - 195px) !important;
-    height: 1px;
-    max-width: 72px !important;
-}
-.profile-tabs * {
+.profile-tabs * { /* Genel Bilgiler vb. */
     font-size: 10pt !important;
     text-transform: lowercase;
 }
 .profile-tabs .btn {
     border-radius: 24px !important;
     border: none;
+}
+#centerframe:has(.profile-nickname) > .has-side-ad- > div.text-center.my-2 { /* profil madalya ve öne çıkan alanı */
+    display: flex;
+    gap: 16px;
+    margin: auto;
+    justify-content: flex-start !important;
+    font-size: 10pt;
+    @media only screen and (min-width: 768px) {
+        max-width: calc(100% - 260px);
+    }
+}
+#centerframe:has(.profile-nickname) > .has-side-ad- > div.text-center.my-2 img { /* profil madalya ve öne çıkan simgeleri */
+    width: 12px !important;
+}
+.status-note {
+    text-transform: lowercase;
+    margin: 8px auto !important;
+    background-color: #77777712;
+    padding: 8px 12px;
+    border-radius: 8px;
+    @media only screen and (min-width: 768px) {
+        max-width: calc(100% - 260px) !important;
+    }
+}
+.profile-actions .sendmessage:before {
+    content: "✉ "
+}
+
+@media only screen and (min-width: 768px) {
+    .profile-nickname {
+        text-align: left !important;
+        max-width: calc(100% - 260px) !important;
+    }
+    .has-side-ad- .profile-actions { 
+        justify-content: flex-start !important;
+    }
+    .profile-actions {
+        gap: 16px;
+        margin: auto;
+        height: 24px;
+        justify-content: flex-start !important;
+        max-width: calc(100% - 260px);
+    }
+    .profile-actions .sendmessage {
+        position: relative;
+        top: -36px;
+        font-size: 12pt;
+        border: none !important;
+        padding: 2px 6px !important;
+        margin: 0 0 0 auto !important;
+    }
+    .has-side-ad-:has(.text-center.my-2) .profile-actions .sendmessage {
+        top: -68px !important;
+    }
+    .profile-actions .statbox{
+        font-size: 10pt;
+        border: none !important;
+        height: 24px;
+        padding: 2px !important;
+        margin: 0 !important;
+    }
+    .status-warning {
+        text-align: left !important;
+        max-width: calc(100% - 260px) !important;
+        margin: auto !important;
+    }
+    .profile-follow-block * {
+        text-transform: lowercase;
+        font-size: 10pt !important;
+        margin-bottom: 4px !important;
+    }
+    .text-center.profile-social-media {
+        display: flex !important;
+        flex-flow: row-reverse;
+        position: relative !important;
+        left: calc(100% - 195px) !important;
+        height: 1px;
+        max-width: 72px !important;
+    }
 }
 /* #endregion Profil */
 
@@ -1498,6 +1533,13 @@ body.dark {
     opacity: 0;
     z-index: 0;
     pointer-events: none;
+    @media only screen and (max-width: 768px) { 
+        top: 0;
+        overflow: auto;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
 }
 .portakal-nav-visible {
     height: 52px!important;
