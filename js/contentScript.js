@@ -23,6 +23,10 @@ function centerframe() {
 
     addPortakalNav();
     addPortakalNavCSS();
+
+    addUnpublishedEntriesNav();
+    addUnpublishedEntriesNavCSS();
+
     //changeGlobalFont();
 
     addProfilePicture();
@@ -153,6 +157,65 @@ function addPortakalNav() {
     dom.text(portakalPage, "portakal");
 
     nav.append(mainPage, feedPage, myFeedPage, portakalPage);
+
+    qs("#centerframe").parentElement.prepend(nav);
+}
+
+function addUnpublishedEntriesNavCSS() {
+    var unpublishedEntriesNav = qs("#unpublishedentries-nav");
+    if (/^https:\/\/normalsozluk\.com\/ben\/tanimlar\/(draft|morning|deleted|removed|republishing)$/.test(location.href)) {
+        dom.cl.add(unpublishedEntriesNav, "unpublishedentries-nav-visible");
+    }
+    else {
+        dom.cl.remove(unpublishedEntriesNav, "unpublishedentries-nav-visible");
+    }
+
+    dom.cl.remove(".unpublishedentries-navitem.unpublishedentries-navitem-active", "unpublishedentries-navitem-active");
+
+    qsa(".unpublishedentries-navitem").forEach(elem => {
+        if (elem.href === location.href) {
+            dom.cl.add(elem, "unpublishedentries-navitem-active");
+        }
+    });
+}
+
+function addUnpublishedEntriesNav() {
+    if (qs("#unpublishedentries-nav")) {
+        return;
+    }
+
+    const nav = dom.ce("nav");
+    nav.id = "unpublishedentries-nav";
+
+    const baseNavButton = dom.ce("a");
+    dom.cl.add(baseNavButton, "unpublishedentries-navitem loadcenter");
+
+    const draftPage = dom.clone(baseNavButton);
+    dom.attr(draftPage, "href", "https://normalsozluk.com/ben/tanimlar/draft");
+    dom.attr(draftPage, "title", "sonradan yayınlamak istediğiniz tanımlar");
+    dom.text(draftPage, "taslak");
+
+    const morningPage = dom.clone(baseNavButton);
+    dom.attr(morningPage, "href", "https://normalsozluk.com/ben/tanimlar/morning");
+    dom.attr(morningPage, "title", "sabahleyin kendiliğinden gönderilecek tanımlar");
+    dom.text(morningPage, "sabaha kalan");
+
+    const deletedPage = dom.clone(baseNavButton);
+    dom.attr(deletedPage, "href", "https://normalsozluk.com/ben/tanimlar/deleted");
+    dom.attr(deletedPage, "title", "kendi sildiğiniz tanımlar");
+    dom.text(deletedPage, "sildiğim");
+
+    const removedPage = dom.clone(baseNavButton);
+    dom.attr(removedPage, "href", "https://normalsozluk.com/ben/tanimlar/removed");
+    dom.attr(removedPage, "title", "yönetim tarafından kaldırılan tanımlar");
+    dom.text(removedPage, "silinen");
+
+    const republishingPage = dom.clone(baseNavButton);
+    dom.attr(republishingPage, "href", "https://normalsozluk.com/ben/tanimlar/republishing");
+    dom.attr(republishingPage, "title", "yönetim tarafından kaldırılan, sizin yeniden düzenlediğiniz tanımlar");
+    dom.text(republishingPage, "onay bekleyen");
+
+    nav.append(draftPage, morningPage, deletedPage, removedPage, republishingPage);
 
     qs("#centerframe").parentElement.prepend(nav);
 }

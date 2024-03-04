@@ -1609,3 +1609,65 @@ body.dark {
 }
 
 /* #endregion Ana Sayfa Sekmeleri */
+
+/* #region Yayında Olmayan Tanımlar Sekmeleri */
+#unpublishedentries-nav {
+    display: flex;
+    position: sticky;
+    top: 60px;
+    gap: 4px;
+    will-change: transform;
+    transition: height 150ms ease-out, padding 150ms ease-out, opacity 150ms ease-out;
+    height: 0;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    @media only screen and (max-width: 768px) { 
+        top: 0;
+        overflow: auto;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+.unpublishedentries-nav-visible {
+    height: 52px!important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+    pointer-events: revert !important;
+}
+
+.unpublishedentries-navitem {
+    min-width: 6rem;
+    font-size: 12pt !important;
+    transition: background-color 0ms ease-out, box-shadow 150ms ease-out;
+    box-shadow: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    height: 36px !important;
+    border-radius: 24px !important;
+    padding: 12px !important;
+    margin-top: 8px !important;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #77777711;
+        transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+        color: inherit !important;
+        text-decoration: none !important; 
+    }
+    &:active {
+        background-color: #55555511;
+        transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+        color: inherit !important;
+        text-decoration: none !important; 
+    }
+    
+    &.unpublishedentries-navitem-active {
+        box-shadow: inset 0 0 0 1px #f95318 !important;
+        background-color: #77777722;
+        transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
+    }
+}
+/* #endregion Yayında Olmayan Tanımlar Sekmeleri */
