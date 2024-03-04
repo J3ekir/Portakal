@@ -396,7 +396,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 
 #frame_notificationsheading {
   position: sticky;
-  padding-top: 8px !important;
   top: 0;
   z-index: 1;
   text-transform: lowercase;
@@ -409,7 +408,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  text-transform: lowercase;
 }
 #frame_notificationsheading > strong {
   font-weight: 500 !important;
@@ -471,7 +469,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 @media screen and (max-width: 768px) {
   #chatpreviewcontainer {
-    min-width: none !important;
+    min-width: auto !important;
     max-width: none !important;
   }
 }
@@ -484,7 +482,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 @media screen and (max-width: 768px) {
   #frame_chatpreview {
-    min-width: none !important;
+    min-width: auto !important;
     max-width: none !important;
   }
 }
@@ -640,7 +638,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
   align-items: center;
   justify-content: center;
   border-radius: 16px;
-  background-color: black;
   width: 24px;
   height: 24px;
   font-size: 12pt !important;
@@ -999,7 +996,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 #nav-metatabsContent .entry {
   max-height: 160px !important;
   padding: 8px !important;
-  overflow: none !important;
   display: inline-block !important;
   flex-direction: column !important;
   overflow-y: scroll !important;
@@ -1608,7 +1604,7 @@ body.dark #titleinfobox {
 
 .portakal-nav-visible {
   height: 52px !important;
-  opacity: 100 !important;
+  opacity: 1 !important;
   z-index: 1 !important;
   pointer-events: revert !important;
 }

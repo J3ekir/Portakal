@@ -382,7 +382,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 #frame_notificationsheading {
     position: sticky;
-    padding-top: 8px !important;
     top: 0;
     z-index: 1;
     text-transform: lowercase;
@@ -390,10 +389,9 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     font-size: 10pt;
     display: flex;
     align-items: center;
-    padding: 4px 6px 4px 8px!important;
+    padding: 4px 6px 4px 8px !important;
     border: none !important;
     user-select: none;
-    text-transform: lowercase;
     > strong {
         &:before {
             content: "🔔 ";
@@ -450,7 +448,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     user-select: none;
     min-height: 584px;
     @media screen and ( max-width: 768px ) {
-        min-width: none !important;
+        min-width: auto !important;
         max-width: none !important;
     }
     &::-webkit-scrollbar {
@@ -460,7 +458,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 #frame_chatpreview {
     padding: 0 !important;
     @media screen and ( max-width: 768px ) {
-        min-width: none !important;
+        min-width: auto !important;
         max-width: none !important;
     }
     &::-webkit-scrollbar {
@@ -612,7 +610,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
         align-items: center;
         justify-content: center;
         border-radius: 16px;
-        background-color: black;
         width: 24px;
         height: 24px;
         font-size: 12pt !important;
@@ -954,7 +951,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 #nav-metatabsContent .entry {
     max-height: 160px !important;
     padding: 8px !important;
-    overflow: none !important;
     display: inline-block !important;
     flex-direction: column !important;
     overflow-y: scroll !important;
@@ -1573,7 +1569,7 @@ body.dark {
 }
 .portakal-nav-visible {
     height: 52px!important;
-    opacity: 100 !important;
+    opacity: 1 !important;
     z-index: 1 !important;
     pointer-events: revert !important;
 }
@@ -1611,7 +1607,6 @@ body.dark {
         transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
     }
 }
-
 /* #endregion Ana Sayfa Sekmeleri */
 
 /* #region Yayında Olmayan Tanımlar Sekmeleri */
