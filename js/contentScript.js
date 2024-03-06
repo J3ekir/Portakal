@@ -107,7 +107,7 @@ function addPortakalNavCSS() {
             `,
             "loadcenter"
         );
-        var cockpitCenterLoaders = qsa("#frame_cockpit > a:nth-child(-n+6)");
+        const cockpitCenterLoaders = qsa("#frame_cockpit > a:nth-child(-n+6)");
         dom.cl.add(cockpitCenterLoaders, "frame-toggler");
         dom.attr(cockpitCenterLoaders, "onclick", "if (!window.__cfRLUnblockHandlers) return false; $('#frame_cockpit').fadeOut(100, 'swing')");
     }
