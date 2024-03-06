@@ -94,12 +94,7 @@ function addPortakalNavCSS() {
     }
 
     dom.cl.remove(".portakal-navitem.portakal-navitem-active", "portakal-navitem-active");
-
-    qsa(".portakal-navitem").forEach(elem => {
-        if (elem.href === location.href) {
-            dom.cl.add(elem, "portakal-navitem-active");
-        }
-    });
+    dom.cl.add(`.portakal-navitem[href="${ location.href }"]`, "portakal-navitem-active");
 
     // Tüm sayfayı yeniden yüklemeyi gerektirmeyen bağlantılara 
     // gerekli sınıfı ekle (sol çerçeveyi değiştiren sayfalar hariç)
@@ -171,12 +166,7 @@ function addUnpublishedEntriesNavCSS() {
     }
 
     dom.cl.remove(".unpublishedentries-navitem.unpublishedentries-navitem-active", "unpublishedentries-navitem-active");
-
-    qsa(".unpublishedentries-navitem").forEach(elem => {
-        if (elem.href === location.href) {
-            dom.cl.add(elem, "unpublishedentries-navitem-active");
-        }
-    });
+    dom.cl.add(`.unpublishedentries-navitem[href="${ location.href }"]`, "unpublishedentries-navitem-active");
 }
 
 function addUnpublishedEntriesNav() {
