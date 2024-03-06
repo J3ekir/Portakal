@@ -124,27 +124,20 @@ function addPortakalNav() {
     const baseNavButton = dom.ce("a");
     dom.cl.add(baseNavButton, "portakal-navitem loadcenter");
 
-    const mainPage = dom.clone(baseNavButton);
-    dom.attr(mainPage, "href", "https://normalsozluk.com/");
-    dom.attr(mainPage, "title", "tüm zamanların beğenilen tanımları");
-    dom.text(mainPage, "keşfet");
+    const linkData = [
+        { href: "", title: "tüm zamanların beğenilen tanımları", text: "keşfet" },
+        { href: "feed", title: "en son girilen tanımlar", text: "akış" },
+        { href: "myfeed", title: "bildirimi açık başlıklara girilen ve takip ettiğiniz yazarlar tarafından girilen tanımlar", text: "takip" },
+        { href: "portakal", title: "dünün en beğenilen tanımları", text: "portakal" },
+    ];
 
-    const feedPage = dom.clone(baseNavButton);
-    dom.attr(feedPage, "href", "https://normalsozluk.com/feed");
-    dom.attr(feedPage, "title", "en son girilen tanımlar");
-    dom.text(feedPage, "akış");
-
-    const myFeedPage = dom.clone(baseNavButton);
-    dom.attr(myFeedPage, "href", "https://normalsozluk.com/myfeed");
-    dom.attr(myFeedPage, "title", "bildirimi açık başlıklara girilen ve takip ettiğiniz yazarlar tarafından girilen tanımlar");
-    dom.text(myFeedPage, "takip");
-
-    const portakalPage = dom.clone(baseNavButton);
-    dom.attr(portakalPage, "href", "https://normalsozluk.com/portakal");
-    dom.attr(portakalPage, "title", "dünün en beğenilen tanımları");
-    dom.text(portakalPage, "portakal");
-
-    nav.append(mainPage, feedPage, myFeedPage, portakalPage);
+    linkData.forEach(elem => {
+        const navButton = dom.clone(baseNavButton);
+        dom.attr(navButton, "href", `https://normalsozluk.com/${ elem.href }`);
+        dom.attr(navButton, "title", elem.title);
+        dom.text(navButton, elem.text);
+        nav.append(navButton);
+    });
 
     qs("#centerframe").parentElement.prepend(nav);
 }
@@ -166,32 +159,21 @@ function addUnpublishedEntriesNav() {
     const baseNavButton = dom.ce("a");
     dom.cl.add(baseNavButton, "unpublishedentries-navitem loadcenter");
 
-    const draftPage = dom.clone(baseNavButton);
-    dom.attr(draftPage, "href", "https://normalsozluk.com/ben/tanimlar/draft");
-    dom.attr(draftPage, "title", "sonradan yayınlamak istediğiniz tanımlar");
-    dom.text(draftPage, "taslak");
+    const linkData = [
+        { href: "draft", title: "sonradan yayınlamak istediğiniz tanımlar", text: "taslak" },
+        { href: "morning", title: "sabahleyin kendiliğinden gönderilecek tanımlar", text: "sabaha kalan" },
+        { href: "deleted", title: "kendi sildiğiniz tanımlar", text: "sildiğim" },
+        { href: "removed", title: "yönetim tarafından kaldırılan tanımlar", text: "silinen" },
+        { href: "republishing", title: "yönetim tarafından kaldırılan, sizin yeniden düzenlediğiniz tanımlar", text: "onay bekleyen" },
+    ];
 
-    const morningPage = dom.clone(baseNavButton);
-    dom.attr(morningPage, "href", "https://normalsozluk.com/ben/tanimlar/morning");
-    dom.attr(morningPage, "title", "sabahleyin kendiliğinden gönderilecek tanımlar");
-    dom.text(morningPage, "sabaha kalan");
-
-    const deletedPage = dom.clone(baseNavButton);
-    dom.attr(deletedPage, "href", "https://normalsozluk.com/ben/tanimlar/deleted");
-    dom.attr(deletedPage, "title", "kendi sildiğiniz tanımlar");
-    dom.text(deletedPage, "sildiğim");
-
-    const removedPage = dom.clone(baseNavButton);
-    dom.attr(removedPage, "href", "https://normalsozluk.com/ben/tanimlar/removed");
-    dom.attr(removedPage, "title", "yönetim tarafından kaldırılan tanımlar");
-    dom.text(removedPage, "silinen");
-
-    const republishingPage = dom.clone(baseNavButton);
-    dom.attr(republishingPage, "href", "https://normalsozluk.com/ben/tanimlar/republishing");
-    dom.attr(republishingPage, "title", "yönetim tarafından kaldırılan, sizin yeniden düzenlediğiniz tanımlar");
-    dom.text(republishingPage, "onay bekleyen");
-
-    nav.append(draftPage, morningPage, deletedPage, removedPage, republishingPage);
+    linkData.forEach(elem => {
+        const navButton = dom.clone(baseNavButton);
+        dom.attr(navButton, "href", `https://normalsozluk.com/ben/tanimlar/${ elem.href }`);
+        dom.attr(navButton, "title", elem.title);
+        dom.text(navButton, elem.text);
+        nav.append(navButton);
+    });
 
     qs("#centerframe").parentElement.prepend(nav);
 }
