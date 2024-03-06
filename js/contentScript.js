@@ -85,14 +85,7 @@ function changeGlobalFont() {
 }
 
 function addPortakalNavCSS() {
-    var portakalNav = qs("#portakal-nav");
-    if (/^https:\/\/normalsozluk\.com\/(?:|feed|myfeed|portakal)$/.test(location.href)) {
-        dom.cl.add(portakalNav, "portakal-nav-visible");
-    }
-    else {
-        dom.cl.remove(portakalNav, "portakal-nav-visible");
-    }
-
+    dom.cl.toggle("#portakal-nav", "portakal-nav-visible", /^https:\/\/normalsozluk\.com\/(?:|feed|myfeed|portakal)$/.test(location.href));
     dom.cl.remove(".portakal-navitem.portakal-navitem-active", "portakal-navitem-active");
     dom.cl.add(`.portakal-navitem[href="${ location.href }"]`, "portakal-navitem-active");
 
@@ -157,14 +150,7 @@ function addPortakalNav() {
 }
 
 function addUnpublishedEntriesNavCSS() {
-    var unpublishedEntriesNav = qs("#unpublishedentries-nav");
-    if (/^https:\/\/normalsozluk\.com\/ben\/tanimlar\/(draft|morning|deleted|removed|republishing)$/.test(location.href)) {
-        dom.cl.add(unpublishedEntriesNav, "unpublishedentries-nav-visible");
-    }
-    else {
-        dom.cl.remove(unpublishedEntriesNav, "unpublishedentries-nav-visible");
-    }
-
+    dom.cl.toggle("#unpublishedentries-nav", "unpublishedentries-nav-visible", /^https:\/\/normalsozluk\.com\/ben\/tanimlar\/(draft|morning|deleted|removed|republishing)$/.test(location.href));
     dom.cl.remove(".unpublishedentries-navitem.unpublishedentries-navitem-active", "unpublishedentries-navitem-active");
     dom.cl.add(`.unpublishedentries-navitem[href="${ location.href }"]`, "unpublishedentries-navitem-active");
 }
