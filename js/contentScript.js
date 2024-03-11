@@ -196,19 +196,6 @@ function addProfilePicture() {
             }
         });
     });
-
-    // profil resmi değişmişse kaydet ve değiştir
-    if (qs(".profile-photo-actions")) {
-        chrome.storage.local.get("profilePictureURL").then(settings => {
-            const newprofilePictureURL = dom.attr(".profile-picture>img", "src").replace(/_l\.jpeg$/, "_s.jpeg");
-
-            if (newprofilePictureURL !== settings.profilePictureURL) {
-                chrome.storage.local.set({
-                    profilePictureURL: newprofilePictureURL,
-                });
-            }
-        });
-    }
 }
 
 async function fetchProfilePictureURL() {
