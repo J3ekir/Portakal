@@ -179,27 +179,23 @@ function addUnpublishedEntriesNav() {
  */
 function addProfilePicture() {
     // giriş yapmışsa ve profil resmi yoksa ekle
-    if (!qs(".button_signup, #cockpitProfilePicture")) {
-        dom.remove("[data-target='#frame_cockpit']>:is(i,span)");
+    if (qs(".button_signup, #cockpitProfilePicture")) { return; }
 
-        const profilePicture = dom.ce("img");
-        profilePicture.id = "cockpitProfilePicture";
-        qs("[data-target='#frame_cockpit']").append(profilePicture);
+    dom.remove("[data-target='#frame_cockpit']>:is(i,span)");
 
-        chrome.storage.local.get("profilePictureURL").then(settings => {
-            qs("#cockpitProfilePicture").src = settings.profilePictureURL || "https://normalsozluk.com/images/no_avatarfb.jpg";
+    const profilePicture = dom.ce("img");
+    profilePicture.id = "cockpitProfilePicture";
+    qs("[data-target='#frame_cockpit']").append(profilePicture);
 
-            fetchProfilePictureURL().then(profilePictureURL => {
-                if (profilePictureURL !== settings.profilePictureURL) {
-                    chrome.storage.local.set({
-                        profilePictureURL,
-                    });
+    chrome.storage.local.get("profilePictureURL").then(settings => {
+        qs("#cockpitProfilePicture").src = settings.profilePictureURL || "https://normalsozluk.com/images/no_avatarfb.jpg";
 
-                    return;
-                }
-            });
+        fetchProfilePictureURL().then(profilePictureURL => {
+            if (profilePictureURL !== settings.profilePictureURL) {
+                chrome.storage.local.set({ profilePictureURL });
+            }
         });
-    }
+    });
 
     // profil resmi değişmişse kaydet ve değiştir
     if (qs(".profile-photo-actions")) {
