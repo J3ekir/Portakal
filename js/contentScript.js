@@ -114,9 +114,7 @@ function addPortakalNavCSS() {
 }
 
 function addPortakalNav() {
-    if (qs("#portakal-nav")) {
-        return;
-    }
+    if (qs("#portakal-nav")) { return; }
 
     const nav = dom.ce("nav");
     nav.id = "portakal-nav";
@@ -149,9 +147,7 @@ function addUnpublishedEntriesNavCSS() {
 }
 
 function addUnpublishedEntriesNav() {
-    if (qs("#unpublishedentries-nav")) {
-        return;
-    }
+    if (qs("#unpublishedentries-nav")) { return; }
 
     const nav = dom.ce("nav");
     nav.id = "unpublishedentries-nav";
@@ -235,9 +231,7 @@ async function fetchProfilePictureURL() {
  */
 function addPageButtons() {
     waitForElementToExist("#entriesheadingcontainer .btn-group:has([role='group']+.btn>.fa-angle-right)").then(group => {
-        if (group.children.length === 5) {
-            return;
-        }
+        if (group.children.length === 5) { return; }
 
         const firstPageButton = dom.ce("a");
         dom.cl.add(firstPageButton, "btn btn-sm btn-secondary loadcenter");
