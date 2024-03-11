@@ -9,6 +9,10 @@
     --color-user-editor: #6495ed;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     width: 300px;
     color: var(--color-text-1);
