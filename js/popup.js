@@ -7,9 +7,9 @@ chrome.storage.local.get([
 });
 
 qs("#font-family").addEventListener("change", event => {
-    chrome.storage.local.set({ "font-family": event.target.value });
+    chrome.storage.local.set({ "font-family": event.currentTarget.value });
 });
 
 qs("#logo").addEventListener("change", event => {
-    chrome.storage.local.set({ "logo": event.target.value });
+    chrome.storage.local.set({ "logo": event.currentTarget.value });
 });
