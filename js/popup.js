@@ -16,6 +16,12 @@ qs("#font-family").addEventListener("change", event => {
     }
 });
 
+qs("#font-family-custom>input").addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+        event.currentTarget.nextElementSibling.click();
+    }
+});
+
 qs("#font-family-custom>button").addEventListener("click", event => {
     if (event.currentTarget.previousElementSibling.value) {
         chrome.storage.local.set({ "font-family": `other${ event.currentTarget.previousElementSibling.value }` });
