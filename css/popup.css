@@ -7,6 +7,7 @@
     --color-accent-1: #F95318;
     --color-text-1: #aaa;
     --color-user-editor: #6495ed;
+    --color-border-light: var(--color-text-1);
 }
 
 * {
@@ -42,6 +43,97 @@ select {
 option:checked {
     color: var(--color-accent-1) !important;
     font-weight: 500;
+}
+input {
+    font-family: inherit;
+    padding: 4px 10px;
+    font-size: 12pt;
+    background-color: var(--color-background-button);
+    color: var(--color-text-1);
+    border: none;
+    border-radius: 4px;
+    width: auto;
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: var(--color-background-header);
+        /* border: none; */
+        transition: background-color 0ms linear;
+        outline: none;
+    }
+    &:placeholder {
+        font-style: italic;
+        word-spacing: -.1ch;
+    }
+}
+button {
+    font-family: inherit;
+    color: var(--color-text-1);
+    background-color: var(--color-background-button);
+    border: none;
+    border-radius: 4px;
+    font-size: 12pt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: background-color 50ms linear;
+    &:hover {
+        background-color: var(--color-background-menu-item-hover);
+        transition: background-color 0ms linear;
+    }
+    &:active {
+        background-color: var(--color-background-header);
+    }
+    & svg {
+        height: 1em;
+        fill: currentColor;
+    }
+}
+
+#font-family + .input-group {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 100%;
+    & > input {
+        flex: 1;
+        height: 100%;
+        min-width: 0;
+        padding: 6px;
+    }
+    & > button {
+        flex: 0;
+        height: 100%;
+        & path {
+            d: path("M64 0C29 0 0 29 0 64v320c0 35 29 64 64 64h320c35 0 64-29 64-64V138c0-17-7-33-19-45l-74-74C343 7 327 0 310 0zm16 48v104c0 13 11 24 24 24h192c13 0 24-11 24-24V52l75 75c3 3 5 7 5 11v246c0 9-7 16-16 16H64c-9 0-16-7-16-16V64c0-9 7-16 16-16zm48 0h144v80H128zm32 240a64 64 0 00128 0 64 64 0 00-128 0z");
+        }
+    }
+}
+#font-family:has([value="other"]:checked) + .input-group {
+    display: inline-flex;
+}
+
+.input-group {
+    & > * {
+        border: 1px solid var(--color-border-light);
+        border-radius: 4px;
+    }
+    & > :not(:first-child) {
+        border-left: none;
+    }
+    & > :first-child:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    & > :last-child:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    & > :not(:first-child):not(:last-child) {
+        border-radius: 0;
+    }
 }
 
 footer, header {
