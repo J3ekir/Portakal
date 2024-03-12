@@ -1,3 +1,5 @@
+changeGlobalFont();
+
 observe("#centerframe", centerframe);
 
 (function connect() {
@@ -10,6 +12,10 @@ chrome.storage.onChanged.addListener(changes => {
         switch (key) {
             case "profilePictureURL":
                 qs("#cockpitProfilePicture").src = newValue;
+                break;
+            case "font-family":
+                changeGlobalFont();
+                break;
         }
     });
 });
@@ -26,8 +32,6 @@ function centerframe() {
 
     addUnpublishedEntriesNav();
     addUnpublishedEntriesNavCSS();
-
-    //changeGlobalFont();
 
     addProfilePicture();
     addPageButtons();
@@ -69,18 +73,62 @@ function moveTitleCategory() {
 }
 
 function changeGlobalFont() {
-    const fontLoader = function (param) {
-        const link = document.createElement("link");
-        link.type = "text/css";
-        link.rel = "stylesheet";
+    const excludedFonts = [
+        "Source Sans Pro",
+        "Segoe UI",
+        "other"
+    ];
 
-        document.head.appendChild(link);
+    chrome.storage.local.get("font-family").then(settings => {
+        const fontName = settings["font-family"];
 
-        link.href = "https://fonts.googleapis.com/css?family=" + param.family;
-    };
+        chrome.runtime.sendMessage({
+            type: "insertCSSString",
+            CSS: `body{font-family:"${ fontName.replace(/^(other)(.*)/, "$2") }"!important;}`,
+        });
 
-    fontLoader({
-        family: "Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        if (excludedFonts.some(elem => fontName.startsWith(elem))) { return; }
+
+        waitForElementToExist("head").then(elem => {
+            if (qs(`style[data-font-name="${ fontName }"]`)) { return; }
+
+            const link = dom.ce("link");
+            link.rel = "preload";
+            link.as = "font";
+            link.type = "font/woff2";
+            link.crossOrigin = "anonymous";
+            link.href = chrome.runtime.getURL(`fonts/${ fontName }/${ fontName }-latin.woff2`);
+
+            const linkExt = dom.clone(link);
+            linkExt.href = chrome.runtime.getURL(`fonts/${ fontName }/${ fontName }-latin-ext.woff2`);
+
+            const customFont = dom.ce("style");
+            customFont.dataset.fontName = fontName;
+            customFont.textContent = `
+                @font-face {
+                    font-family: "${ fontName }";
+                    src: url("${ chrome.runtime.getURL(`fonts/${ fontName }/${ fontName }-latin.woff2`) }") format("woff2");
+                    font-weight: normal;
+                    font-style: normal;
+                    font-display: swap;
+                    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+                }
+                @font-face {
+                    font-family: "${ fontName }";
+                    src: url("${ chrome.runtime.getURL(`fonts/${ fontName }/${ fontName }-latin-ext.woff2`) }") format("woff2");
+                    font-weight: normal;
+                    font-style: normal;
+                    font-display: swap;
+                    unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+                }
+            `;
+
+            elem.append(
+                link,
+                linkExt,
+                customFont,
+            );
+        });
     });
 }
 
