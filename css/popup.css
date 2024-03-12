@@ -91,8 +91,7 @@ footer {
     font-size: smaller;
     font-style: italic;
 }
-.icon-github > a {
-    display: flex;
+.icon-github {
     & svg {
         height: 1em;
         fill: white;
