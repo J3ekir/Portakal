@@ -1,0 +1,25 @@
+{
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "js/ts.implicitProjectConfig.target": "ESNext",
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
+    "javascript.format.semicolons": "insert",
+    "css.lint.validProperties": [
+        "d"
+    ],
+    "css.format.spaceAroundSelectorSeparator": true,
+    "scss.format.spaceAroundSelectorSeparator": true,
+    "liveSassCompile.settings.useNewCompiler": true,
+    "liveSassCompile.settings.showOutputWindowOn": "Warning",
+    "liveSassCompile.settings.generateMap": false,
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css"
+        },
+        {
+            "format": "compressed",
+            "extensionName": ".min.css"
+        }
+    ],
+}

@@ -32,7 +32,7 @@ function injectCSS(tabId) {
     chrome.scripting.insertCSS({
         target: { tabId: tabId },
         origin: "AUTHOR",
-        files: ["css/style.css"],
+        files: ["css/style.min.css"],
     });
 }
 
