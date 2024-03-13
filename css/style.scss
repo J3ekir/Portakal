@@ -339,6 +339,9 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
         color: unset !important;
     }
 }
+[data-target="#frame_cockpit"] > :is(i, span) {
+    display: none;
+}
 /* #endregion Kokpit */
 
 /* #region Turunçgiller / Hamburger Menü */

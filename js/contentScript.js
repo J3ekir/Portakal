@@ -229,8 +229,6 @@ function addProfilePicture() {
     // giriş yapmışsa ve profil resmi yoksa ekle
     if (qs(".button_signup, #cockpitProfilePicture")) { return; }
 
-    dom.remove("[data-target='#frame_cockpit']>:is(i,span)");
-
     const profilePicture = dom.ce("img");
     profilePicture.id = "cockpitProfilePicture";
     qs("[data-target='#frame_cockpit']").append(profilePicture);
