@@ -330,7 +330,12 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     margin-right: 10px;
   }
 }
+#frame_cockpit::-webkit-scrollbar {
+  display: none;
+}
 #frame_cockpit:before {
+  top: 0;
+  position: sticky;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -359,7 +364,12 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     margin-right: 102px;
   }
 }
+#hamburger-menu::-webkit-scrollbar {
+  display: none;
+}
 #hamburger-menu:before {
+  top: 0;
+  position: sticky;
   height: 28px;
   display: flex;
   align-items: center;
@@ -501,12 +511,9 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
      -moz-user-select: none;
           user-select: none;
   text-transform: lowercase;
-}
-@media screen and (max-width: 768px) {
-  #frame_chatpreviewheading {
-    top: 0;
-    position: sticky;
-  }
+  top: 0;
+  position: sticky;
+  z-index: 1;
 }
 #frame_chatpreviewheading > strong {
   font-weight: 500 !important;

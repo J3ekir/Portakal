@@ -312,7 +312,12 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     }
 }
 #frame_cockpit {
+    &::-webkit-scrollbar {
+        display: none;
+    }
     &:before {
+        top: 0;
+        position: sticky;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -343,7 +348,12 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     }
 }
 #hamburger-menu {
+    &::-webkit-scrollbar {
+        display: none;
+    }
     &:before {
+        top: 0;
+        position: sticky;
         height: 28px;
         display: flex;
         align-items: center;
@@ -475,10 +485,9 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     border: none !important;
     user-select: none;
     text-transform: lowercase;
-    @media screen and ( max-width: 768px ) {
-        top: 0;
-        position: sticky;
-    }
+    top: 0;
+    position: sticky;
+    z-index: 1;
     > strong {
         &:before {
             content: "💬 ";
