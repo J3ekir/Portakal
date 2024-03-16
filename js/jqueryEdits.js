@@ -105,7 +105,7 @@ function overridePushHistory() {
             var d = s.find(".xhr-mdesc").first();
             var l = s.find(".xhr-cnn").first();
             var r = "";
-            var a = title !== undefined ? title.toLowerCase() : c.html().toLowerCase();
+            var a = title !== undefined ? title.toLowerCase() : c.html()?.toLowerCase();
             if (d !== undefined && d !== "") {
                 r = d.html();
                 $("meta[name='description']").attr("content", r);
