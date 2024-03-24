@@ -3,7 +3,6 @@ chrome.runtime.onInstalled.addListener(async () => {
         chrome.storage.local.set({
             "profilePictureURL": settings["profilePictureURL"] || "https://normalsozluk.com/images/no_avatarfb.jpg",
             "font-family": settings["font-family"] || "Source Sans Pro",
-            "logo": settings["logo"] || "default",
         });
     });
 });
