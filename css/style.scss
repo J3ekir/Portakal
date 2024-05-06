@@ -182,6 +182,11 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
         transition: background-color 150ms ease-out, box-shadow 300ms linear, color 150ms ease-out;
         user-select: none;
     }
+
+    /* Giriş yapılı değilken sağ üstte çıkan Küfürsüz Sözlük tuşunu gizle */
+    > [href="/b/kufursuz-sozluk--88792"] {
+        display: none;
+    }
     
     > * {
         font-size: 0 !important;

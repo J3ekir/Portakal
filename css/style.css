@@ -178,6 +178,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
   display: flex !important;
   gap: 6px;
   margin-top: 4px !important;
+  /* Giriş yapılı değilken sağ üstte çıkan Küfürsüz Sözlük tuşunu gizle */
 }
 #topnav-right > .nav-link {
   border: 1px solid;
@@ -195,6 +196,9 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+}
+#topnav-right > [href="/b/kufursuz-sozluk--88792"] {
+  display: none;
 }
 #topnav-right > * {
   font-size: 0 !important;
