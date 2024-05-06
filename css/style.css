@@ -586,7 +586,6 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
 }
 @media screen and (max-width: 768px) {
   #container-list-header-buttons > div > div > button, #container-list-header-buttons #container-list-header-buttons > div > div > div > button {
-    height: 32px;
     display: flex !important;
     align-items: center;
     justify-content: center;
