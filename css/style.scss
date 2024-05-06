@@ -373,14 +373,15 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
         font-weight: 500;
         content: 'çevrimiçi yazarlar';
     }
-    
-    > a:nth-child(1),
-    > a:nth-child(2),
-    > a:nth-child(4),
-    > a:nth-child(7),
-    > a:nth-child(12) {
+
+    > [href="/feed"],
+    > [href="/myfeed"],
+    > [href="/b/kulupler--306625"],
+    > [href="/portakal"],
+    > [href="/stats/staff"]  {
         display: none;
     }
+    
 }
 
 /* #endregion Turunçgiller / Hamburger Menü */
