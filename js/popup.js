@@ -23,6 +23,16 @@ qs("#font-family-custom>button").addEventListener("click", event => {
     }
 });
 
+chrome.storage.onChanged.addListener(changes => {
+    Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
+        switch (key) {
+            case "fontFamily":
+                changeFontFamily(newValue);
+                break;
+        }
+    });
+});
+
 function changeFontFamily(newFontFamily) {
     const [, fontFamily, fontFamilyCustom] = newFontFamily.match(/^(other|.*)(.*)$/);
     qs("#font-family").value = fontFamily;
