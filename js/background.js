@@ -1,8 +1,8 @@
 chrome.runtime.onInstalled.addListener(async () => {
     chrome.storage.local.get().then(settings => {
         chrome.storage.local.set({
-            "profilePictureURL": settings["profilePictureURL"] || "https://normalsozluk.com/images/no_avatarfb.jpg",
-            "font-family": settings["font-family"] || "Source Sans Pro",
+            profilePictureURL: settings.profilePictureURL || "https://normalsozluk.com/images/no_avatarfb.jpg",
+            fontFamily: settings.fontFamily || "Source Sans Pro",
         });
     });
 });

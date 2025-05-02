@@ -31,7 +31,7 @@ chrome.storage.onChanged.addListener(changes => {
             case "profilePictureURL":
                 qs("#cockpitProfilePicture").src = newValue;
                 break;
-            case "font-family":
+            case "fontFamily":
                 changeGlobalFont();
                 break;
         }
@@ -81,8 +81,8 @@ function changeGlobalFont() {
         "other"
     ];
 
-    chrome.storage.local.get("font-family").then(settings => {
-        const fontName = settings["font-family"];
+    chrome.storage.local.get("fontFamily").then(settings => {
+        const fontName = settings["fontFamily"];
 
         chrome.runtime.sendMessage({
             type: "insertCSSString",
