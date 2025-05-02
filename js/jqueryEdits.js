@@ -199,7 +199,7 @@ function overrideLoadCenter() {
 
 function adjustLoadingIndicator() {
     Object.defineProperty(window, "showLoader", {
-        value: function () {
+        value() {
             document.querySelector("#centerframe").style.opacity = "0.7";
             document.querySelector("#leftframe").style.opacity = "0.7";
         },
@@ -208,7 +208,7 @@ function adjustLoadingIndicator() {
     });
 
     Object.defineProperty(window, "hideLoader", {
-        value: function () {
+        value() {
             document.querySelector("#centerframe").style.opacity = "1";
             document.querySelector("#leftframe").style.opacity = "1";
         },
