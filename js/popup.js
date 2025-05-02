@@ -1,6 +1,5 @@
 chrome.storage.local.get("fontFamily").then(settings => {
-    qs("#font-family").value = settings.fontFamily.replace(/^(other|.*)(.*)/, "$1");
-    qs("#font-family-custom>input").value = settings.fontFamily.replace(/^(other|.*)(.*)/, "$2");
+    changeFontFamily(settings.fontFamily)
 });
 
 qs("#font-family").addEventListener("change", event => {
@@ -23,3 +22,9 @@ qs("#font-family-custom>button").addEventListener("click", event => {
         chrome.storage.local.set({ "fontFamily": `other${ event.currentTarget.previousElementSibling.value }` });
     }
 });
+
+function changeFontFamily(newFontFamily) {
+    const [, fontFamily, fontFamilyCustom] = newFontFamily.match(/^(other|.*)(.*)$/);
+    qs("#font-family").value = fontFamily;
+    qs("#font-family-custom>input").value = fontFamilyCustom;
+}
