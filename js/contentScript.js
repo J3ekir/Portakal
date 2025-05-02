@@ -91,7 +91,7 @@ function changeGlobalFont() {
 
         if (excludedFonts.some(elem => fontName.startsWith(elem))) { return; }
 
-        waitForElementToExist("head").then(elem => {
+        waitForElement("head").then(elem => {
             if (qs(`style[data-font-name="${ fontName }"]`)) { return; }
 
             const link = dom.ce("link");
@@ -247,7 +247,7 @@ function addProfilePicture() {
 }
 
 async function fetchProfilePictureURL() {
-    const profileButton = await waitForElementToExist("#frame_cockpit>:first-child");
+    const profileButton = await waitForElement("#frame_cockpit>:first-child");
     const response = await fetch(profileButton.href);
     const html = await response.text();
     const parser = new DOMParser();
@@ -261,7 +261,7 @@ async function fetchProfilePictureURL() {
  * ilk/son sayfa tuşlarını ekle
  */
 function addPageButtons() {
-    waitForElementToExist("#entriesheadingcontainer .btn-group:has([role='group']+.btn>.fa-angle-right)").then(group => {
+    waitForElement("#entriesheadingcontainer .btn-group:has([role='group']+.btn>.fa-angle-right)").then(group => {
         if (group.children.length === 5) { return; }
 
         const firstPageButton = dom.ce("a");
@@ -290,7 +290,7 @@ function addPageButtons() {
     });
 }
 
-function waitForElementToExist(selector) {
+function waitForElement(selector) {
     return new Promise(resolve => {
         if (document.querySelector(selector)) {
             return resolve(document.querySelector(selector));
@@ -306,7 +306,7 @@ function waitForElementToExist(selector) {
 }
 
 function observe(selector, func) {
-    waitForElementToExist(selector).then(elem => {
+    waitForElement(selector).then(elem => {
         func();
 
         new MutationObserver(async (mutationList, observer) => {
