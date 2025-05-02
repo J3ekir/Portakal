@@ -3,39 +3,22 @@ dom.cl = {};
 
 
 const normalizeTarget = target => {
-    if (typeof target === "string") { return Array.from(qsa(target)); }     // query stringi ise
-    if (target instanceof Element) { return [target]; }                     // qs kullanıldıysa
-    if (target === null) { return []; }                                     // ne olur ne olmaz
-    if (Array.isArray(target)) { return target; }                           // ne olur ne olmaz?
-    return Array.from(target);                                              // qsa kullanıldıysa
+    if (typeof target === "string") { return Array.from(qsa(target)); }
+    if (target instanceof Element) { return [target]; }
+    if (target === null) { return []; }
+    if (Array.isArray(target)) { return target; }
+    return Array.from(target);
 };
 
-qs = function (a, b) {
-    if (typeof a === "string") {
-        return document.querySelector(a);
-    }
-    return a.querySelector(b);
-};
-
-qsa = function (a, b) {
-    if (typeof a === "string") {
-        return document.querySelectorAll(a);
-    }
-    return a.querySelectorAll(b);
-};
+qs = (a, b) => typeof a === "string" ? document.querySelector(a) : a.querySelector?.(b);
+qsa = (a, b) => typeof a === "string" ? document.querySelectorAll(a) : a.querySelectorAll?.(b);
 
 
 dom.attr = function (target, attr, value) {
     for (const elem of normalizeTarget(target)) {
-        if (value === undefined) {
-            return elem.getAttribute(attr);
-        }
-        if (value === null) {
-            elem.removeAttribute(attr);
-        }
-        else {
-            elem.setAttribute(attr, value);
-        }
+        if (value === undefined) { return elem.getAttribute(attr); }
+        if (value === null) { elem.removeAttribute(attr); }
+        else { elem.setAttribute(attr, value); }
     }
 };
 
@@ -59,9 +42,7 @@ dom.remove = function (target) {
 
 dom.text = function (target, text) {
     const targets = normalizeTarget(target);
-    if (text === undefined) {
-        return targets.length !== 0 ? targets[0].textContent : undefined;
-    }
+    if (text === undefined) { return targets[0]?.textContent; }
     for (const elem of targets) {
         elem.textContent = text;
     }
