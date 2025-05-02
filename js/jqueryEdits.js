@@ -230,16 +230,15 @@ async function waitForVariable(variable) {
 
 async function waitForElement(selector) {
     return new Promise(resolve => {
-        if (document.querySelector(selector)) {
-            return resolve(document.querySelector(selector));
-        }
+        const elem = document.querySelector(selector);
+        if (elem) { return resolve(elem); }
         new MutationObserver((_, observer) => {
-            if (document.querySelector(selector)) {
+            const elem = document.querySelector(selector);
+            if (elem) {
                 observer.disconnect();
-                return resolve(document.querySelector(selector));
+                resolve(elem);
             }
-        })
-            .observe(document, { childList: true, subtree: true });
+        }).observe(document, { childList: true, subtree: true });
     });
 }
 
