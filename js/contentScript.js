@@ -1,6 +1,24 @@
+const centerframeFunctions = [
+    adjustPageTitle,
+    adjustSearchPlaceholders,
+    adjustEntrySearchPlaceholder,
+    moveTitleCategory,
+
+    addPortakalNav,
+    addPortakalNavCSS,
+
+    addUnpublishedEntriesNav,
+    addUnpublishedEntriesNavCSS,
+
+    addProfilePicture,
+    addPageButtons,
+];
+
 changeGlobalFont();
 
-observe("#centerframe", centerframe);
+observe("#centerframe", () =>
+    centerframeFunctions.forEach(func => func())
+);
 
 (function connect() {
     chrome.runtime.connect({ name: "keepAlive" })
@@ -20,22 +38,6 @@ chrome.storage.onChanged.addListener(changes => {
     });
 });
 
-
-function centerframe() {
-    adjustPageTitle();
-    adjustSearchPlaceholders();
-    adjustEntrySearchPlaceholder();
-    moveTitleCategory();
-
-    addPortakalNav();
-    addPortakalNavCSS();
-
-    addUnpublishedEntriesNav();
-    addUnpublishedEntriesNavCSS();
-
-    addProfilePicture();
-    addPageButtons();
-}
 
 /**
  * belge başlığını küçült
