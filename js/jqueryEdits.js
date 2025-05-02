@@ -1,3 +1,9 @@
+const originalAddEventListener = EventTarget.prototype.addEventListener;
+EventTarget.prototype.addEventListener = function (type, listener, options) {
+    if (type === "DOMNodeInserted") { return; }
+    return originalAddEventListener.call(this, type, listener, options);
+};
+
 if (!/^https:\/\/normalsozluk\.com\/external/.test(location.href)) {
     waitForVariable("jQuery").then(() => {
         adjustMenuAnimsMouseup();
