@@ -184,6 +184,9 @@ footer {
     font-style: italic;
 }
 .icon-github {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     & svg {
         height: 1em;
         fill: white;
