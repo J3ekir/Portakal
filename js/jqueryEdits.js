@@ -217,7 +217,7 @@ function adjustLoadingIndicator() {
     });
 }
 
-async function waitForVariable(variable) {
+function waitForVariable(variable) {
     return new Promise(resolve => {
         const id = setInterval(() => {
             if (window[variable] !== undefined) {
@@ -228,7 +228,7 @@ async function waitForVariable(variable) {
     });
 }
 
-async function waitForElement(selector) {
+function waitForElement(selector) {
     return new Promise(resolve => {
         const elem = document.querySelector(selector);
         if (elem) { return resolve(elem); }
@@ -242,7 +242,7 @@ async function waitForElement(selector) {
     });
 }
 
-async function removeJQueryEventListener(event, selector) {
+function removeJQueryEventListener(event, selector) {
     return new Promise(resolve => {
         const id = setInterval(() => {
             const events = $._data(document, "events")[event];

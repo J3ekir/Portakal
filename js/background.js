@@ -1,4 +1,4 @@
-chrome.runtime.onInstalled.addListener(async () => {
+chrome.runtime.onInstalled.addListener(() => {
     const defaultProfilePictureUrl = "https://normalsozluk.com/images/no_avatarfb.jpg";
     const defaultFontFamily = "Source Sans Pro";
 
@@ -10,12 +10,12 @@ chrome.runtime.onInstalled.addListener(async () => {
     });
 });
 
-chrome.runtime.onStartup.addListener(async () => {
+chrome.runtime.onStartup.addListener(() => {
 
 });
 
 chrome.runtime.onMessage.addListener(
-    async function (request, sender, sendResponse) {
+    function (request, sender, sendResponse) {
         switch (request.type) {
             case "injectCSS":
                 injectCSS(sender.tab.id);
