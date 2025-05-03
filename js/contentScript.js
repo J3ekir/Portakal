@@ -1,3 +1,17 @@
+const loadcenterSelectors = `
+    .toplogo a,
+    .bkz:not(.bkz-external),
+    .entryauthor,
+    .entry > h2 > a,
+    .entry > h3 > a,
+    #notificationpreviewcontainer .bkz,
+    .profile-tabs .btn:not(.btn-primary):not(.btn-warning):not(.btn-info),
+    .profile-nickname a,
+    .has-side-ad-:has(#profile-top) > h2.text-primary > a,
+    #entriesheadingcontainer > header > h1 > a,
+    #frame_cockpit > a:nth-child(-n+6)
+`;
+
 const centerframeFunctions = [
     adjustPageTitle,
     adjustSearchPlaceholders,
@@ -125,21 +139,7 @@ function addPortakalNavCSS() {
     // Tüm sayfayı yeniden yüklemeyi gerektirmeyen bağlantılara 
     // gerekli sınıfı ekle (sol çerçeveyi değiştiren sayfalar hariç)
     if (!/^https:\/\/normalsozluk\.com\/(admin|modlog|stats)/.test(location.href)) {
-        dom.cl.add(`
-            .toplogo a,
-            .bkz:not(.bkz-external),
-            .entryauthor,
-            .entry > h2 > a,
-            .entry > h3 > a,
-            #notificationpreviewcontainer .bkz,
-            .profile-tabs .btn:not(.btn-primary):not(.btn-warning):not(.btn-info),
-            .profile-nickname a,
-            .has-side-ad-:has(#profile-top) > h2.text-primary > a,
-            #entriesheadingcontainer > header > h1 > a,
-            #frame_cockpit > a:nth-child(-n+6)
-            `,
-            "loadcenter"
-        );
+        dom.cl.add(loadcenterSelectors, "loadcenter");
         const cockpitCenterLoaders = qsa("#frame_cockpit > a:nth-child(-n+6)");
         dom.cl.add(cockpitCenterLoaders, "frame-toggler");
         dom.attr(cockpitCenterLoaders, "onclick", "if (!window.__cfRLUnblockHandlers) return false; $('#frame_cockpit').fadeOut(100, 'swing')");
