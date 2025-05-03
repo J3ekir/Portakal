@@ -37,7 +37,7 @@
         }
     ],
     "description": "normal sözlük'ü sıkar atar (web sitesini iyileştirir).",
-    "homepage_url": "https://github.com/Dekamir",
+    "homepage_url": "https://github.com/J3ekir/Portakal",
     "host_permissions": [ "<all_urls>" ],
     "icons": {
         "16": "img/logo16.png",
