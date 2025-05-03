@@ -217,7 +217,7 @@ function addProfilePicture() {
     const profilePicture = dom.ce("img");
     profilePicture.id = "cockpitProfilePicture";
     qs("[data-target='#frame_cockpit']").append(profilePicture);
-    
+
     const defaultProfilePictureUrl = "https://normalsozluk.com/images/no_avatarfb.jpg";
     chrome.storage.local.get("profilePictureURL").then(settings => {
         qs("#cockpitProfilePicture").src = settings.profilePictureURL || defaultProfilePictureUrl;
