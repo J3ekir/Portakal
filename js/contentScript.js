@@ -308,10 +308,6 @@ function waitForElement(selector) {
 function observe(selector, func) {
     waitForElement(selector).then(elem => {
         func();
-
-        new MutationObserver((mutationList, observer) => {
-            func();
-        })
-            .observe(elem, { childList: true });
+        new MutationObserver(func).observe(elem, { childList: true });
     });
 }
