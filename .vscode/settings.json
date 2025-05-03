@@ -1,6 +1,8 @@
 {
-    "editor.insertSpaces": true,
-    "editor.tabSize": 4,
+    "[javascript][css][json][jsonc]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+    },
     "js/ts.implicitProjectConfig.target": "ESNext",
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
     "javascript.format.semicolons": "insert",
