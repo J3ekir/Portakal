@@ -1,7 +1,18 @@
 const originalAddEventListener = EventTarget.prototype.addEventListener;
 EventTarget.prototype.addEventListener = function (type, listener, options) {
-    if (type === "DOMNodeInserted") { return; }
-    return originalAddEventListener.call(this, type, listener, options);
+    if (type !== "DOMNodeInserted") {
+        return originalAddEventListener.call(this, type, listener, options);
+    }
+
+    new MutationObserver(mutationList => {
+        for (const mutation of mutationList) {
+            for (const node of mutation.addedNodes) {
+                if (node.nodeType === Node.ELEMENT_NODE && node.matches("#form_entry_add")) {
+                    initInputEntryBody();
+                }
+            }
+        }
+    }).observe(document, { childList: true, subtree: true });
 };
 
 if (!/^https:\/\/normalsozluk\.com\/external/.test(location.href)) {
