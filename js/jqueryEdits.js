@@ -21,11 +21,11 @@ adjustLoadingIndicator();
 
 function adjustMenuAnimsMouseup() {
     removeJQueryEventListener("mouseup").then(() => {
-        $(document).mouseup(function (e) {
+        $(document).mouseup(function (event) {
             $(".right-drop-menu").each(function () {
-                $(this).is(e.target) ||
-                    0 !== $(this).has(e.target).length ||
+                if (!$(this).is(event.target) && $(this).has(event.target).length === 0) {
                     $(this).slideUp("fast", "easeOutCubic").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
+                }
             });
         });
     });
@@ -33,26 +33,34 @@ function adjustMenuAnimsMouseup() {
 
 function adjustMenuAnims() {
     removeJQueryEventListener("click", ".frame-toggler").then(() => {
-        $(document).on("click", ".frame-toggler", function (e) {
-            e.preventDefault();
-            var t = $(this).data("target");
-            if ("block" !== $(t).css("display")) {
-                $(t).css('opacity', 0).slideDown("fast", "easeOutCubic").animate({ opacity: 1 }, { queue: false, duration: 'fast' }),
-                    "#frame_onlineauthors" === t && notifyOnline(),
-                    "#frame_notifications" === t &&
-                    "" === $("#notificationpreviewcontainer").html() &&
-                    ($("#notificationpreviewcontainer").html(
-                        '<div class="text-center my-2"><i class="fa fa-2x fa-spinner fa-spin"></i></div>'
-                    ),
-                        updateNotifications(!0)),
-                    "#frame_chatpreview" === t &&
-                    "" === $("#chatpreviewcontainer").html() &&
-                    ($("#chatpreviewcontainer").html(
-                        '<div class="text-center my-2"><i class="fa fa-2x fa-spinner fa-spin"></i></div>'
-                    ),
-                        updateMessages());
-            } else {
-                $(t).slideUp("fast", "easeOutCubic").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
+        $(document).on("click", ".frame-toggler", function (event) {
+            event.preventDefault();
+            const target = $(this).data("target");
+            if ($(target).css("display") === "block") {
+                $(target)
+                    .slideUp("fast", "easeOutCubic")
+                    .animate({ opacity: 0 }, { queue: false, duration: "fast" });
+                return;
+            }
+            $(target)
+                .css("opacity", 0)
+                .slideDown("fast", "easeOutCubic")
+                .animate({ opacity: 1 }, { queue: false, duration: "fast" });
+
+            if (target === "#frame_onlineauthors") {
+                notifyOnline();
+            }
+            if (target === "#frame_notifications" && $("#notificationpreviewcontainer").html() === "") {
+                $("#notificationpreviewcontainer").html(
+                    '<div class="text-center my-2"><i class="fa fa-2x fa-spinner fa-spin"></i></div>'
+                );
+                updateNotifications(true);
+            }
+            if (target === "#frame_chatpreview" && $("#chatpreviewcontainer").html() === "") {
+                $("#chatpreviewcontainer").html(
+                    '<div class="text-center my-2"><i class="fa fa-2x fa-spinner fa-spin"></i></div>'
+                );
+                updateMessages();
             }
         });
     });
@@ -73,10 +81,10 @@ function adjustTitleInfoAnims() {
 function adjustScrollToBottom() {
     removeJQueryEventListener("click", ".entryscrollbottom").then(() => {
         $(document).on("click", ".entryscrollbottom", function () {
-            var e = $("div.entrybar").last()
-                , t = e ? e.position().top - 420 : $(document).height();
+            const entryBar = $("div.entrybar").last();
+            const scrollPosition = entryBar ? entryBar.position().top - 420 : $(document).height();
             $("html, body").animate({
-                scrollTop: t
+                scrollTop: scrollPosition
             }, 300);
         });
     });
@@ -93,9 +101,10 @@ function adjustHistoryState(centerframe) {
 function adjustHamburgerToOnlineAnimation() {
     const elem = document.querySelector("#hamburger-menu .frame-toggler");
     elem.onclick = null;
-    $(elem).click(function (e) {
-        if (!window.__cfRLUnblockHandlers)
+    $(elem).click(function () {
+        if (!window.__cfRLUnblockHandlers) {
             return false;
+        }
         $('#hamburger-menu').fadeOut(100, 'swing');
     });
 }
@@ -105,94 +114,104 @@ function overridePushHistory() {
     overrideLoadCenter();
 
     window.pushHistory = function (url, selector, html, title, centerframeJQueryObject, centerframeTitle) {
-        if (!(html.length / 1024 > 630)) {
-            var s = centerframeJQueryObject || $("<div>" + html + "</div>");
-            var c = centerframeTitle || s.find(".xhr-mt").first();
-            var d = s.find(".xhr-mdesc").first();
-            var l = s.find(".xhr-cnn").first();
-            var r = "";
-            var a = title !== undefined ? title.toLowerCase() : c.html()?.toLowerCase();
-            if (d !== undefined && d !== "") {
-                r = d.html();
-                $("meta[name='description']").attr("content", r);
-            }
-            if (l !== undefined && l !== "") {
-                $('link[rel="canonical"]').attr("href", l.html());
-            }
-            var u = {
-                path: url,
-                selector: selector,
-                html: html,
-                title: a,
-                desc: r
-            };
-            if ("function" == typeof window.history.pushState) {
-                if (window.history.state && window.history.state.path === url) {
-                    return void (window.history.state.html = html);
-                }
-
-                window.history.pushState(u, url, url);
-            }
-            else {
-                window.location.hash = "#!" + url;
-            }
-
-            if ("function" == typeof gtag && "" !== window.location.pathname && "/" !== window.location.pathname) {
-                var h = {
-                    page_title: a,
-                    page_location: window.location.href,
-                    page_path: url
-                };
-                gtag("event", "page_view", h);
-            }
-            updateTitle(a);
+        if (html.length / 1024 > 630) { return; }
+        const wrapper = centerframeJQueryObject || $("<div>" + html + "</div>");
+        const titleElement = centerframeTitle || wrapper.find(".xhr-mt").first();
+        const descElement = wrapper.find(".xhr-mdesc").first();
+        const canonicalElement = wrapper.find(".xhr-cnn").first();
+        let description = "";
+        let canonicalHref = "";
+        const lowerTitle = title?.toLowerCase() || titleElement?.html()?.toLowerCase();
+        if (descElement?.length) {
+            description = descElement.html();
+            $("meta[name='description']").attr("content", description);
         }
+        if (canonicalElement?.length) {
+            canonicalHref = canonicalElement.html();
+            $('link[rel="canonical"]').attr("href", canonicalHref);
+        }
+        const historyState = {
+            path: url,
+            selector: selector,
+            html: html,
+            title: lowerTitle,
+            desc: description
+        };
+        if (typeof window.history.pushState === "function") {
+            if (window.history.state?.path === url) {
+                window.history.state.html = html;
+                return;
+            }
+            window.history.pushState(historyState, url, url);
+        }
+        else {
+            window.location.hash = "#!" + url;
+        }
+        if (typeof gtag === "function" && window.location.pathname !== "" && window.location.pathname !== "/") {
+            const analyticsData = {
+                page_title: lowerTitle,
+                page_location: window.location.href,
+                page_path: url
+            };
+            gtag("event", "page_view", analyticsData);
+        }
+        updateTitle(lowerTitle);
     };
 }
 
 function overrideRenderCenter() {
     window.renderCenter = function (html, url, title, centerframeJQueryObject, centerframeTitle) {
-        $("#centerframe").html(html),
-            isMobile() && collapseLeftFrame(),
-            window.scrollTo(0, 0),
-            pushHistory(url, "#centerframe", html, title, centerframeJQueryObject, centerframeTitle),
-            stickPanels(),
-            processEntry(),
-            "undefined" != typeof AUTHOR_ID && initInputEntryBody(),
-            hideLoader();
+        $("#centerframe").html(html);
+        if (isMobile()) {
+            collapseLeftFrame();
+        }
+        window.scrollTo(0, 0);
+        pushHistory(url, "#centerframe", html, title, centerframeJQueryObject, centerframeTitle);
+        stickPanels();
+        processEntry();
+        if (typeof AUTHOR_ID !== "undefined") {
+            initInputEntryBody();
+        }
+        hideLoader();
     };
 }
 
 function overrideLoadCenter() {
     window.loadCenter = function (url) {
-        if (url !== "" && url !== undefined) {
-            if (typeof pageLeaveCheck !== "function" || pageLeaveCheck() || confirm("bu sayfaya girdiğiniz fakat göndermediğiniz içerikler var. \nsayfadan ayrılırsanız bu içerikler kaybolacaktır. \n\nilerlemek istiyor musunuz?")) {
-                showLoader();
-
-                $.ajax({
-                    method: "GET",
-                    url: url,
-                    cache: false,
-                    async: true,
-                    success: function (html) {
-                        var centerframeJQueryObject = $("<div>" + html + "</div>");
-                        var centerframeTitle = centerframeJQueryObject.find(".xhr-mt").first();
-
-                        if (centerframeTitle !== undefined && centerframeTitle.length === 1) {
-                            renderCenter(html, url, undefined, centerframeJQueryObject, centerframeTitle);
-                        }
-                        else {
-                            fetchTitle(url).then(title => {
-                                renderCenter(html, url, title, centerframeJQueryObject, centerframeTitle);
-                            });
-                        }
-                    },
-                    error: function (t, i) {
-                        t.status < 500 ? renderCenter(t.responseText, url) : alert("istediğiniz içerik yüklenemedi. \nbir süre sonra yeniden deneyin."),
-                            hideLoader();
+        if (url === "" || url === undefined) { return; }
+        if (
+            typeof pageLeaveCheck !== "function" ||
+            pageLeaveCheck() ||
+            confirm("bu sayfaya girdiğiniz fakat göndermediğiniz içerikler var. \nsayfadan ayrılırsanız bu içerikler kaybolacaktır. \n\nilerlemek istiyor musunuz?")
+        ) {
+            showLoader();
+            $.ajax({
+                method: "GET",
+                url,
+                cache: false,
+                async: true,
+                success(html) {
+                    const centerframeJQueryObject = $("<div>" + html + "</div>");
+                    const centerframeTitle = centerframeJQueryObject.find(".xhr-mt").first();
+                    if (centerframeTitle && centerframeTitle.length === 1) {
+                        renderCenter(html, url, undefined, centerframeJQueryObject, centerframeTitle);
                     }
-                });
-            }
+                    else {
+                        fetchTitle(url).then(title => {
+                            renderCenter(html, url, title, centerframeJQueryObject, centerframeTitle);
+                        });
+                    }
+                },
+                error(response, status) {
+                    if (response.status < 500) {
+                        renderCenter(response.responseText, url);
+                    }
+                    else {
+                        alert("istediğiniz içerik yüklenemedi. \nbir süre sonra yeniden deneyin.");
+                    }
+                    hideLoader();
+                }
+            });
         }
     };
 }
