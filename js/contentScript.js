@@ -95,32 +95,30 @@ function moveTitleCategory() {
 }
 
 function changeGlobalFont() {
-    chrome.storage.local.get("fontFamily").then(settings => {
-        const fontName = settings["fontFamily"];
-
+    chrome.storage.local.get("fontFamily").then(({ fontFamily }) => {
         chrome.runtime.sendMessage({
             type: "insertCSSString",
-            CSS: `body{font-family:"${ fontName.replace(/^(other)(.*)/, "$2") }"!important;}`,
+            CSS: `body{font-family:"${ fontFamily.replace(/^(other)(.*)/, "$2") }"!important;}`,
         });
 
-        if (isFontExcluded(fontName)) { return; }
+        if (isFontExcluded(fontFamily)) { return; }
 
         waitForElement("head").then(elem => {
-            if (qs(`style[data-font-name="${ fontName }"]`)) { return; }
+            if (qs(`style[data-font-name="${ fontFamily }"]`)) { return; }
 
             const link = dom.ce("link");
             link.rel = "preload";
             link.as = "font";
             link.type = "font/woff2";
             link.crossOrigin = "anonymous";
-            link.href = chrome.runtime.getURL(`fonts/${ fontName }/${ fontName }-latin.woff2`);
+            link.href = chrome.runtime.getURL(`fonts/${ fontFamily }/${ fontFamily }-latin.woff2`);
 
             const linkExt = dom.clone(link);
-            linkExt.href = chrome.runtime.getURL(`fonts/${ fontName }/${ fontName }-latin-ext.woff2`);
+            linkExt.href = chrome.runtime.getURL(`fonts/${ fontFamily }/${ fontFamily }-latin-ext.woff2`);
 
             const customFont = dom.ce("style");
-            customFont.dataset.fontName = fontName;
-            customFont.textContent = customFontCSS(fontName);
+            customFont.dataset.fontFamily = fontFamily;
+            customFont.textContent = customFontCSS(fontFamily);
 
             elem.append(
                 link,
@@ -274,18 +272,18 @@ function addPageButtons() {
     });
 }
 
-const customFontCSS = fontName => `
+const customFontCSS = fontFamily => `
     @font-face {
-        font-family: "${ fontName }";
-        src: url("${ chrome.runtime.getURL(`fonts/${ fontName }/${ fontName }-latin.woff2`) }") format("woff2");
+        font-family: "${ fontFamily }";
+        src: url("${ chrome.runtime.getURL(`fonts/${ fontFamily }/${ fontFamily }-latin.woff2`) }") format("woff2");
         font-weight: normal;
         font-style: normal;
         font-display: swap;
         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
     }
     @font-face {
-        font-family: "${ fontName }";
-        src: url("${ chrome.runtime.getURL(`fonts/${ fontName }/${ fontName }-latin-ext.woff2`) }") format("woff2");
+        font-family: "${ fontFamily }";
+        src: url("${ chrome.runtime.getURL(`fonts/${ fontFamily }/${ fontFamily }-latin-ext.woff2`) }") format("woff2");
         font-weight: normal;
         font-style: normal;
         font-display: swap;
@@ -293,8 +291,8 @@ const customFontCSS = fontName => `
     }
 `;
 
-function isFontExcluded(fontName) {
-    return excludedFonts.some(elem => fontName.startsWith(elem));
+function isFontExcluded(fontFamily) {
+    return excludedFonts.some(elem => fontFamily.startsWith(elem));
 }
 
 function waitForElement(selector) {
