@@ -18,6 +18,11 @@ const excludedFonts = [
     "other"
 ];
 
+const fonts = {
+    "IBM Plex Sans": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&display=swap",
+    "Poppins": "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap",
+};
+
 const centerframeFunctions = [
     adjustPageTitle,
     adjustSearchPlaceholders,
@@ -104,27 +109,30 @@ function changeGlobalFont() {
         if (isFontExcluded(fontFamily)) { return; }
 
         waitForElement("head").then(elem => {
-            if (qs(`style[data-font-name="${ fontFamily }"]`)) { return; }
+            if (qs(`link[href="${ fonts[fontFamily] }"]`)) { return; }
+
+            const links = [];
+
+            if (!qs('link[href="https://fonts.googleapis.com"]')) {
+                const link = dom.ce("link");
+                link.rel = "preconnect";
+                link.href = "https://fonts.googleapis.com";
+                links.push(link);
+            }
+            if (!qs('link[href="https://fonts.gstatic.com"]')) {
+                const link = dom.ce("link");
+                link.rel = "preconnect";
+                link.href = "https://fonts.gstatic.com";
+                link.crossOrigin = "anonymous";
+                links.push(link);
+            }
 
             const link = dom.ce("link");
-            link.rel = "preload";
-            link.as = "font";
-            link.type = "font/woff2";
-            link.crossOrigin = "anonymous";
-            link.href = chrome.runtime.getURL(`fonts/${ fontFamily }/${ fontFamily }-latin.woff2`);
+            link.rel = "stylesheet";
+            link.href = fonts[fontFamily];
+            links.push(link);
 
-            const linkExt = dom.clone(link);
-            linkExt.href = chrome.runtime.getURL(`fonts/${ fontFamily }/${ fontFamily }-latin-ext.woff2`);
-
-            const customFont = dom.ce("style");
-            customFont.dataset.fontFamily = fontFamily;
-            customFont.textContent = customFontCSS(fontFamily);
-
-            elem.append(
-                link,
-                linkExt,
-                customFont,
-            );
+            document.head.append(...links);
         });
     });
 }
