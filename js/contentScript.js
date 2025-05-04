@@ -12,6 +12,12 @@ const loadcenterSelectors = `
     #frame_cockpit > a:nth-child(-n+6)
 `;
 
+const excludedFonts = [
+    "Source Sans Pro",
+    "Segoe UI",
+    "other"
+];
+
 const centerframeFunctions = [
     adjustPageTitle,
     adjustSearchPlaceholders,
@@ -89,12 +95,6 @@ function moveTitleCategory() {
 }
 
 function changeGlobalFont() {
-    const excludedFonts = [
-        "Source Sans Pro",
-        "Segoe UI",
-        "other"
-    ];
-
     chrome.storage.local.get("fontFamily").then(settings => {
         const fontName = settings["fontFamily"];
 
@@ -103,7 +103,7 @@ function changeGlobalFont() {
             CSS: `body{font-family:"${ fontName.replace(/^(other)(.*)/, "$2") }"!important;}`,
         });
 
-        if (excludedFonts.some(elem => fontName.startsWith(elem))) { return; }
+        if (isFontExcluded(fontName)) { return; }
 
         waitForElement("head").then(elem => {
             if (qs(`style[data-font-name="${ fontName }"]`)) { return; }
@@ -292,6 +292,10 @@ const customFontCSS = fontName => `
         unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
     }
 `;
+
+function isFontExcluded(fontName) {
+    return excludedFonts.some(elem => fontName.startsWith(elem));
+}
 
 function waitForElement(selector) {
     return new Promise(resolve => {
