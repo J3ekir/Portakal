@@ -3,11 +3,14 @@ chrome.storage.local.get("fontFamily").then(settings => {
 });
 
 qs("#font-family").addEventListener("change", event => {
-    if (event.currentTarget.value === "other") {
+    const value = event.currentTarget.value;
+    event.currentTarget.dataset.value = value;
+
+    if (value === "other") {
         qs("#font-family-custom>button").click();
     }
     else {
-        chrome.storage.local.set({ "fontFamily": event.currentTarget.value });
+        chrome.storage.local.set({ "fontFamily": value });
     }
 });
 

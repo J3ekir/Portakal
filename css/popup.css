@@ -92,7 +92,7 @@ button {
 }
 
 #font-family + .input-group {
-    display: none;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     height: 32px;
@@ -111,8 +111,8 @@ button {
         }
     }
 }
-#font-family:has([value="other"]:checked) + .input-group {
-    display: inline-flex;
+#font-family:not([data-value="other"]) + .input-group {
+    display: none;
 }
 
 .input-group {
