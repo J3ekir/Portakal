@@ -1,11 +1,17 @@
 chrome.runtime.onInstalled.addListener(() => {
     const defaultProfilePictureUrl = "https://normalsozluk.com/images/no_avatarfb.jpg";
     const defaultFontFamily = "Source Sans Pro";
+    const defaultSpanContentToPage = false;
 
-    chrome.storage.local.get().then(({ profilePictureUrl, fontFamily }) => {
+    chrome.storage.local.get().then(({
+        profilePictureUrl,
+        fontFamily,
+        spanContentToPage,
+    }) => {
         chrome.storage.local.set({
             profilePictureUrl: profilePictureUrl || defaultProfilePictureUrl,
             fontFamily: fontFamily || defaultFontFamily,
+            spanContentToPage: spanContentToPage || defaultSpanContentToPage,
         });
     });
 });

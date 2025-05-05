@@ -1687,3 +1687,15 @@ body.dark {
     }
 }
 /* #endregion Yayında Olmayan Tanımlar Sekmeleri */
+
+#centerframe.span-content-to-page:has(> #side-ad-container-wide > #side-ad-wide > div > ins:not([data-ad-status="filled"])) {
+    @media (min-width: 1120px) {
+        .has-side-ad-narrow,
+        .has-side-ad-wide {
+            width: 100% !important;
+        }
+    }
+    #side-ad-container-wide {
+        height: unset !important;
+    }
+}

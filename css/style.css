@@ -1719,3 +1719,12 @@ body.dark #titleinfobox {
 }
 
 /* #endregion Yayında Olmayan Tanımlar Sekmeleri */
+@media (min-width: 1120px) {
+  #centerframe.span-content-to-page:has(> #side-ad-container-wide > #side-ad-wide > div > ins:not([data-ad-status=filled])) .has-side-ad-narrow,
+  #centerframe.span-content-to-page:has(> #side-ad-container-wide > #side-ad-wide > div > ins:not([data-ad-status=filled])) .has-side-ad-wide {
+    width: 100% !important;
+  }
+}
+#centerframe.span-content-to-page:has(> #side-ad-container-wide > #side-ad-wide > div > ins:not([data-ad-status=filled])) #side-ad-container-wide {
+  height: unset !important;
+}

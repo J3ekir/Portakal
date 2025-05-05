@@ -25,6 +25,8 @@ const fonts = {
 };
 
 const centerframeFunctions = [
+    spanContentToPage,
+
     adjustPageTitle,
     adjustSearchPlaceholders,
     adjustEntrySearchPlaceholder,
@@ -60,10 +62,21 @@ chrome.storage.onChanged.addListener(changes => {
             case "fontFamily":
                 changeGlobalFont(oldValue, newValue);
                 break;
+            case "spanContentToPage":
+                dom.cl.toggle("#centerframe", "span-content-to-page", newValue);
+                break;
         }
     });
 });
 
+/**
+ * sayfa içeriğini sayfaya yay
+ */
+function spanContentToPage() {
+    chrome.storage.local.get("spanContentToPage").then(({ spanContentToPage }) => {
+        dom.cl.toggle("#centerframe", "span-content-to-page", spanContentToPage);
+    });
+}
 
 /**
  * belge başlığını küçült

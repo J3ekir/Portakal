@@ -1,5 +1,12 @@
-chrome.storage.local.get("fontFamily").then(settings => {
-    changeFontFamily(settings.fontFamily)
+chrome.storage.local.get([
+    "fontFamily",
+    "spanContentToPage",
+]).then(({
+    fontFamily,
+    spanContentToPage,
+}) => {
+    changeFontFamily(fontFamily);
+    qs("#span-content-to-page-checkbox").checked = spanContentToPage;
 });
 
 qs("#font-family").addEventListener("change", event => {
@@ -26,11 +33,18 @@ qs("#font-family-custom>button").addEventListener("click", event => {
     }
 });
 
+qs("#span-content-to-page-checkbox").addEventListener("change", event => {
+    chrome.storage.local.set({ "spanContentToPage": event.currentTarget.checked });
+});
+
 chrome.storage.onChanged.addListener(changes => {
     Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
         switch (key) {
             case "fontFamily":
                 changeFontFamily(newValue);
+                break;
+            case "spanContentToPage":
+                qs("#span-content-to-page-checkbox").checked = newValue;
                 break;
         }
     });
