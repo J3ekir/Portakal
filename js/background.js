@@ -58,11 +58,13 @@ function removeCSSString(tabId, CSS) {
 }
 
 function fontFamily(tabId, oldValue, newValue) {
-    chrome.scripting.removeCSS({
-        target: { tabId },
-        origin: "USER",
-        css: `body{font-family:"${ oldValue.replace(/^(other)(.*)/, "$2") }"!important}`,
-    });
+    if (oldValue) {
+        chrome.scripting.removeCSS({
+            target: { tabId },
+            origin: "USER",
+            css: `body{font-family:"${ oldValue.replace(/^(other)(.*)/, "$2") }"!important}`,
+        });
+    }
     chrome.scripting.insertCSS({
         target: { tabId },
         origin: "USER",
