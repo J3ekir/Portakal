@@ -8,6 +8,8 @@
     --color-text-1: #aaa;
     --color-user-editor: #6495ed;
     --color-border-light: var(--color-text-1);
+
+    color-scheme: dark;
 }
 
 * {
