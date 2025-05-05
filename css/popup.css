@@ -23,6 +23,10 @@ body {
     margin: 0;
 }
 
+input {
+    accent-color: #f95318;
+}
+
 a {
     text-decoration: none;
     color: var(--color-accent-1);
@@ -179,6 +183,19 @@ footer {
     display: flex;
     justify-content: space-between;
 }
+
+.setting-checkbox-container {
+    display: flex;
+    gap: 6px;
+    input {
+        margin: 0;
+    }
+    label {
+        padding-bottom: 2px;
+    }
+
+}
+
 .setting-note {
     font-size: smaller;
     font-style: italic;
