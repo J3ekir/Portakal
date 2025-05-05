@@ -58,7 +58,7 @@ chrome.storage.onChanged.addListener(changes => {
                 qs("#cockpitProfilePicture").src = newValue;
                 break;
             case "fontFamily":
-                changeGlobalFont();
+                changeGlobalFont(oldValue, newValue);
                 break;
         }
     });
@@ -100,41 +100,44 @@ function moveTitleCategory() {
     category?.parentElement.insertBefore(category, category.parentElement.children[1]);
 }
 
-function changeGlobalFont() {
-    chrome.storage.local.get("fontFamily").then(({ fontFamily }) => {
-        chrome.runtime.sendMessage({
-            type: "insertCSSString",
-            CSS: `body{font-family:"${ fontFamily.replace(/^(other)(.*)/, "$2") }"!important;}`,
-        });
+async function changeGlobalFont(oldValue, newValue) {
+    if (!oldValue) {
+        newValue = await chrome.storage.local.get("fontFamily").then(({ fontFamily }) => fontFamily);
+    }
 
-        if (isFontExcluded(fontFamily)) { return; }
+    chrome.runtime.sendMessage({
+        type: "fontFamily",
+        oldValue,
+        newValue,
+    });
 
-        waitForElement("head").then(elem => {
-            if (qs(`link[href="${ fonts[fontFamily] }"]`)) { return; }
+    if (isFontExcluded(newValue)) { return; }
 
-            const links = [];
+    waitForElement("head").then(elem => {
+        if (qs(`link[href="${ fonts[newValue] }"]`)) { return; }
 
-            if (!qs('link[href="https://fonts.googleapis.com"]')) {
-                const link = dom.ce("link");
-                link.rel = "preconnect";
-                link.href = "https://fonts.googleapis.com";
-                links.push(link);
-            }
-            if (!qs('link[href="https://fonts.gstatic.com"]')) {
-                const link = dom.ce("link");
-                link.rel = "preconnect";
-                link.href = "https://fonts.gstatic.com";
-                link.crossOrigin = "anonymous";
-                links.push(link);
-            }
+        const links = [];
 
+        if (!qs('link[href="https://fonts.googleapis.com"]')) {
             const link = dom.ce("link");
-            link.rel = "stylesheet";
-            link.href = fonts[fontFamily];
+            link.rel = "preconnect";
+            link.href = "https://fonts.googleapis.com";
             links.push(link);
+        }
+        if (!qs('link[href="https://fonts.gstatic.com"]')) {
+            const link = dom.ce("link");
+            link.rel = "preconnect";
+            link.href = "https://fonts.gstatic.com";
+            link.crossOrigin = "anonymous";
+            links.push(link);
+        }
 
-            document.head.append(...links);
-        });
+        const link = dom.ce("link");
+        link.rel = "stylesheet";
+        link.href = fonts[newValue];
+        links.push(link);
+
+        document.head.append(...links);
     });
 }
 

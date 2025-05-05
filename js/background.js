@@ -26,6 +26,9 @@ chrome.runtime.onMessage.addListener(
             case "removeCSSString":
                 removeCSSString(sender.tab.id, request.CSS);
                 break;
+            case "fontFamily":
+                fontFamily(sender.tab.id, request.oldValue, request.newValue);
+                break;
         }
     }
 );
@@ -51,6 +54,19 @@ function removeCSSString(tabId, CSS) {
         target: { tabId: tabId },
         origin: "USER",
         css: CSS,
+    });
+}
+
+function fontFamily(tabId, oldValue, newValue) {
+    chrome.scripting.removeCSS({
+        target: { tabId },
+        origin: "USER",
+        css: `body{font-family:"${ oldValue.replace(/^(other)(.*)/, "$2") }"!important}`,
+    });
+    chrome.scripting.insertCSS({
+        target: { tabId },
+        origin: "USER",
+        css: `body{font-family:"${ newValue.replace(/^(other)(.*)/, "$2") }"!important}`,
     });
 }
 
