@@ -1,0 +1,19 @@
+{
+	"background": {
+		"scripts": [
+			"js/background.js"
+		]
+	},
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "sikilmis-portakal@addons.mozilla.org",
+			"strict_min_version": "128.0"
+		},
+		"gecko_android": {
+			"strict_min_version": "128.0"
+		}
+	},
+	"permissions": [
+		"browserSettings"
+	]
+}
