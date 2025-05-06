@@ -41,9 +41,11 @@ chrome.storage.onChanged.addListener(changes => {
     Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
         switch (key) {
             case "fontFamily":
+                if (oldValue === newValue) { return; }
                 changeFontFamily(newValue);
                 break;
             case "spanContentToPage":
+                if (oldValue === newValue) { return; }
                 qs("#span-content-to-page-checkbox").checked = newValue;
                 break;
         }

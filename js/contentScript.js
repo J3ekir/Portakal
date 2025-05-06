@@ -57,12 +57,15 @@ chrome.storage.onChanged.addListener(changes => {
     Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
         switch (key) {
             case "profilePictureURL":
+                if (oldValue === newValue) { return; }
                 qs("#cockpitProfilePicture").src = newValue;
                 break;
             case "fontFamily":
+                if (oldValue === newValue) { return; }
                 changeGlobalFont(oldValue, newValue);
                 break;
             case "spanContentToPage":
+                if (oldValue === newValue) { return; }
                 dom.cl.toggle("#centerframe", "span-content-to-page", newValue);
                 break;
         }
