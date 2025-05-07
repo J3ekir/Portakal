@@ -7,6 +7,9 @@ on:
     tags:
       - '[0-9]+'
 
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -22,6 +25,12 @@ jobs:
         with:
           node-version: 22
 
+      - name: Save version
+        run: echo "VERSION=$(jq -r .version manifest.json)" >> $GITHUB_ENV
+
+      - name: ZIP Chrome
+        run: zip -r -FS chrome-${{ env.VERSION }}.zip . --exclude '*/.*' '.*'
+
       - name: Submit to CWS
         run: npx chrome-webstore-upload-cli@^3
         env:
@@ -33,14 +42,25 @@ jobs:
       - name: Generate Firefox manifest.json
         run: echo "$(jq -n -S -f manifest.jq)" > ../manifest.json
         working-directory: .manifest
-      
+
       - name: Submit to AMO
         run: npx web-ext@^8 sign
         env:
           WEB_EXT_API_KEY: ${{ secrets.FIREFOX_JWT_ISSUER }}
           WEB_EXT_API_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
           WEB_EXT_CHANNEL: listed
-          WEB_EXT_APPROVAL_TIMEOUT: 0
+          WEB_EXT_APPROVAL_TIMEOUT: 3600000
 
+      - name: Rename Firefox XPI
+        run: mv *.xpi firefox-${{ env.VERSION }}.xpi
+        working-directory: web-ext-artifacts
 
-
+      - name: Upload assets
+        uses: softprops/action-gh-release@v2
+        with:
+          preserve_order: true
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          files: |
+            chrome-${{ env.VERSION }}.zip
+            web-ext-artifacts/firefox-${{ env.VERSION }}.xpi
