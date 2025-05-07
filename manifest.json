@@ -53,11 +53,5 @@
         "storage",
         "tabs"
     ],
-    "version": "1",
-    "web_accessible_resources": [
-        {
-            "matches": [ "https://normalsozluk.com/*" ],
-            "resources": [ "fonts/*" ]
-        }
-    ]
+    "version": "1"
 }
