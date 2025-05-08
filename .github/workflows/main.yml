@@ -25,12 +25,6 @@ jobs:
         with:
           node-version: 22
 
-      - name: Save version
-        run: echo "VERSION=$(jq -r .version manifest.json)" >> $GITHUB_ENV
-
-      - name: ZIP Chrome
-        run: zip -r -FS chrome-${{ env.VERSION }}.zip . --exclude '*/.*' '.*'
-
       - name: Submit to CWS
         run: npx chrome-webstore-upload-cli@^3
         env:
@@ -38,6 +32,12 @@ jobs:
           CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+
+      - name: Save version
+        run: echo "VERSION=$(jq -r .version manifest.json)" >> $GITHUB_ENV
+
+      - name: ZIP Chrome
+        run: zip -r -FS chrome-${{ env.VERSION }}.zip . --exclude '*/.*' '.*'
 
       - name: Generate Firefox manifest.json
         run: echo "$(jq -n -S -f manifest.jq)" > ../manifest.json
