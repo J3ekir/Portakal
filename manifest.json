@@ -52,8 +52,7 @@
     "name": "sıkılmış portakal",
     "permissions": [
         "scripting",
-        "storage",
-        "tabs"
+        "storage"
     ],
     "version": "1"
 }
