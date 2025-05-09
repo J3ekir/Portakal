@@ -38,7 +38,9 @@
     ],
     "description": "normal sözlük'ü sıkar atar (web sitesini iyileştirir).",
     "homepage_url": "https://github.com/J3ekir/Portakal",
-    "host_permissions": [ "<all_urls>" ],
+    "host_permissions": [
+        "https://normalsozluk.com/*"
+    ],
     "icons": {
         "16": "img/logo16.png",
         "32": "img/logo32.png",

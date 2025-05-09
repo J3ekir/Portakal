@@ -48,11 +48,6 @@ observe("#centerframe", () =>
     centerframeFunctions.forEach(func => func())
 );
 
-(function connect() {
-    chrome.runtime.connect({ name: "keepAlive" })
-        .onDisconnect.addListener(connect);
-})();
-
 chrome.storage.onChanged.addListener(changes => {
     Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
         switch (key) {
