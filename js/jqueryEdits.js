@@ -277,7 +277,7 @@ function removeJQueryEventListener(event, selector) {
         const id = setInterval(() => {
             const events = $._data(document, "events")[event];
 
-            if (events && events.filter(event => event.selector === selector).length === 1) {
+            if (events?.some(event => event.selector === selector)) {
                 $(document).off(event, selector);
                 resolve();
                 clearInterval(id);
