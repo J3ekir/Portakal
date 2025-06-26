@@ -23,6 +23,15 @@ body {
     font-family: 'Source Sans 3', 'Source Sans Pro', 'Asap', 'Trebuchet MS', 'Segoe UI', 'Lucida Sans Unicode', 'Lucida Sans', Roboto, Arial, Helvetica, sans-serif;
     font-size: 13pt;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 input {
@@ -171,7 +180,7 @@ footer {
 }
 
 .setting-container {
-    padding: 8px 16px;
+    padding-inline: 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;

@@ -19,38 +19,40 @@
             <span>sıkılmış portakal</span>
         </a>
     </header>
-    <div class="setting-container">
-        <div class="setting-title-container">
-            <div class="setting-title">yazı tipi</div>
-            <div class="pseudo-symbol" title="yıldız ile belirtilen yazı tiplerini bilgisayarınıza kendiniz yüklemelisiniz.">(*)</div>
+    <main>
+        <div class="setting-container">
+            <div class="setting-title-container">
+                <div class="setting-title">yazı tipi</div>
+                <div class="pseudo-symbol" title="yıldız ile belirtilen yazı tiplerini bilgisayarınıza kendiniz yüklemelisiniz.">(*)</div>
+            </div>
+            <select name="font-family" id="font-family">
+                <option value="Source Sans Pro">Source Sans Pro (öntanımlı)</option>
+                <option value="Segoe UI">Segoe UI*</option>
+                <option value="Poppins">Poppins</option>
+                <option value="IBM Plex Sans">IBM Plex Sans</option>
+                <option value="Cabin">Cabin</option>
+                <option value="other">diğer…</option>
+            </select>
+            <div id="font-family-custom" class="input-group">
+                <input placeholder="yazı tipi ailesi adı girin…"></input>
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
+                        <path></path>
+                    </svg>
+                    <span>uygula</span>
+                </button>
+            </div>
         </div>
-        <select name="font-family" id="font-family">
-            <option value="Source Sans Pro">Source Sans Pro (öntanımlı)</option>
-            <option value="Segoe UI">Segoe UI*</option>
-            <option value="Poppins">Poppins</option>
-            <option value="IBM Plex Sans">IBM Plex Sans</option>
-            <option value="Cabin">Cabin</option>
-            <option value="other">diğer…</option>
-        </select>
-        <div id="font-family-custom" class="input-group">
-            <input placeholder="yazı tipi ailesi adı girin…"></input>
-            <button>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
-                    <path></path>
-                </svg>
-                <span>uygula</span>
-            </button>
+        <div class="setting-container">
+            <div class="setting-title-container">
+                <div class="setting-title">içerik ayarları</div>
+            </div>
+            <div class="setting-checkbox-container" title="eğer reklamlar görünmüyorsa sayfa içeriğini reklamların tuttuğu alanı dolduracak şekilde ayarla.">
+                <input type="checkbox" id="span-content-to-page-checkbox" name="span-content-to-page-checkbox" value="yay">
+                <label for="span-content-to-page-checkbox"> sayfa içeriğini boşluklara yay</label>
+            </div>
         </div>
-    </div>
-    <div class="setting-container">
-        <div class="setting-title-container">
-            <div class="setting-title">içerik ayarları</div>
-        </div>
-        <div class="setting-checkbox-container" title="eğer reklamlar görünmüyorsa sayfa içeriğini reklamların tuttuğu alanı dolduracak şekilde ayarla.">
-            <input type="checkbox" id="span-content-to-page-checkbox" name="span-content-to-page-checkbox" value="yay">
-            <label for="span-content-to-page-checkbox"> sayfa içeriğini boşluklara yay</label>
-        </div>
-    </div>
+    </main>
     <footer>
         <div class="about-developers">
             <a href="https://normalsozluk.com/yazar/dr-bidibidi--19942" target="_blank" class="user-blue">dr bıdıbıdı</a> &amp;
