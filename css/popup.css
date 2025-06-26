@@ -225,3 +225,12 @@ footer {
         background-color: var(--color-background-menu-item-hover);
     }
 }
+
+.logo-link {
+    display: flex;
+    gap: 8px;
+    & > img {
+        width: 20px;
+        height: 20px;
+    }
+}
