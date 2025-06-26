@@ -1,19 +1,5 @@
 chrome.runtime.onInstalled.addListener(() => {
-    const defaultProfilePictureUrl = "https://normalsozluk.com/images/no_avatarfb.jpg";
-    const defaultFontFamily = "Source Sans Pro";
-    const defaultSpanContentToPage = false;
-
-    chrome.storage.local.get().then(({
-        profilePictureUrl,
-        fontFamily,
-        spanContentToPage,
-    }) => {
-        chrome.storage.local.set({
-            profilePictureUrl: profilePictureUrl || defaultProfilePictureUrl,
-            fontFamily: fontFamily || defaultFontFamily,
-            spanContentToPage: spanContentToPage || defaultSpanContentToPage,
-        });
-    });
+    setDefaultSettings();
 });
 
 chrome.runtime.onStartup.addListener(() => {
@@ -38,6 +24,17 @@ chrome.runtime.onMessage.addListener(
         }
     }
 );
+
+function setDefaultSettings() {
+    const defaultSettings = {
+        profilePictureUrl: "https://normalsozluk.com/images/no_avatarfb.jpg",
+        fontFamily: "Source Sans Pro",
+        spanContentToPage: false,
+    };
+    const defaultSettingsKeys = Object.keys(defaultSettings);
+
+    chrome.storage.local.get(defaultSettingsKeys).then(settings => chrome.storage.local.set(Object.fromEntries(defaultSettingsKeys.map(key => [key, settings[key] ?? defaultSettings[key]]))));
+}
 
 function injectCSS(tabId) {
     chrome.scripting.insertCSS({
