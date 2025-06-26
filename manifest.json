@@ -1,60 +1,60 @@
 {
-    "action": {
-        "default_icon": {
-            "16": "img/logo16.png",
-            "32": "img/logo32.png",
-            "48": "img/logo48.png",
-            "64": "img/logo64.png",
-            "128": "img/logo128.png"
-        },
-        "default_popup": "popup.html"
-    },
-    "author": "Dekamir & Vavien.",
-    "background": {
-        "service_worker": "js/background.js"
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "https://normalsozluk.com/*"
-            ],
-            "css": [
-                "css/style.min.css"
-            ],
-            "js": [
-                "js/dom.js",
-                "js/contentScript.js"
-            ],
-            "run_at": "document_start"
-        },
-        {
-            "matches": [
-                "https://normalsozluk.com/*"
-            ],
-            "js": [
-                "js/jqueryEdits.js"
-            ],
-            "run_at": "document_start",
-            "world": "MAIN"
-        }
-    ],
-    "description": "normal sözlük'ü sıkar atar (web sitesini iyileştirir).",
-    "homepage_url": "https://github.com/J3ekir/Portakal",
-    "host_permissions": [
-        "https://normalsozluk.com/*"
-    ],
-    "icons": {
-        "16": "img/logo16.png",
-        "32": "img/logo32.png",
-        "48": "img/logo48.png",
-        "64": "img/logo64.png",
-        "128": "img/logo128.png"
-    },
-    "manifest_version": 3,
-    "name": "sıkılmış portakal",
-    "permissions": [
-        "scripting",
-        "storage"
-    ],
-    "version": "2"
+	"action": {
+		"default_icon": {
+			"16": "img/logo16.png",
+			"32": "img/logo32.png",
+			"48": "img/logo48.png",
+			"64": "img/logo64.png",
+			"128": "img/logo128.png"
+		},
+		"default_popup": "popup.html"
+	},
+	"author": "Dekamir & Vavien.",
+	"background": {
+		"service_worker": "js/background.js"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"https://normalsozluk.com/*"
+			],
+			"css": [
+				"css/style.min.css"
+			],
+			"js": [
+				"js/dom.js",
+				"js/contentScript.js"
+			],
+			"run_at": "document_start"
+		},
+		{
+			"matches": [
+				"https://normalsozluk.com/*"
+			],
+			"js": [
+				"js/jqueryEdits.js"
+			],
+			"run_at": "document_start",
+			"world": "MAIN"
+		}
+	],
+	"description": "normal sözlük'ü sıkar atar (web sitesini iyileştirir).",
+	"homepage_url": "https://github.com/J3ekir/Portakal",
+	"host_permissions": [
+		"https://normalsozluk.com/*"
+	],
+	"icons": {
+		"16": "img/logo16.png",
+		"32": "img/logo32.png",
+		"48": "img/logo48.png",
+		"64": "img/logo64.png",
+		"128": "img/logo128.png"
+	},
+	"manifest_version": 3,
+	"name": "sıkılmış portakal",
+	"permissions": [
+		"scripting",
+		"storage"
+	],
+	"version": "2"
 }

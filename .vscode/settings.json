@@ -1,6 +1,6 @@
 {
     "[javascript][css][json][jsonc]": {
-        "editor.insertSpaces": true,
+        "editor.insertSpaces": false,
         "editor.tabSize": 4,
     },
     "js/ts.implicitProjectConfig.target": "ESNext",
