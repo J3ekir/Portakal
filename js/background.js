@@ -9,9 +9,6 @@ chrome.runtime.onStartup.addListener(() => {
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         switch (request.type) {
-            case "injectCSS":
-                injectCSS(sender.tab.id);
-                break;
             case "insertCSSString":
                 insertCSSString(sender.tab.id, request.CSS);
                 break;
@@ -34,14 +31,6 @@ function setDefaultSettings() {
     const defaultSettingsKeys = Object.keys(defaultSettings);
 
     chrome.storage.local.get(defaultSettingsKeys).then(settings => chrome.storage.local.set(Object.fromEntries(defaultSettingsKeys.map(key => [key, settings[key] ?? defaultSettings[key]]))));
-}
-
-function injectCSS(tabId) {
-    chrome.scripting.insertCSS({
-        target: { tabId: tabId },
-        origin: "AUTHOR",
-        files: ["css/style.min.css"],
-    });
 }
 
 function insertCSSString(tabId, CSS) {

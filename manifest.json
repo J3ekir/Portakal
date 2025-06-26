@@ -18,8 +18,10 @@
             "matches": [
                 "https://normalsozluk.com/*"
             ],
+            "css": [
+                "css/style.min.css"
+            ],
             "js": [
-                "js/injectCSS.js",
                 "js/dom.js",
                 "js/contentScript.js"
             ],
