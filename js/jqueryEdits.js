@@ -17,10 +17,47 @@ EventTarget.prototype.addEventListener = function (type, listener, options) {
 
 if (!/^https:\/\/normalsozluk\.com\/external/.test(location.href)) {
     waitForVariable("jQuery").then(() => {
-        adjustMenuAnimsMouseup();
-        adjustMenuAnims();
-        adjustTitleInfoAnims();
-        adjustScrollToBottom();
+        const originalMouseup = $.fn.mouseup;
+        $.fn.mouseup = function (handler) {
+            if (typeof handler === "function") {
+                if (handler._skipBlock) {
+                    return originalMouseup.call(this, handler);
+                }
+                if (handler.toString().includes(".right-drop-menu")) {
+                    return this;
+                }
+            }
+            return originalMouseup.call(this, handler);
+        };
+
+        const originalOn = $.fn.on;
+        $.fn.on = function (types, selector, data, fn) {
+            let handler;
+            if (typeof selector === 'function') {
+                handler = selector;
+            } else if (typeof data === 'function') {
+                handler = data;
+            } else {
+                handler = fn;
+            }
+
+            if (handler && handler._skipBlock) {
+                return originalOn.apply(this, arguments);
+            }
+
+            if (typeof types === "string" && types.includes("click") &&
+                (selector === ".frame-toggler" || selector === ".titleinfo" || selector === ".entryscrollbottom")) {
+                return this;
+            }
+
+            return originalOn.apply(this, arguments);
+        };
+
+
+        $(document).mouseup(adjustMenuAnimsMouseup);
+        $(document).on("click", ".frame-toggler", adjustMenuAnims);
+        $(document).on("click", ".titleinfo", adjustTitleInfoAnims);
+        $(document).on("click", ".entryscrollbottom", adjustScrollToBottom);
         adjustHistoryState();
         adjustHamburgerToOnlineAnimation();
         overridePushHistory();
@@ -30,78 +67,62 @@ if (!/^https:\/\/normalsozluk\.com\/external/.test(location.href)) {
 adjustLoadingIndicator();
 
 
-function adjustMenuAnimsMouseup() {
-    removeJQueryEventListener("mouseup").then(() => {
-        $(document).mouseup(function (event) {
-            $(".right-drop-menu").each(function () {
-                if (!$(this).is(event.target) && $(this).has(event.target).length === 0) {
-                    $(this).slideUp("fast", "easeOutCubic").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
-                }
-            });
-        });
+function adjustMenuAnimsMouseup(event) {
+    $(".right-drop-menu").each(function () {
+        if (!$(this).is(event.target) && $(this).has(event.target).length === 0) {
+            $(this).slideUp("fast", "easeOutCubic").animate({ opacity: 0 }, { queue: false, duration: 'fast' });
+        }
     });
 }
 
-function adjustMenuAnims() {
-    removeJQueryEventListener("click", ".frame-toggler").then(() => {
-        $(document).on("click", ".frame-toggler", function (event) {
-            event.preventDefault();
-            const target = $(this).data("target");
-            if ($(target).css("display") === "block") {
-                $(target)
-                    .slideUp("fast", "easeOutCubic")
-                    .animate({ opacity: 0 }, { queue: false, duration: "fast" });
-                return;
-            }
-            $(target)
-                .css("opacity", 0)
-                .slideDown("fast", "easeOutCubic")
-                .animate({ opacity: 1 }, { queue: false, duration: "fast" });
+function adjustMenuAnims(event) {
+    event.preventDefault();
+    const target = $(this).data("target");
+    if ($(target).css("display") === "block") {
+        $(target)
+            .slideUp("fast", "easeOutCubic")
+            .animate({ opacity: 0 }, { queue: false, duration: "fast" });
+        return;
+    }
+    $(target)
+        .css("opacity", 0)
+        .slideDown("fast", "easeOutCubic")
+        .animate({ opacity: 1 }, { queue: false, duration: "fast" });
 
-            if (target === "#frame_onlineauthors") {
-                notifyOnline();
-            }
-            if (target === "#frame_notifications" && $("#notificationpreviewcontainer").html() === "") {
-                $("#notificationpreviewcontainer").html(
-                    '<div class="text-center my-2"><i class="fa fa-2x fa-spinner fa-spin"></i></div>'
-                );
-                updateNotifications(true);
-            }
-            if (target === "#frame_chatpreview" && $("#chatpreviewcontainer").html() === "") {
-                $("#chatpreviewcontainer").html(
-                    '<div class="text-center my-2"><i class="fa fa-2x fa-spinner fa-spin"></i></div>'
-                );
-                updateMessages();
-            }
-        });
-    });
+    if (target === "#frame_onlineauthors") {
+        notifyOnline();
+    }
+    if (target === "#frame_notifications" && $("#notificationpreviewcontainer").html() === "") {
+        $("#notificationpreviewcontainer").html(
+            '<div class="text-center my-2"><i class="fa fa-2x fa-spinner fa-spin"></i></div>'
+        );
+        updateNotifications(true);
+    }
+    if (target === "#frame_chatpreview" && $("#chatpreviewcontainer").html() === "") {
+        $("#chatpreviewcontainer").html(
+            '<div class="text-center my-2"><i class="fa fa-2x fa-spinner fa-spin"></i></div>'
+        );
+        updateMessages();
+    }
 }
 
-function adjustTitleInfoAnims() {
-    removeJQueryEventListener("click", ".titleinfo").then(() => {
-        $(document).on("click", ".titleinfo", function () {
-            $("#titleinfobox").animate({
-                height: "toggle",
-                opacity: "toggle",
-                padding: "toggle"
-            }, "fast");
-        });
-    });
+function adjustTitleInfoAnims(event) {
+    $("#titleinfobox").animate({
+        height: "toggle",
+        opacity: "toggle",
+        padding: "toggle"
+    }, "fast");
 }
 
-function adjustScrollToBottom() {
-    removeJQueryEventListener("click", ".entryscrollbottom").then(() => {
-        $(document).on("click", ".entryscrollbottom", function () {
-            const entryBar = $("div.entrybar").last();
-            const scrollPosition = entryBar ? entryBar.position().top - 420 : $(document).height();
-            $("html, body").animate({
-                scrollTop: scrollPosition
-            }, 300);
-        });
-    });
+function adjustScrollToBottom(event) {
+    const entryBar = $("div.entrybar").last();
+    const scrollPosition = entryBar ? entryBar.position().top - 420 : $(document).height();
+    $("html, body").animate({
+        scrollTop: scrollPosition
+    }, 300);
 }
 
-function adjustHistoryState(centerframe) {
+function adjustHistoryState() {
     waitForElement("#centerframe").then(elem => {
         if (!window.history.state) {
             window.pushHistory(window.location.href, "#centerframe", elem.innerHTML);
@@ -110,13 +131,14 @@ function adjustHistoryState(centerframe) {
 }
 
 function adjustHamburgerToOnlineAnimation() {
-    const elem = document.querySelector("#hamburger-menu .frame-toggler");
-    elem.onclick = null;
-    $(elem).click(function () {
-        if (!window.__cfRLUnblockHandlers) {
-            return false;
-        }
-        $('#hamburger-menu').fadeOut(100, 'swing');
+    waitForElement("#hamburger-menu").then(elem => {
+        elem.onclick = null;
+        $(elem).click(function () {
+            if (!window.__cfRLUnblockHandlers) {
+                return false;
+            }
+            $('#hamburger-menu').fadeOut(100, 'swing');
+        });
     });
 }
 
@@ -272,23 +294,14 @@ function waitForElement(selector) {
     });
 }
 
-function removeJQueryEventListener(event, selector) {
-    return new Promise(resolve => {
-        const id = setInterval(() => {
-            const events = $._data(document, "events")[event];
-
-            if (events?.some(event => event.selector === selector)) {
-                $(document).off(event, selector);
-                resolve();
-                clearInterval(id);
-            }
-        }, 50);
-    });
-}
-
 async function fetchTitle(url) {
     const response = await fetch(url);
     const html = await response.text();
     const match = html.match(/<title>(.*?)<\/title>/);
     return match ? match[1] : window.windowTitle;
 }
+
+adjustMenuAnimsMouseup._skipBlock = true;
+adjustMenuAnims._skipBlock = true;
+adjustTitleInfoAnims._skipBlock = true;
+adjustScrollToBottom._skipBlock = true;
