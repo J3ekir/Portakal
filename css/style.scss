@@ -1699,3 +1699,16 @@ body.dark {
         height: unset !important;
     }
 }
+
+.iframecontainer:has(> iframe) {
+    position: relative !important;
+    height: 0 !important;
+    padding-bottom: 56.25% !important; /* 16:9 Aspect Ratio */
+    & > iframe {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+}

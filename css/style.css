@@ -1728,3 +1728,16 @@ body.dark #titleinfobox {
 #centerframe.span-content-to-page:has(> #side-ad-container-wide > #side-ad-wide > div > ins:not([data-ad-status=filled])) #side-ad-container-wide {
   height: unset !important;
 }
+
+.iframecontainer:has(> iframe) {
+  position: relative !important;
+  height: 0 !important;
+  padding-bottom: 56.25% !important; /* 16:9 Aspect Ratio */
+}
+.iframecontainer:has(> iframe) > iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
