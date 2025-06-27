@@ -1192,17 +1192,17 @@ div:is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > div.text-center.
     width: 100px !important;
     height: 100px !important;
     transition: box-shadow 0.25s ease-out, border-radius 0.20s cubic-bezier(.47, 1.64, 1, 1);
-        &:hover {
-            border-radius: 4px !important;
-            transition: border-radius 0.25s cubic-bezier(.47, 1.64, .41, .8);
-        }
+    &:hover {
+        border-radius: 4px !important;
+        transition: border-radius 0.25s cubic-bezier(.47, 1.64, .41, .8);
+    }
 }
 
 .cover-photo {
     border-radius: 16px;
 }
 .cover-photo-actions {
-    > .actionbutton {
+    & > .actionbutton {
         font-size: 0 !important;
         border-radius: 8px !important;
         display: flex;
@@ -1214,52 +1214,52 @@ div:is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > div.text-center.
         &:hover {
             transition: background-color 50ms ease-out !important;
         }
-        > .fa {
+        & > .fa {
             font-size: initial !important;
         }
     }
 }
 
-#centerframe {
-    &:has(.profile-nickname) > :is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > hr { /* Profil headerı ile tanımlar arası çizgi */
+#centerframe:has(.profile-nickname) {
+    & > :is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > hr { /* Profil headerı ile tanımlar arası çizgi */
         display: none !important;
     }
-    &:has(.profile-nickname) > div > h2 { /* Profil Tanım Sekmeleri */
+    & > div > h2 { /* Profil Tanım Sekmeleri */
         display: flex;
         height: 36px !important;
         font-size: 0;
         gap: 2px;
+        & > a {
+            font-size: 12pt !important;
+            transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+            box-shadow: none;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            height: 36px !important;
+            border-radius: 24px !important;
+            padding: 12px !important;
+            margin-top: 4px !important;
+            text-decoration: none;
+            &:hover {
+                background-color: #77777711;
+                transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+                color: inherit !important;
+            }
+            &:active {
+                background-color: #55555511;
+                transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
+                color: inherit !important;
+            }
+            &.text-primary {
+                box-shadow: inset 0 0 0 1px #f95318 !important;
+                background-color: #77777722;
+                transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
+                color: inherit !important;
+            }
+        }
     }
-    &:has(.profile-nickname) > div > h2 > a {
-        font-size: 12pt !important;
-        transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
-        box-shadow: none;
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        height: 36px !important;
-        border-radius: 24px !important;
-        padding: 12px !important;
-        margin-top: 4px !important;
-        text-decoration: none;
-    }
-    &:has(.profile-nickname) > div > h2 > a:hover {
-        background-color: #77777711;
-        transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
-        color: inherit !important;
-    }
-    &:has(.profile-nickname) > div > h2 > a:active {
-        background-color: #55555511;
-        transition: background-color 50ms ease-out, box-shadow 150ms ease-out;
-        color: inherit !important;
-    }
-    &:has(.profile-nickname) > div > h2 > a.text-primary {
-        box-shadow: inset 0 0 0 1px #f95318 !important;
-        background-color: #77777722;
-        transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
-        color: inherit !important;
-    }
-    &:has(.profile-nickname) > :is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > div.text-center.my-2 { /* profil madalya ve öne çıkan alanı */
+    & > :is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > div.text-center.my-2 { /* profil madalya ve öne çıkan alanı */
         display: flex;
         gap: 16px;
         margin: auto;
@@ -1268,9 +1268,9 @@ div:is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > div.text-center.
         @media only screen and (min-width: 768px) {
             max-width: calc(100% - 260px);
         }
-    }
-    &:has(.profile-nickname) > :is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > div.text-center.my-2 img { /* profil madalya ve öne çıkan simgeleri */
-        width: 12px !important;
+        & img { /* profil madalya ve öne çıkan simgeleri */
+            width: 12px !important;
+        }
     }
 }
 
