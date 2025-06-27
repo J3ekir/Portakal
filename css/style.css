@@ -56,7 +56,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 /* #endregion Footer */
 /* #region İç Reklam */
-div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-block > img { /* İç reklam */
+div:is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > div.text-center.my-2.position-relative.d-none.d-md-inline-block > img { /* İç reklam */
   border-radius: 12px;
 }
 
@@ -1287,7 +1287,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
   font-size: initial !important;
 }
 
-#centerframe:has(.profile-nickname) > .has-side-ad- > hr { /* Profil headerı ile tanımlar arası çizgi */
+#centerframe:has(.profile-nickname) > :is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > hr { /* Profil headerı ile tanımlar arası çizgi */
   display: none !important;
 }
 #centerframe:has(.profile-nickname) > div > h2 { /* Profil Tanım Sekmeleri */
@@ -1325,7 +1325,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
   transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
   color: inherit !important;
 }
-#centerframe:has(.profile-nickname) > .has-side-ad- > div.text-center.my-2 { /* profil madalya ve öne çıkan alanı */
+#centerframe:has(.profile-nickname) > :is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > div.text-center.my-2 { /* profil madalya ve öne çıkan alanı */
   display: flex;
   gap: 16px;
   margin: auto;
@@ -1333,11 +1333,11 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
   font-size: 10pt;
 }
 @media only screen and (min-width: 768px) {
-  #centerframe:has(.profile-nickname) > .has-side-ad- > div.text-center.my-2 {
+  #centerframe:has(.profile-nickname) > :is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > div.text-center.my-2 {
     max-width: calc(100% - 260px);
   }
 }
-#centerframe:has(.profile-nickname) > .has-side-ad- > div.text-center.my-2 img { /* profil madalya ve öne çıkan simgeleri */
+#centerframe:has(.profile-nickname) > :is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) > div.text-center.my-2 img { /* profil madalya ve öne çıkan simgeleri */
   width: 12px !important;
 }
 
@@ -1373,7 +1373,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     text-align: left !important;
     max-width: calc(100% - 260px) !important;
   }
-  .has-side-ad- .profile-actions {
+  :is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide) .profile-actions {
     justify-content: flex-start !important;
   }
   .profile-actions {
@@ -1391,7 +1391,7 @@ div.has-side-ad- > div.text-center.my-2.position-relative.d-none.d-md-inline-blo
     padding: 2px 6px !important;
     margin: 0 0 0 auto !important;
   }
-  .has-side-ad-:has(.text-center.my-2) .profile-actions .sendmessage {
+  :is(.has-side-ad-, .has-side-ad-narrow, .has-side-ad-wide):has(.text-center.my-2) .profile-actions .sendmessage {
     top: -68px !important;
   }
   .profile-actions .statbox {

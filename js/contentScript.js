@@ -7,7 +7,7 @@ const loadcenterSelectors = `
 	#notificationpreviewcontainer .bkz,
 	.profile-tabs .btn:not(.btn-primary):not(.btn-warning):not(.btn-info),
 	.profile-nickname a,
-	.has-side-ad-:has(#profile-top) > h2.text-primary > a,
+	:is(.has-side-ad-,.has-side-ad-narrow,.has-side-ad-wide):has(#profile-top) > h2.text-primary > a,
 	#entriesheadingcontainer > header > h1 > a,
 	#frame_cockpit > a:nth-child(-n+6)
 `;
