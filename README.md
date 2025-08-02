@@ -1,5 +1,5 @@
 # sıkılmış portakal
-normal sözlük'ün web sitesini iyileştiren Chrome eklentisi.
+normal sözlük'ün web sitesini iyileştiren [Chrome](https://chromewebstore.google.com/detail/obnedkmnbbfagbohaloommjjfnfhiakd) ve [Firefox](https://addons.mozilla.org/firefox/addon/sikilmis-portakal) eklentisi.
 
 ## Özellikler
 - Birçok görsel hatayı düzeltir.
